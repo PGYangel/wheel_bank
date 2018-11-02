@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery手机端上拉刷新下拉加载更多页面 - 爱编程w2bc.com</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="pullToRefresh.css" />
+    <script src="iscroll.js"></script>
+    <script src="pullToRefresh.js"></script>
+    <script src="colorful.js"></script>
+    <style type="text/css" media="all">
+        body, html {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            font-family: Arial, Microsoft YaHei;
+            color: #111;
+        }
+
+        li {
+            /*border-bottom: 1px #CCC solid;*/
+            text-align: center;
+            line-height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!--must content ul li,or shoupi-->
+    <div id="wrapper">
+        <ul>
+            <li>row 10</li>
+            <li>row 9</li>
+            <li>row 8</li>
+            <li>row 7</li>
+            <li>row 6</li>
+            <li>row 5</li>
+            <li>row 4</li>
+            <li>row 3</li>
+            <li>row 2</li>
+            <li><a href="###" onclick="alert('sadfsdaf')">row 1</a></li>
+        </ul>
+    </div>
+    <script>
+        /*for (var i = 0; i < document.querySelectorAll("#wrapper ul li").length; i++) {
+            document.querySelectorAll("#wrapper ul li")[i].colorfulBg();
+        }*/
+        refresher.init({
+            id: "wrapper",//<------------------------------------------------------------------------------------┐
+            pullDownAction: Refresh,
+            pullUpAction: Load
+        });
+        var generatedCount = 0;
+        function Refresh() {
+            setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
+                var el, li, i;
+                el = document.querySelector("#wrapper ul");
+                el.innerHTML = '';
+                for (i = 0; i < 11; i++) {
+                    li = document.createElement('li');
+                    li.appendChild(document.createTextNode('async row ' + (++generatedCount)));
+                    el.insertBefore(li, el.childNodes[0]);
+                }
+                wrapper.refresh();/****remember to refresh after  action completed！ ---yourId.refresh(); ----| ****/
+                for (var i = 0; i < document.querySelectorAll("#wrapper ul li").length; i++) {
+                    document.querySelectorAll("#wrapper ul li")[i].colorfulBg();
+                }
+            }, 1000);
+        }
+
+        function Load() {
+            setTimeout(function () {// <-- Simulate network congestion, remove setTimeout from production!
+                var el, li, i;
+                el = document.querySelector("#wrapper ul");
+                for (i = 0; i < 2; i++) {
+                    li = document.createElement('li');
+                    li.appendChild(document.createTextNode('async row ' + (++generatedCount)));
+                    el.appendChild(li, el.childNodes[0]);
+                }
+                wrapper.refresh();/****remember to refresh after action completed！！！   ---id.refresh(); --- ****/
+                for (var i = 0; i < document.querySelectorAll("#wrapper ul li").length; i++) {
+                    document.querySelectorAll("#wrapper ul li")[i].colorfulBg();
+                }
+            }, 1000);
+        }
+    </script>
+
+    <!--<script src="/scripts/2bc/_gg_980_90.js" type="text/javascript"></script>-->
+</body>
+</html>

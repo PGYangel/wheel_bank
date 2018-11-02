@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>换装小游戏</title>
+    <meta name="Keywords" content=""/>
+    <meta name="Description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <script src="js/jquery-1.11.1.min.js?v=1" type="text/javascript"></script>
+    <script src="js/html2canvas.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        //js动态屏幕适配
+        var html = document.getElementsByTagName("html")[0];
+        var pageWidth = html.getBoundingClientRect().width;
+        html.style.fontSize = pageWidth + 'px';
+        window.onresize = function() {
+            html = document.getElementsByTagName("html")[0];
+            pageWidth = html.getBoundingClientRect().width;
+            html.style.fontSize = pageWidth + 'px';
+        }
+    </script>
+    <link href="css/style.css?v=1" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="wrap">
+    <section class="s1">
+        <div id="capture">
+            <img src="images/person.png?v=1" alt="" class="img0"/>
+            <div class="img1"></div>
+            <div class="img2"></div>
+            <div class="img3"></div>
+            <div class="img4"></div>
+        </div>
+        <div class="createBtn" onclick="createImg()">生成图片</div>
+        <div class="btns btn1" onclick="changeDress(7)">眼镜1</div>
+        <div class="btns btn2" onclick="changeDress(8)">眼镜2</div>
+        <div class="btns btn3" onclick="changeDress(1)">上衣1</div>
+        <div class="btns btn4" onclick="changeDress(3)">上衣2</div>
+        <div class="btns btn5" onclick="changeDress(2)">裙子1</div>
+        <div class="btns btn6" onclick="changeDress(4)">裙子2</div>
+        <div class="btns btn7" onclick="changeDress(5)">鞋子1</div>
+        <div class="btns btn8" onclick="changeDress(6)">鞋子2</div>
+    </section>
+    <section class="s2"><img id="personImg" src="" alt=""/></section>
+</div>
+<div class="canvas"></div>
+<script src="js/game.js?v=1" type="text/javascript"></script>
+</body>
+</html>

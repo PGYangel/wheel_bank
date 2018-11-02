@@ -1,0 +1,38 @@
+@charset "UTF-8";
+*{padding:0;margin:0;list-style: none;text-decoration:none;border:none;}
+body{font-family:"微软雅黑","Microsoft YaHei";}
+.wrap{font-size:0.01rem;}
+.canvas{display: none}
+.s1{width: 100%;height:2rem;position:relative;}
+#capture{width: 0.5rem;height:1rem;position:absolute;right:0.05rem;top:0.05rem;}
+.img0{position:absolute;width: 0.3rem;top:0.1rem;left:0.1rem;z-index:0;}
+.img1{position:absolute;z-index: 3;}
+.img2{position:absolute;z-index: 1;}
+.img3{position:absolute;z-index: 2;}
+.img4{position:absolute;z-index: 1;}
+.p1{top:0.3rem;left:0.185rem;width: 0.14rem;height:0.15rem;background:url(../images/p1.png?v=1) no-repeat;background-size:100%;}
+.p2{top:0.44rem;left:0.04rem;width: 0.4rem;height:0.5rem;background:url(../images/p2.png?v=1) no-repeat;background-size:100%;}
+.p3{top:0.31rem;left:0.175rem;width: 0.16rem;height:0.2rem;background:url(../images/p3.png?v=1) no-repeat;background-size:100%;}
+.p4{top:0.44rem;left:0.06rem;width: 0.4rem;height:0.5rem;background:url(../images/p4.png?v=1) no-repeat;background-size:100%;}
+.p5{top:0.68rem;left:0.22rem;width: 0.1rem;height:0.3rem;background:url(../images/p5.png?v=1) no-repeat;background-size:100%;}
+.p6{top:0.73rem;left:0.22rem;width: 0.1rem;height:0.3rem;background:url(../images/p6.png?v=1) no-repeat;background-size:100%;}
+.p7{top:0.2rem;left:0.18rem;width: 0.14rem;height:0.15rem;background:url(../images/p7.png?v=1) no-repeat;background-size:100%;}
+.p8{top:0.2rem;left:0.185rem;width: 0.14rem;height:0.15rem;background:url(../images/p8.png?v=1) no-repeat;background-size:100%;}
+.s1 .btns{width: 0.2rem;height:0.1rem;line-height:0.1rem;border:1px solid #000;font-size: 0.04rem;text-align: center;position:absolute;}
+.btn1{top:0.2rem;left:0.05rem;}
+.btn2{top:0.3rem;left:0.05rem;}
+.btn3{top:0.4rem;left:0.05rem;}
+.btn4{top:0.5rem;left:0.05rem;}
+.btn5{top:0.6rem;left:0.05rem;}
+.btn6{top:0.7rem;left:0.05rem;}
+.btn7{top:0.8rem;left:0.05rem;}
+.btn8{top:0.9rem;left:0.05rem;}
+
+.createBtn{top:0.05rem;left:0.05rem;width: 0.2rem;height:0.1rem;line-height:0.1rem;border:1px solid #000;font-size: 0.04rem;text-align: center;position:absolute;}
+.s2{width: 100%;height: 2rem;position:relative;display: none}
+.s2 img{width: 100%;height:100%;position:absolute;}
+
+
+
+
+

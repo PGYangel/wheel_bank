@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <script src="http://img.res.szgla.com/jquery/jquery.min.js"></script>
+    <style>
+        *{padding:0;margin:0}
+        html,body{width: 100%;height: 100%;}
+        .mydiv{width: 100%;height: 50px;background: #000;color:#fff;line-height: 50px;text-align: center}
+        .bg{width:100%;height:100%;position:fixed;background: #000;opacity:0.5;-moz-opacity:0.5;filter:alpha(opacity=50);top:0;left:0;z-index: 998;display:none}
+        .select{position:fixed;color:#000;top:50px;;left:0;z-index: 999;width:100%;background: #fff;height: 40vh;overflow: auto;-webkit-overflow-scrolling: touch;display:none}
+        ::-webkit-scrollbar {-webkit-appearance: none;}
+        ::-webkit-scrollbar:vertical {width: 12px;}
+        ::-webkit-scrollbar:horizontal {height: 12px;}
+        ::-webkit-scrollbar-thumb {background-color: rgba(0, 0, 0, .5);border-radius: 10px;border: 2px solid #ffffff;}
+        ::-webkit-scrollbar-track {border-radius: 10px;background-color: #ffffff;}
+    </style>
+</head>
+<body>
+<div class="mydiv">
+    点我
+</div>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<p>asdfsadfsf</p>
+<div class="bg"></div>
+<div class="select">
+    <ul>
+        <li><input type="button" value="点我"></li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+        <li>afasdfs</li>
+    </ul>
+</div>
+
+<script>
+    $(".mydiv").on("click",function(){
+        $(document).on("touchmove",function(e){
+            e.preventDefault();
+        });
+        $(".select").off("touchmove");
+        $(".bg").show();
+        $(".select").show();
+    });
+    $(".select li").on("click",function(){
+        $(".bg").hide();
+        $(".select").hide();
+    })
+</script>
+</body>
+</html>

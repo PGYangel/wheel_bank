@@ -1,0 +1,52 @@
+@charset "UTF-8";
+body{
+    width:100%;
+    height:100%;
+}
+
+
+#test {
+    width: 100px;
+    height: 100px;
+    background: red;
+
+}
+
+.run{
+    animation-name:bg,run;
+    -webkit-animation-name:bg,run;
+    animation-duration:5s;
+    -webkit-animation-duration:5s;
+    /*-webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -o-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;*/
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes bg{
+    0%{background: red;}
+    /*50%{background: blue;}*/
+    100%{background: blue;}
+}
+
+@-webkit-keyframes bg{
+    0%{background: red;}
+    /*50%{background: blue;}*/
+    100%{background: blue;}
+}
+
+@keyframes run{
+    0%{margin-left: 0px;}
+    30%{margin-left: 90%;}
+    100%{margin-left: 0px;}
+}
+
+@-webkit-keyframes run{
+    0%{margin-left: 0px;}
+    30%{margin-left: 90%;}
+    100%{margin-left: 0px;}
+}

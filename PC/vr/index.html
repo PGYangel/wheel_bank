@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="gbk">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="author" content="Tencent-TGideas">
+    <meta name="Description" content="《王者荣耀》是腾讯天美工作室历时3年推出的东方英雄即时对战手游大作，抗塔强杀、团灭超神，领略爽热血竞技的酣畅淋漓！1v1、3v3、5v5、闯关等丰富游戏模式，随时战，更自由！跨服匹配秒开局，好友组队战排位，不靠装备、没有等级，更公平、更爽快的无差异对战！" />
+    <meta name="Keywords" content="王者荣耀,王者荣耀官网,王者荣耀下载,王者荣耀电脑版,王者荣耀充值,王者荣耀体验,逐梦之音" />
+    <title>逐梦之音</title>
+    <!-- 设计： | 重构：sign mckey | 创建：20161130 | 团队博客：http://tgideas.qq.com -->
+    <script>
+        function adaptVP(a){function c(){var c,d;return b.uWidth=a.uWidth?a.uWidth:640,b.dWidth=a.dWidth?a.dWidth:window.screen.width||window.screen.availWidth,b.ratio=window.devicePixelRatio?window.devicePixelRatio:1,b.userAgent=navigator.userAgent,b.bConsole=a.bConsole?a.bConsole:!1,a.mode?(b.mode=a.mode,void 0):(c=b.userAgent.match(/Android/i),c&&(b.mode="android-2.2",d=b.userAgent.match(/Android\s(\d+.\d+)/i),d&&(d=parseFloat(d[1])),2.2==d||2.3==d?b.mode="android-2.2":4.4>d?b.mode="android-dpi":d>=4.4&&(b.mode=b.dWidth>b.uWidth?"android-dpi":"android-scale")),void 0)}function d(){var e,f,g,h,c="",d=!1;switch(b.mode){case"apple":f=(window.screen.availWidth*b.ratio/b.uWidth)/b.ratio;c="width="+b.uWidth+",initial-scale="+f+",minimum-scale="+f+",maximum-scale="+f+",user-scalable=no";break;case"android-2.2":a.dWidth||(b.dWidth=2==b.ratio?720:1.5==b.ratio?480:1==b.ratio?320:.75==b.ratio?240:480),e=window.screen.width||window.screen.availWidth,320==e?b.dWidth=b.ratio*e:640>e&&(b.dWidth=e),b.mode="android-dpi",d=!0;case"android-dpi":f=160*b.uWidth/b.dWidth*b.ratio,c="target-densitydpi="+f+", width="+b.uWidth+", user-scalable=no",d&&(b.mode="android-2.2");break;case"android-scale":c="width="+b.uWidth+", user-scalable=no"}g=document.querySelector("meta[name='viewport']")||document.createElement("meta"),g.name="viewport",g.content=c,h=document.getElementsByTagName("head"),h.length>0&&h[0].appendChild(g)}function e(){var a="";for(key in b)a+=key+": "+b[key]+"; ";alert(a)}if(a){var b={uWidth:0,dWidth:0,ratio:1,mode:"apple",userAgent:null,bConsole:!1};c(),d(),b.bConsole&&e()}};adaptVP({uWidth:640});
+        var fileName = 'a20161130ar.index';
+//        var locationJump = '//pvp.qq.com/cp/a20161205wzry/page.html';
+//        var locationJump = 'http://gg.q1.com';
+    </script>
+    <style>
+        html,body {width: 100%;height: 100%;overflow: hidden;margin: 0;padding: 0;background: #000;font-family: Helvetica;}
+        canvas{position: absolute;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 99;}
+        p{margin: 0;padding: 0;}
+
+        #stage,video {position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
+        video {background: #000;}
+        .info {position: absolute;width: 100%;height: 100px;z-index: 999;bottom: 0;left: 0;color: #fff0c5;font-size: 32px;text-align: center;text-shadow: 0 0 4px #cd9900;}
+
+        .load{position: absolute;left: 0;top: 0;width: 100%;height: 100%;background: #000000;z-index: 1000;}
+        .load_in{width: 100%;height: 223px;position: absolute;left: 0%;top: 50%;-webkit-transform: translateY(-50%);}
+        .load_wrap{width: 177px;height: 141px;background: url(//game.gtimg.cn/images/yxzj/act/a20161130ar/loading.jpg) no-repeat;background-size: 100%;position: absolute;left: 50%;margin-left: -88px;top: 0;z-index: 2;-webkit-animation: load_wrap 2s infinite;}
+        @-webkit-keyframes load_wrap {50%{-webkit-transform: translateY(-20px);}}
+        .load_num{width: 100%;height: 36px;position: absolute;left: 0;top: 141px;text-align: center;color: #29c1d3;font-size: 28px;text-shadow: 0 0 6px #18b5c6;}
+        .load_in p{width: 100%;height: 36px;position: absolute;left: 0;top: 187px;text-align: center;color: #29c1d3;font-size: 28px;text-shadow: 0 0 6px #18b5c6;}
+
+        .target{display: block;width: 320px;height: 36px;color: #fff0c5;text-align: center;font-size: 32px;position: absolute;left: 50%;top: 50%;-webkit-transform: translate(-50%,-50%);z-index: 999;padding-top: 120px;text-shadow: 0 0 4px #cd9900;}
+        .target:before{content: "";display: block;width: 110px;height: 110px;background: url(//game.gtimg.cn/images/yxzj/act/a20161130ar/target.png) no-repeat;background-size: 100%;position: absolute;left: 50%;top: 0;margin-left: -55px;}
+        .target b{padding: 0 3px;font-weight: bold;}
+
+        /*music*/
+        .music{display: block;width: 80px;height: 80px;position: fixed;right: 0px;top: 0px;z-index: 1000;}
+        .music em{display: block;width: 32px;height: 36px;background: url(//game.gtimg.cn/images/yxzj/act/a20161130ar/music_icon.png) no-repeat;background-size: 86px;background-position: -54px 0;position: absolute;left: 50%;top: 50%;-webkit-transform: translate(-50%,-50%);}
+        .music_on em{display: block;width: 27px;height: 36px;background: url(//game.gtimg.cn/images/yxzj/act/a20161130ar/music_icon.png) no-repeat;background-size: 86px;background-position: 0 0;position: absolute;left: 50%;top: 50%;-webkit-transform: translate(-50%,-50%);}
+        /*.music_on{-webkit-animation: music 1s linear infinite;}*/
+        @-webkit-keyframes music {0%{-webkit-transform-origin: 50% 0;}50%{-webkit-transform: rotate(20deg);-webkit-transform-origin: 50% 0;}100%{-webkit-transform-origin: 50% 0;}}
+
+        @-webkit-keyframes flash{
+            from,50%,to{opacity:1;}
+            25%,75%{opacity:0;}
+        }
+        @keyframes flash{
+            from,50%,to{opacity:1;}
+            25%,75%{opacity:0;}
+        }
+        .flash{-webkit-animation:flash 1s infinite;animation:flash 1s infinite;}
+    </style>
+</head>
+
+<body>
+
+<div class="load" id="load" style="display:;">
+    <div class="load_in">
+        <div class="load_wrap"></div>
+        <div class="load_num">正在加载中...<span id="load_num">0</span>%</div>
+        <p>冰冷的太空中，似乎听到了召唤我的旋律……</p>
+    </div>
+</div>
+
+<b class="music" id="music" style="display:none;"><em></em></b>
+<audio id="musicAudio" src="//game.gtimg.cn/images/yxzj/act/a20161130ar/music.mp3" preload="auto" loop="loop"></audio>
+
+<div class="target" style="display:none;">凝视机舱，唤醒我</div>
+
+<div id="stage">
+    <a href="###"></a>
+    <a href="###"></a>
+    <div class="info" style="display:none;">
+        正在加载中，请稍后……
+    </div>
+</div>
+
+<script src="//pingjs.qq.com/tcss.ping.https.js"></script>
+<script src="//ossweb-img.qq.com/images/js/mobile_build/util/zepto.min.js"></script>
+<script src="//open.mobile.qq.com/sdk/qqapi.js?_bid=152"></script>
+<script src="//ossweb-img.qq.com/images/js/TGMobileShare/TGMobileShare.min.js"></script>
+<script src="//pvp.qq.com/act/a20161130ar/js/three.min.js"></script>
+<script src="//pvp.qq.com/act/a20161130ar/js/DeviceOrientationControls.js"></script>
+<script src="//pvp.qq.com/act/a20161130ar/js/tween.min.js"></script>
+<script src="//pvp.qq.com/act/a20161130ar/js/Detector.js"></script>
+<script src="//ossweb-img.qq.com/images/js/comm/stayTime.min.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>

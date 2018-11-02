@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>判断滑动</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        @media screen and (max-width: 500px) {
+            body {
+                font-size: 10px;
+                background: #ebebeb;
+            }
+        }
+
+        @media (min-width: 500px) and (max-width: 800px) {
+            body {
+                font-size: 18px;
+                background: #ebebeb;
+            }
+        }
+
+        @media (min-width: 800px) {
+            body {
+                font-size: 28px;
+                background: #ebebeb;
+            }
+        }
+
+        #divs {
+            width: 100%;
+            height: 900px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .imgs {
+            width: 100%;
+            float: left;
+            position: absolute;
+            left: 0;
+        }
+
+        .imgs img {
+            float: left;
+        }
+
+        p {
+            font-size: 2em;
+        }
+
+        #imgs {
+            transition: left 1s;
+            -moz-transition: left 1s; /* Firefox 4 */
+            -webkit-transition: left 1s; /* Safari 和 Chrome */
+            -o-transition: left 1s; /* Opera */
+        }
+    </style>
+</head>
+<body>
+<p>
+    asdfsadfds<br>
+    asdfsadfds<br>
+    asdfsadfds<br>
+    asdfsadfds<br>
+    asdfsadfds<br>
+    asdfsadfds<br>
+    asdfsadfds<br>
+    asdfsadfds<br>
+</p>
+<div id="divs">
+    <!--<div class="imgs" id="imgs">
+        <img src="images/computer_1.jpg">
+        <img src="images/computer_2.jpg">
+        <img src="images/computer_3.jpg">
+        <img src="images/computer_4.jpg">
+        <img src="images/computer_5.jpg">
+    </div>-->
+</div>
+<p>
+    asdfsadfds<br>
+    asdfsadfds<br>
+    asdfsadfds<br>
+    asdfsadfds<br>
+    asdfsadfds<br>
+    asdfsadfds<br>
+    asdfsadfds<br>
+    asdfsadfds<br>
+</p>
+<script src="js/zepto.min.js"></script>
+<script src="js/touch.js"></script>
+
+
+<script>
+    $(document).ready(function () {
+        var w = $('#divs').width();
+        $('#imgs').eq(0).width($('.imgs img').length * w);
+        $('.imgs img').width(w);
+
+    });
+
+    function imgLeft() {
+        var w = $('#divs').width();
+        var l = $('#imgs').position().left;
+        $('#imgs').css({"left": "-" + (l + w) + "px"});
+    }
+    touch.on('#divs', 'swipeleft', function (ev) {
+        imgLeft();
+    });
+
+</script>
+</body>
+</html>

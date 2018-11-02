@@ -1,0 +1,21 @@
+@charset "UTF-8";
+body {
+    width: 100%;
+    height: 100%;
+}
+
+#content {
+    width: 100%;
+    height: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    background-color: #cccccc;
+    position: absolute;
+    overflow: hidden;
+}
+
+#content img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}

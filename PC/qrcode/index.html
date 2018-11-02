@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>纯js二维码生成插件</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.min.css" />
+</head>
+<body>
+	<div class="container">
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3" id="qr1">
+					<h3>SVG元素</h3>
+				</div>
+				<div class="col-md-3" id="qr2">
+					<h3>Data URI SVG String</h3>
+				</div>
+				<div class="col-md-3" id="qr3">
+					<h3>Data URI PNG String</h3>
+				</div>
+				<div class="col-md-3" id="qr4">
+					<h3>表格</h3>
+				</div>
+			</div>
+		</div>
+		</div>
+	
+	<script src="js/qrjs2.js"></script>
+	<script type="text/javascript">
+		var container1 = document.getElementById('qr1');
+		var container2 = document.getElementById('qr2');
+		var container3 = document.getElementById('qr3');
+		var container4 = document.getElementById('qr4');
+		var svgElement = document.createElement("div"),
+		u = "http://www.daimabiji.com/",
+		s = QRCode.generateSVG(u, {
+				ecclevel: "M",
+				fillcolor: "#FFFFFF",
+				textcolor: "#373737",
+				margin: 4,
+				modulesize: 8
+			});
+		svgElement.appendChild(s);
+		container1.appendChild(svgElement);
+		if (document.implementation.hasFeature("http://www.w3.org/2000/svg","1.1")) {
+			var dataUriSvgImage = document.createElement("img"),
+			u = "http://www.daimabiji.com/",
+			s = QRCode.generateSVG(u, {
+					ecclevel: "M",
+					fillcolor: "#FFFFFF",
+					textcolor: "#373737",
+					margin: 4,
+					modulesize: 8
+				});
+			var XMLS = new XMLSerializer();
+			s = XMLS.serializeToString(s);
+			s = "data:image/svg+xml;base64," + window.btoa(unescape(encodeURIComponent(s)));
+			dataUriSvgImage.src = s;
+			container2.appendChild(dataUriSvgImage);
+		}
+		var dataUriPngImage = document.createElement("img"),
+		u = "http://www.daimabiji.com/",
+		s = QRCode.generatePNG(u, {
+				ecclevel: "M",
+				format: "html",
+				fillcolor: "#FFFFFF",
+				textcolor: "#373737",
+				margin: 4,
+				modulesize: 8
+			});
+		dataUriPngImage.src = s;
+		container3.appendChild(dataUriPngImage);
+		var htmlTable = document.createElement("div"),
+		u = "http://www.daimabiji.com/",
+		s = QRCode.generateHTML(u, {
+				ecclevel: "M",
+				fillcolor: "#FFFFFF",
+				textcolor: "#373737",
+				margin: 4,
+				modulesize: 8
+			});
+		htmlTable.appendChild(s);
+		container4.appendChild(htmlTable);
+	</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>自定义滚动条</title>
+    <style type="text/css">
+        *{padding:0;margin:0}
+        html,body{font-family: "Microsoft Yahei";line-height: 25px;}
+        h1{font-size: 18px;color:#fff;text-align: center;font-weight: normal;}
+        h6{font-size: 16px;color:#ffd76c;text-align: left;font-weight: normal;}
+        p{color:#b8b9bf;font-size: 14px;text-indent: 30px;}
+
+        .scrollBox{
+            width:511px;
+            height:390px;
+            overflow: hidden;
+            position: relative;
+            background:#000;
+        }
+        .scrollCont{
+            width:491px;
+            position: absolute;
+            left:0;
+            top:0;
+            padding-left:10px;
+            padding-right:10px;
+        }
+        .scrollSlider{
+            width:5px;
+            height:421px;
+            position: absolute;
+            right:5px;
+            top:0;
+            background: #ccc;
+        }
+        .scrollBar{
+            width:5px;
+            height:421px;
+            position: absolute;
+            left:0;
+            top:0;
+            background: url(images/roll.png?v=1) no-repeat center center #955B31;
+        }
+    </style>
+</head>
+<body>
+<div id="scrollBox" class="scrollBox">
+    <div id="scrollCont" class="scrollCont">
+        <h1>6月01日更新公告</h1>
+        <h6>尊敬的玩家：</h6>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p><p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p><p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+        <p>asdfdasf</p>
+    </div>
+    <div id="scrollSlider" class="scrollSlider">
+        <div id="scrollBar" class="scrollBar"></div>
+    </div>
+</div>
+<script src="js/drag.js" type="text/javascript"></script>
+</body>
+</html>

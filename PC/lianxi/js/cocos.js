@@ -1,0 +1,5 @@
+function inputOnclick()
+{
+    alert("adfasf");
+}
+

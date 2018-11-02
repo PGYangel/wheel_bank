@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #btn{
+            width:100px;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+            background: red;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="test">我是测试内容~快点击下面红色按钮Copy me~</div>
+<div id="btn" data-clipboard-target="#test">点击我Copy</div>
+<script src="js/jsCopy.js"></script>
+<script>
+    new MyCopyJS("#btn")
+</script>
+</body>
+</html>

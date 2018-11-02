@@ -1,0 +1,292 @@
+@charset "utf-8";
+.marsDate {
+    font-size: 12px;
+    float: left;
+    cursor: pointer;
+    background: url("res/dateIcon.gif") center right no-repeat;
+}
+
+.marsDate-Box {
+    width: 212px;
+    height: 261px;
+    background: #ddd;
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    font-size: 12px;
+    font-family: "宋体";
+    left: 300px;
+    top: 10px;
+    overflow: hidden;
+}
+
+.marsDate-TitleBg {
+    width: 212px;
+    height: 25px;
+    background: #363636;
+    float: left;
+    clear: both;
+    color: #fff;
+    font-weight: bold;
+}
+
+.marsDate-Title-Left {
+    float: left;
+    width: 24px;
+    height: 25px;
+    background: url(res/img.png) 0px 0px no-repeat;
+    border-right: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.marsDate-Title {
+    float: left;
+    height: 25px;
+    width: 162px;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.marsDate-Title-Right {
+    float: left;
+    width: 24px;
+    height: 25px;
+    background: url(res/img.png) -25px 0px no-repeat;
+    border-left: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.marsDate-MainBox {
+    width: 210px;
+    height: 235px;
+    float: left;
+    clear: both;
+    background: #F6F6F6;
+    margin-left: 1px;
+    position: relative;
+}
+
+.marsDate-Week {
+    width: 210px;
+    height: 24px;
+    float: left;
+    list-style: none;
+    color: #363636;
+    margin: 0px;
+    padding: 0px;
+    border-bottom: 1px solid #ddd;
+}
+
+.marsDate-Week li {
+    width: 30px;
+    height: 24px;
+    line-height: 24px;
+    float: left;
+    text-align: center;
+}
+
+.marsDate-Days {
+    width: 210px;
+    height: 180px;
+    float: left;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.marsDate-Days li {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    float: left;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+
+.marsDate-Days li:hover {
+    background: #DAFCFD;
+}
+
+.marsDate-NowDay {
+    background: #FAE5AE;
+}
+
+.marsDate-ChangeBox {
+    position: absolute;
+    left: -1px;
+    top: 0px;
+    width: 210px;
+    height: 180px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.marsDate-check {
+    height: 30px;
+    width: 210px;
+    float: left;
+    clear: both;
+    line-height: 30px;
+}
+
+.marsDate-check span{
+    float: left;
+    margin-left: 3px;
+}
+
+.marsDate-Ok{
+    float: right;
+    margin-right: 3px;
+    margin-top: 4px;
+    cursor: pointer;
+    border:1px solid #ddd;
+    background: #F77F42;
+    width: 40px;
+    height: 22px;
+    color: #fff;
+}
+.marsDate-Clear{
+    float: right;
+    margin-right: 3px;
+    margin-top: 4px;
+    cursor: pointer;
+    border:1px solid #ddd;
+    background: #18C6EF;
+    width: 40px;
+    height: 22px;
+    color: #fff;
+}
+
+.marsDate-input{
+    width: 40px;
+    height: 18px;
+    float: left;
+    border:1px solid #ddd;
+    background: #fff;
+    margin-top: 4px;
+    margin-left: 3px;
+}
+
+.marsDate-Years {
+    width: 105px;
+    height: 150px;
+    float: left;
+}
+
+.marsDate-YearTag {
+    width: 24px;
+    height: 150px;
+    line-height: 150px;
+    border-right: 1px solid #ddd;
+    float: left;
+    background: #363636;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.marsDate-Years ul {
+    list-style: none;
+    float: right;
+    width: 80px;
+    height: 100px;
+    padding: 0;
+    margin: 0;
+}
+
+.marsDate-Years ul li {
+    width: 80px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    float: left;
+    clear: both;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.marsDate-Years ul li:hover {
+    background: #DAFCFD;
+}
+
+.upYearbtn {
+    width: 80px;
+    height: 25px;
+    background: #363636;
+    float: right;
+    cursor: pointer;
+}
+
+.upYearbtn div {
+    width: 25px;
+    height: 25px;
+    margin: 0 auto;
+    background: url(res/img.png) -50px 0px no-repeat;
+}
+
+.downYearbtn {
+    width: 80px;
+    height: 25px;
+    background: #363636;
+    float: right;
+    cursor: pointer;
+}
+
+.downYearbtn div {
+    width: 25px;
+    height: 25px;
+    margin: 0 auto;
+    background: url(res/img.png) -75px 0px no-repeat;
+}
+
+.marsDate-Months {
+    width: 105px;
+    height: 150px;
+    float: left;
+}
+
+.marsDate-MonthTag {
+    width: 24px;
+    height: 150px;
+    border-left: 1px solid #fff;
+    line-height: 150px;
+    float: left;
+    background: #363636;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.marsDate-Months ul {
+    list-style: none;
+    float: right;
+    width: 80px;
+    height: 150px;
+    padding: 0;
+    margin: 0;
+}
+
+.marsDate-Months ul li {
+    float: left;
+    width: 40px;
+    height: 25px;
+    line-height: 25px;
+    background: #fff;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.marsDate-Months ul li:hover {
+    background: #DAFCFD;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+.marslist {
+
+}
+
+.marslist select{
+    display: none;
+}
+
+.marslist-txt {
+    cursor: pointer;
+    border: 1px #ccc solid;
+    max-height: 28px;
+    background: url("bg.png") no-repeat right center #fff;
+}
+
+.marslist-values {
+    position: absolute;
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+    left: 0px;
+    top: 0px;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    max-height: 200px;
+    background: #fff;
+    display: none;
+}
+
+.marslist-values ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.marslist-values ul li {
+    float: left;
+    clear: both;
+    height: 20px;
+    min-width: 100px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.marslist-values ul li:hover {
+    background: #DAFCFD;
+}
+
+

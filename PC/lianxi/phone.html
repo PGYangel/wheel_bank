@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <!-- width – // viewport 的宽度 （范围从 200 到 10,000，默认为 980 像素）
+     height – // viewport 的高度 （范围从 223 到 10,000 ）
+     initial-scale – // 初始的缩放比例 （范围从 > 0 到 10）
+     minimum-scale – // 允许用户缩放到的最小比例
+     maximum-scale – // 允许用户缩放到的最大比例
+     user-scalable – // 用户是否可以手动缩放 (no，yes)
+     注意：实际测试中发现，有些安卓系统自带的浏览器并不支持这一条规则，
+     能够对页面进行放大，一旦放大响应的 box 也随之放大，导致页面出现错乱问题，解决方法：定义页面的最小宽度
+     -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <!-- 使设备浏览网页时对数字不启用电话功能（不同设备解释不同，iTouch 点击数字为存入联系人，iPhone 为拨打电话），
+        忽略将页面中的数字识别为电话号码。若需要启用电话功能将 telephone=yes 即可，
+        若在页面上面有 Google Maps, iTunes 和 YouTube 的链接会在ios设备上打开相应的程序组件。-->
+    <meta name="format-detection" content="telephone=no"/>
+    <!--网站开启对 web app 程序的支持。
+    该 meta 可以看出内容为“苹果设备 web 应用程序 xx”，就是说该 meta 是专门定义 web 应用的。-->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!--在 web app 应用下状态条（屏幕顶部条）的颜色；
+    默认值为 default（白色），可以定为 black（黑色）和 black-translucent（灰色半透明）；
+    注意：若值为“black-translucent”将会占据页面位置，浮在页面上方（会覆盖页面 20px 高度 iphone4 和 itouch4 的 Retina 屏幕为 40px ）。-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <!--name 属性设置作者姓名及联系方式-->
+    <meta name="author" contect="liudanyun, liudy102@163.com"/>
+    <!--二、苹果 Web App 其他设置：
+    当然，配合 Web App 的 icon 和启动界面需要额外的两端代码进行设定，如下所示：
+
+    <link rel="apple-touch-icon-precomposed" href="iphone_logo.png" />
+    说明：这个 link 就是设置 Web App 的放置主屏幕上 icon 文件路径（图片四）。
+    
+    使用：
+    该路径需要注意的就是放到将网站的文档根目录下但不是服务器的文档的根目录。
+    图片尺寸可以设定为 57*57（px）或者 Retina 可以定为 114*114（px），iPad 尺寸为 72*72（px）
+
+    <link rel="apple-touch-startup-image" href="logo_startup.png" />
+    说明：这个 link 就是设置启动时候的界面。
+
+    使用：
+    放置的路径和上面一样。
+    官方规定启动界面的尺寸必须为 320*640（px），原本以为 Retina 屏幕可以支持双倍，但是不支持，图片显示不出来。-->
+
+    <!--一般就分成这么几个分界线：（Bootstrap 标准）480px、768px、980px、1200px。
+    所以对手机而言，只要是 480px 以下都是一样对待的-->
+
+    <!--
+    IE浏览器浏览器模式和文档模式不一致导致兼容问题解决方案：
+    1.<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    这样可以让浏览器使用最新版本的文档模式
+
+    2.<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    如果IE装了chrome插件，那么会自动选中谷歌模式，如果没有，那么会选择最新IE文档模式。
+    -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title></title>
+    <link href="css/phone.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<form>
+    <div class="top-title">
+        欢迎来到这里
+    </div>
+    <div class="top-img">
+        <img src="images/img.png" alt=""/>
+    </div>
+    <div class="main">
+        <img src="images/email.jpg" alt=""><input type="email" class="txt-input" placeholder="邮箱"/>
+    </div>
+    <div class="main">
+        <img src="images/passwork.jpg" alt=""><input type="password" class="txt-input" placeholder="密码"/>
+    </div>
+    <div class="main">
+        <input type="submit" class="btn-input" value="登录"/>
+    </div>
+</form>
+</body>
+</html>

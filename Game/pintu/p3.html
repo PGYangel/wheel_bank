@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <script src="js/jquery-1.11.1.min.js?v=1" type="text/javascript"></script>
+    <style>
+        *{padding:0;margin:0;}
+        .main{width: 600px;height: 700px;margin: 0 auto;position:relative;}
+        #pt{position:relative;width: 600px;height:600px;}
+        .btn{width: 70px;height:30px;}
+        .timeBox{font-size: 14px;height:25px;line-height: 25px;}
+        .pis{position:absolute;top:700px;right:0}
+    </style>
+</head>
+<body>
+<div class="main">
+    <div id="pt">
+
+    </div>
+    <div class="timeBox"><span id="ss">0</span>秒<span id="ms">0</span>毫秒</div>
+    <input type="button" value="开始游戏" class="btn" onclick="fn()">
+    <img src="" alt="" width="200" height="200" class="pis"/>
+</div>
+
+<script src="js/index4.js?v=2" type="text/javascript"></script>
+<script type="text/javascript">
+    var imgsArr=[
+            "images/p1.jpg",
+            "images/p2.jpg",
+            "images/p3.jpg",
+            "images/p4.jpg",
+            "images/p5.jpg",
+            "images/p6.jpg",
+            "images/p7.jpg",
+            "images/p8.jpg",
+            "images/p9.jpg",
+            "images/p10.jpg",
+            "images/p11.jpg"
+    ];
+    var timeS;
+    var checkTime=0;
+//    var
+    function fn(){
+        $(".btn").remove();
+        var imgUrl=imgsArr[Math.floor(Math.random()*imgsArr.length)];
+        $(".pis").attr("src",imgUrl);
+        var pt=new ptClass();
+        pt.img=imgUrl;//图片路径
+        pt.id="pt";//渲染id
+        pt.callFn=callFn;//拼图成功后回调函数
+        pt.init();//初始化拼图
+        timeFn();
+    }
+    function callFn(){
+        clearInterval(timeS);
+        setTimeout(function(){alert("拼图成功1");},1000);
+    }
+
+    function timeFn(){
+        timeS=setInterval(function(){
+            checkTime+=10;
+            $("#ss").text(parseInt(checkTime/1000));
+            $("#ms").text(checkTime%1000);
+        },10);
+    }
+
+</script>
+</body>
+</html>

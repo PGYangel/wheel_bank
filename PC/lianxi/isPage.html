@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://css.ssl.q1.com/jquery/jquery-1.11.1.min.js?v=1" type="text/javascript"></script>
+    <!--<script type="text/javascript">
+        document.domain="q1.com";
+    </script>-->
+</head>
+<body>
+<script type="text/javascript">
+    /*NetPing();
+    function NetPing() {
+        $.ajax({
+            type: "GET",
+            cache: false,
+            url: "http://app.gg.q1.com/Gift/GetCard?jsoncallback=?",
+            data: "",
+            success: function() {
+                console.log("1");
+            },
+            error: function() {
+                console.log("2");
+            }
+        });
+    }*/
+    var strs = "asdasdadd";
+    function getmaxstr(str){
+        if(str.length == 1){return str;}
+        var newarr = [];
+        for(var i = 0 ; ss= str.length, i<ss; i++ ){
+            console.log(newarr[str.charAt(i)])
+            if(!newarr[str.charAt(i)]){
+                newarr[str.charAt(i)] = 1;
+            }else{
+                newarr[str.charAt(i)] +=1;
+            }
+        }
+        console.log(newarr);
+        var maxkey='';
+        var maxvalue=1;//设定一个值
+        for(var k in newarr){
+            if(newarr[k]> maxvalue){//根据这个值做判读 将数组中的每个元素 与这个值做比较！ 如果大于他，那么将住宿
+                maxvalue = newarr[k];//出现的次数
+                maxkey = k;//次数最多的 字母
+            }
+        }
+        console.log(maxkey);
+        return maxvalue;
+    }
+    getmaxstr(strs);
+</script>
+</body>
+</html>

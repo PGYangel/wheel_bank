@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片预加载是否完毕</title>
+</head>
+<body>
+<p id="present">0%</p>
+<input type="button" value="按钮" onclick='preload("http://img.res.szgla.com/ws/images/main_20160712/yh_1.jpg",
+"http://img.res.szgla.com/ws/images/main_20160712/yh_2.jpg",
+"http://img.res.szgla.com/ws/images/main_20160712/yh_3.jpg",
+"http://img.res.szgla.com/ws/images/main_20160712/yh_4.jpg",
+"http://img.res.szgla.com/ws/images/main_20160712/yh_5.jpg",
+"http://img.res.szgla.com/ws/images/main_20160712/yh_6.jpg",
+"http://img.res.szgla.com/ws/images/main_20160712/yh_7.jpg",
+"http://img.res.szgla.com/ws/images/main_20160712/cy_1920x1080.jpg",
+"http://img.res.szgla.com/ws/images/main_20160712/cy_1440x900.jpg",
+"http://img.res.szgla.com/ws/images/main_20160712/cy_1366x768.jpg")'>
+
+<script>
+    var present=document.getElementById("present");
+    //图片预加载
+    var images = new Array();
+    var num=0;
+    var sum=10
+
+    function preload() {
+        for (var i = 0; i < preload.arguments.length; i++) {
+            images[i] = new Image();
+            images[i].src = preload.arguments[i];
+            images[i].onload=function(){
+                num++;
+                if(num>10){
+                    num=10;
+                    return;
+                }
+                present.innerText=(num/sum)*100+"%";
+            }
+        }
+    }
+    /*preload(
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip01.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip02.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip03.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip04.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip05.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip06.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip07.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip08.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip09.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip10.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip11.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip12.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip13.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip14.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip15.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip16.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip17.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip18.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip19.jpg",
+            "http://img.res.szgla.com/bbcs/images/huodong/kxhd2016/tip20.jpg"
+    );*/
+</script>
+</body>
+</html>

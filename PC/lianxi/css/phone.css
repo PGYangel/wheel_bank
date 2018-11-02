@@ -1,0 +1,86 @@
+@charset "utf-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border:none;
+}
+
+body {
+    min-width: 320px;
+    background: #333542;
+    font-size: 14px;
+    letter-spacing:1em;
+}
+
+
+
+.top-title {
+    color: #FEFCFD;
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    margin: 10% auto;
+    min-width: 255px;
+    width: 80%;
+}
+
+.top-img {
+    width: 80%;
+    min-width: 255px;
+    margin: 10% auto;
+}
+
+.top-img img {
+    width: 100%;
+}
+
+.main {
+    width: 80%;
+    min-width: 255px;
+    margin: 5% auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.main img {
+    width: 10%;
+    min-height: 30px;
+    min-width: 30px;
+    float: left;
+}
+
+.txt-input {
+    background: #474955;
+    border: none;
+    border-radius: 1%;
+    width: 85%;
+    min-width: 225px;
+    min-height: 30px;
+    height: 100%;
+    color: #fff;
+    font-size: 1em;
+    font-family: "微软雅黑";
+    float: left;
+    position: absolute;
+    z-index: 1;
+}
+
+.btn-input {
+    cursor: pointer;
+    border: none;
+    font-family: "微软雅黑";
+    font-size: 1em;
+    width: 95%;
+    min-width: 255px;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    background: #0BD38A;
+    color: #fff;
+}
+
+@media (min-width: 320px) and (min-width: 768px) {
+    body {
+        font-size: 24px;
+    }
+}

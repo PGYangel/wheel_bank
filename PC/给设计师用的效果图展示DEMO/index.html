@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>效果图显示工具</title>
+    <style>
+        *{margin:0;padding:0;}
+        .gj{background: #ccc;width: 100%;height: 50px;}
+        .gj div{float: left;margin-left: 10px;}
+        .title{height: 30px;line-height: 30px;}
+        .pcBtn{width: 120px;height: 30px;font-size: 14px;line-height: 30px;border:1px solid #000;text-align: center;cursor:pointer;color:#000;}
+        .ydBtn{width: 150px;height: 30px;font-size: 14px;line-height: 30px;border:1px solid #000;text-align: center;cursor:pointer;color:#000;}
+        #pc{overflow: auto;}
+        #pcm{background: url(a.jpg) no-repeat top center;}
+        #yd{display: none;border:1px solid #000;margin:20px auto;overflow: auto;}
+        #yd img{width: 100%;}
+    </style>
+</head>
+<body>
+<div class="gj">
+    <div class="title">pc尺寸：</div>
+    <div class="pcBtn" onclick="pcFn(1280,600)">1280×600</div>
+    <div class="pcBtn" onclick="pcFn(1920,1080)">1920×1080</div>
+    <div class="pcBtn" onclick="pcFn(1600,900)">1600×900</div>
+    <div class="pcBtn" onclick="pcFn(1366,768)">1366×768</div>
+    <div class="title">移动尺寸：</div>
+    <div class="ydBtn" onclick="ydFn(320,568)">320×568(iphone5)</div>
+    <div class="ydBtn" onclick="ydFn(375,667)">375×667(iphone6)</div>
+    <div class="ydBtn" onclick="ydFn(414,736)">414×736(iphone6P)</div>
+    <div class="ydBtn" onclick="ydFn(360,640)">360×640</div>
+</div>
+
+<div id="pc">
+    <div id="pcm"></div>
+</div>
+<div id="yd">
+    <img src="a.jpg">
+</div>
+
+<script>
+    pcFn(1280,600);
+    function pcFn(w,h){
+        var p=document.getElementById("pc");
+        p.style.width=w+"px";
+        p.style.height=h+"px";
+        p.style.display="block";
+        var img=new Image();
+        img.src="a.jpg";
+        img.onload=function(){
+            var m=document.getElementById("pcm");
+            m.style.width="100%";
+            m.style.height=img.height+"px";
+        }
+        var y=document.getElementById("yd");
+        y.style.display="none";
+    }
+    function ydFn(w,h){
+        var y=document.getElementById("yd");
+        y.style.width=w+"px";
+        y.style.height=h+"px";
+        y.style.display="block";
+        var p=document.getElementById("pc");
+        p.style.display="none";
+    }
+
+</script>
+
+</body>
+</html>

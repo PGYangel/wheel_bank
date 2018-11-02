@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        /*white-space:nowrap;需要这个不允许换行属性text-overflow: ellipsis;才能生效，省略只针对宽度改方法仅限单行文本*/
+        .my{width:200px;height:100px;overflow:hidden;border:1px solid #000;text-overflow: ellipsis;white-space:nowrap;}
+        /*该方法只限webkit浏览器跟移动端*/
+        .my2{width:200px;height:120px;border:1px solid #000;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            /*在第几行进行省略*/
+            -webkit-line-clamp: 3;
+            overflow: hidden;}
+        .my2 p{padding:0;margin:0;}
+
+    </style>
+</head>
+<body>
+<div class="my">文本文本文本文本文本文本文本文本<br>文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本</div>
+<div class="my2">
+    <p>文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本</p>
+    <p>文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本</p>
+</div>
+
+
+</body>
+</html>

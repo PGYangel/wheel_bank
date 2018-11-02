@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{width: 240px;height: 500px;border:1px solid red;overflow: hidden;text-align: center;vertical-align:middle;display: table-cell;position:relative;margin-left: 50px; }
+        img{margin: auto;vertical-align:middle;}
+        .box2{display: block;position: absolute;width: 100%;height: 100%;top:0;left:0}
+    </style>
+</head>
+<body>
+<ul>
+    <li class="box">
+        <img src="http://res.szgla.com/images/upload/Activity/Pics/201707/20/1df45838-408c-476d-991e-772200d1b842.jpg" id="img1">
+        <div class="box2"></div>
+    </li>
+</ul>
+
+<!--<li class="hoverLi0">
+    <img src="http://res.szgla.com/images/upload/Activity/Pics/201707/20/1df45838-408c-476d-991e-772200d1b842.jpg" onload="AutoResizeImage(249,331,this)" id="inde2_img3" height="253" width="249">
+    <div class="lihover" style="display: none;">
+    <div class="lihover_bg"></div>
+    <i></i>
+    </div>
+</li>-->
+
+<script>
+    setTimeout(function(){
+        var e=document.getElementById("img1");
+        e.height=244;
+        e.width=239;
+    },500);
+
+</script>
+</body>
+</html>

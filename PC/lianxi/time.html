@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>倒计时翻盘</title>
+    <script src="http://css.res.szgla.com/jquery/jquery-1.11.1.min.js?v=1" type="text/javascript"></script>
+    <style>
+        *{padding:0;margin:0;}
+        .timeClock{height: 50px;line-height:50px;}
+        .timeClock div{float:left;height: 50px;}
+        .timeClock span{display: block;float: left;width: 38px; height: 50px;background: url(images/time.png?v=1) no-repeat;margin-left: 5px;}
+        .timeClock em{float:left;height: 50px;padding-left: 5px;padding-right:5px;font-style:normal;}
+    </style>
+</head>
+<body>
+<div class="timeClock">
+    <div class="dd"><span></span><span></span></div>
+    <em>天</em>
+    <div class="hh"><span></span><span></span></div>
+    <em>小时</em>
+    <div class="mm"><span></span><span></span></div>
+    <em>分钟</em>
+    <div class="ss"><span></span><span></span></div>
+    <em>秒</em>
+</div>
+<script type="text/javascript">
+    var mstartTime=new Date(2017,6,28,14,0,0);//活动开始时间2017/7/26 14:00:00
+    var mnowTime,date3,days,leave1,hours,leave2,minutes,leave3,seconds;
+    var daysArr,hoursArr,minutesArr,secondsArr;
+    var ddHtml,secondsHtml;
+    var timeV,timeS,timeM;
+    var imgArr=["0","-300px","-600px","-900px","-1200px","-1500px","-1800px","-2100px","-2400px","-2700px"];
+
+
+    initTime();
+    timeV=setInterval(function(){
+        commFn();
+        minutesFn();
+        hoursFn();
+        daysFn();
+    },1000);
+
+    function initTime(){
+        commFn();
+        secondsArr=seconds.toString().split("");
+        if(secondsArr.length==1){
+            $(".ss span:eq(0)").css("background-position-y",imgArr[0]);
+            var gNum=parseInt(secondsArr[0])+1;
+            if(gNum>=imgArr.length){
+                gNum=0;
+            }
+            $(".ss span:eq(1)").css("background-position-y",imgArr[gNum]);
+        }else{
+            var gNum1=parseInt(secondsArr[0]);
+            $(".ss span:eq(0)").css("background-position-y",imgArr[gNum1]);
+            var gNum2=parseInt(secondsArr[1])+1;
+            if(gNum2>=imgArr.length){
+                gNum2=0;
+            }
+            $(".ss span:eq(1)").css("background-position-y",imgArr[gNum2]);
+        }
+        minutesArr=minutes.toString().split("");
+        if(minutesArr.length==1){
+            $(".mm span:eq(0)").css("background-position-y",imgArr[0]);
+            var gNum=parseInt(minutesArr[0]);
+            $(".mm span:eq(1)").css("background-position-y",imgArr[gNum]);
+        }else{
+            var gNum1=parseInt(minutesArr[0]);
+            $(".mm span:eq(0)").css("background-position-y",imgArr[gNum1]);
+            var gNum2=parseInt(minutesArr[1]);
+            $(".mm span:eq(1)").css("background-position-y",imgArr[gNum2]);
+        }
+        hoursArr=hours.toString().split("");
+        if(hoursArr.length==1){
+            $(".hh span:eq(0)").css("background-position-y",imgArr[0]);
+            var gNum=parseInt(hoursArr[0]);
+            $(".hh span:eq(1)").css("background-position-y",imgArr[gNum]);
+        }else{
+            var gNum1=parseInt(hoursArr[0]);
+            $(".hh span:eq(0)").css("background-position-y",imgArr[gNum1]);
+            var gNum2=parseInt(hoursArr[1]);
+            $(".hh span:eq(1)").css("background-position-y",imgArr[gNum2]);
+        }
+        daysArr=days.toString().split("");
+        if(daysArr.length==1){
+            $(".dd span:eq(0)").css("background-position-y",imgArr[0]);
+            var gNum=parseInt(daysArr[0]);
+            $(".dd span:eq(1)").css("background-position-y",imgArr[gNum]);
+        }else{
+            var gNum1=parseInt(daysArr[0]);
+            $(".dd span:eq(0)").css("background-position-y",imgArr[gNum1]);
+            var gNum2=parseInt(daysArr[1]);
+            $(".dd span:eq(1)").css("background-position-y",imgArr[gNum2]);
+        }
+        secondsFn();
+    }
+    function commFn(){
+        mnowTime=new Date();
+        date3=mstartTime.getTime()-mnowTime.getTime(); //时间差的毫秒数
+        if(date3<=0){
+            clearInterval(timeV);
+            return;
+        }
+        days=Math.floor(date3/(24*3600*1000));
+        leave1=date3%(24*3600*1000);    //计算天数后剩余的毫秒数
+        hours=Math.floor(leave1/(3600*1000));
+        //计算相差分钟数
+        leave2=leave1%(3600*1000);        //计算小时数后剩余的毫秒数
+        minutes=Math.floor(leave2/(60*1000));
+        //计算相差秒数
+        leave3=leave2%(60*1000);      //计算分钟数后剩余的毫秒数
+        seconds=Math.round(leave3/1000);
+    }
+    function secondsFn(){
+        timeS=setInterval(function(){
+            secondsArr=seconds.toString().split("");
+            if($(".ss span:eq(1)").css("background-position-y")!="0px"){
+                $(".ss span:eq(1)").css("background-position-y","+=50px");
+            }else{
+                $(".ss span:eq(1)").css("background-position-y","-2950px");
+            }
+            if(secondsArr.length==1){
+                $(".ss span:eq(0)").css("background-position-y",imgArr[0]);
+            }else{
+                var gNum1=parseInt(secondsArr[0]);
+                $(".ss span:eq(0)").css("background-position-y",imgArr[gNum1]);
+            }
+        },100);
+        setTimeout(function(){
+            clearInterval(timeS);
+        },650);
+        setTimeout(function(){
+            secondsFn();
+        },1000);
+    }
+    function minutesFn(){
+        if(seconds==59){
+            console.log(seconds);
+            timeM=setInterval(function(){
+                minutesArr=minutes.toString().split("");
+                if($(".mm span:eq(1)").css("background-position-y")!="0px"){
+                    $(".mm span:eq(1)").css("background-position-y","+=50px");
+                }else{
+                    $(".mm span:eq(1)").css("background-position-y","-2950px");
+                }
+                if(secondsArr.length==1){
+                    $(".mm span:eq(0)").css("background-position-y",imgArr[0]);
+                }else{
+                    var gNum1=parseInt(secondsArr[0]);
+                    $(".mm span:eq(0)").css("background-position-y",imgArr[gNum1]);
+                }
+            },100);
+            setTimeout(function(){
+                clearInterval(timeM);
+            },650);
+        }
+    }
+    function hoursFn(){
+
+    }
+    function daysFn(){
+
+    }
+</script>
+
+</body>
+</html>

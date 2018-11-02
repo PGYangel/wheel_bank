@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>图片背景</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <script>
+        var html = document.getElementsByTagName("html")[0];
+        var pageWidth = html.getBoundingClientRect().width;
+        var fonSize = pageWidth / 10;
+        html.style.fontSize = fonSize + 'px';
+        console.log(fonSize);
+    </script>
+    <style type="text/css">
+        *{padding:0;margin:0;}
+        html{font-size: 10vw;}
+        .div1{width: 100vw;height: 50vw;background: url(images/computer_1.jpg) no-repeat;background-size:100% 100%;}
+        .div2{width: 30vw;height:30vw;background: url(images/mainImgs.png) no-repeat -60vw -0vw;background-size: 120vw;}
+        p{font-size: 0.5rem;}
+    </style>
+</head>
+<body>
+<div class="div1">
+
+</div>
+<div class="div2"></div>
+<p>文字文字文字文字文字文字文字文字afadfasdfd46546465</p>
+</body>
+</html>

@@ -1,0 +1,29 @@
+.date-btn-img{width:85px; height:54px;float:left;background: url("../images/date-btn.jpg") no-repeat;cursor:pointer;}
+
+
+.date-box{width:621px;height:327px;border:1px #ccc solid; background: #fff;position:absolute;top:0px; left: 0px; font-size:12px;}
+
+.date-left{float: left;width:30px;height: 297px;border-bottom: 1px #ccc solid;cursor:pointer; background: url("../images/date-left.jpg") no-repeat center;}
+
+
+.date-main{float: left;width:560px;height: 298px;border-left:1px solid #ccc;}
+.date-main-yearbox{width:559px;height:25px;float: left;clear: both; border-right:1px solid #ccc; border-bottom: 1px #ccc solid; text-align: center; line-height: 25px;color:#576672; font-weight:bold;}
+
+.date-main-weekbox{width:560px;height:25px;float: left;clear: both; border-bottom: 1px #ccc solid; padding:0px; color:#000;}
+.date-main-weekbox ul{width:560px; height:25px;float: left; padding: 0px; list-style:none; margin:0px; line-height: 25px; text-align: center;}
+.date-main-weekbox ul li{width:79px; height: 25px; float: left; border-right:1px solid #ccc;}
+
+.date-main-daybox{width:560px;height:243px; float: left;clear: both;color:#000;}
+.date-main-daybox ul{width:560px;height: 243px; float: left; padding:0px; list-style:none; margin:0px;}
+.date-main-daybox ul li{width:79px; height: 40px; float: left; border-right:1px solid #ccc; border-bottom: 1px solid #ccc; cursor:pointer;}
+.date-main-daybox ul li:hover{background: #FFF2E9;}
+.date-main-daybox ul li .daytxt{float: left;margin-top:3px; margin-left:3px;}
+.date-main-daybox ul li .money{float: right;margin-top:22px; margin-right:3px; color:#ff8800; font-weight: bold;}
+.date-main-daybox ul li.nowday{background: #FFF2E9;cursor:default;}
+
+.date-right{float: left;width:30px;height: 297px; border-bottom: 1px #ccc solid;cursor:pointer; background: url("../images/date-right.jpg") no-repeat center;}
+
+
+.date-bottom{float: right;width:150px;height:30px;background: #E0E8F0; cursor: pointer;margin-right:30px;color:#576672; font-weight:bold;}
+.date-bottom .close-img{width:10px; height:10px; float: left;background: url(../images/closeup.png); margin-top:10px; margin-left:25px;}
+.date-bottom span{float: left; margin-top:8px; margin-left:10px;}

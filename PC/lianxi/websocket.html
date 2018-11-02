@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function fn(){
+            var ws = new WebSocket("ws://echo.websocket.org");
+            var txt=document.getElementById("txt");
+            ws.onopen = function(){ws.send(txt.value); };
+
+            ws.onmessage = function(evt){console.log(evt.data);};
+
+            ws.onclose = function(evt){console.log("WebSocketClosed!");};
+
+            ws.onerror = function(evt){console.log("WebSocketError!");};
+        }
+
+    </script>
+</head>
+<body>
+<input type="text" id="txt">
+<input type="button" onclick="fn()" value="提交">
+</body>
+</html>

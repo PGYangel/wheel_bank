@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/htm
+<html>l; charset=utf-8"/>
+    <title>手机测试</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <!--不进行缓存 但是只能清除一次缓存-->
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="content-type" content="no-cache, must-revalidate"/>
+    <meta http-equiv="expires" content="0"/>
+    <!--END 不进行缓存-->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border:none;
+            list-style: none;;
+        }
+        #bbox {
+            width: 100%;
+            height: 40vw;
+            position:relative;
+            overflow:hidden;
+        }
+        #bbox img{
+            width: 100%;
+            height: 40vw;
+        }
+        #bbox ul{position:absolute;top:0;left:0;width: 500%;height: 40vw;}
+        #bbox ul li{width: 100vw;height: 40vw;float: left;}
+    </style>
+
+</head>
+<body>
+<div id="bbox">
+    <ul id="imgs">
+        <li><img src="images/min_1.jpg" alt="" data-value="5"></li>
+        <li><img src="images/min_2.jpg" alt="" data-value="5"></li>
+        <li><img src="images/min_3.jpg" alt="" data-value="5"></li>
+        <li><img src="images/min_4.jpg" alt="" data-value="5"></li>
+        <li><img src="images/min_5.jpg" alt="" data-value="5"></li>
+    </ul>
+</div>
+<script>
+    var winw=document.body.clientWidth;
+    if(winw<=960){
+        window.location.replace("http://baidu.com");
+    }
+
+</script>
+<script>
+
+    var nowNum=0;
+    var lenNum=5;
+    var sX,nX,sY,nY=0;
+    var setState;
+    var box=document.getElementById("bbox");
+    var uls=document.getElementById("imgs");
+    var winW=document.body.clientWidth;;
+
+    document.onload=function(){
+        fnTag();
+    }
+    box.addEventListener("touchstart",fnStart,false);
+    box.addEventListener("touchmove",fnMove,false);
+    box.addEventListener("touchend",fnEnd,false);
+
+    function fnStart(e){
+        clearInterval(setState);
+        var touch= e.touches[0];
+        sX=touch.pageX;
+        sY=touch.pageY;
+    }
+    function fnMove(e){
+        var touch= e.touches[0];
+        nX=touch.pageX;
+        nY=touch.pageY;
+        var w=sX-nX;
+        var h=sY-nY;
+        var ww=w<0?w*-1:w;
+        var hh=h<0?h*-1:h;
+        if(ww>hh){
+            e.preventDefault();
+            var run=-(w/winW*100+(nowNum*100));
+            uls.style.transition=uls.style.webkitTransition="0s";
+            uls.style.transform=uls.style.webkitTransform="translateX("+run+"vw)";
+        }
+    }
+    function fnEnd(){
+        var run=(sX-nX)/winW*100;
+        if(run>40){
+            nowNum++;
+        }
+        if(run<-40){
+            nowNum--
+        }
+        if(nowNum>=5){
+            nowNum=4;
+        }
+        if(nowNum<=0){
+            nowNum=0;
+        }
+        uls.style.transition=uls.style.webkitTransition="0.5s";
+        uls.style.transform=uls.style.webkitTransform="translateX(-"+nowNum*100+"vw)";
+        fnTag();
+    }
+
+
+    function fnTag(){
+        setState=setInterval(function(){
+            nowNum++;
+            tag();
+        },2000);
+        function tag(){
+            if(nowNum>=lenNum){
+                nowNum=0;
+            }
+            uls.style.transition=uls.style.webkitTransition="0.5s";
+            uls.style.transform=uls.style.webkitTransform="translateX(-"+nowNum*100+"vw)";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件代理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+</head>
+<body>
+<div id="parent-list">
+    <ul>
+        <li id="1">第一</li>
+        <li id="2">第二</li>
+        <li id="3">第三</li>
+        <li id="4">第四</li>
+        <li id="5">第五</li>
+    </ul>
+</div>
+
+<script>
+    document.getElementById("parent-list").addEventListener("touchend", function (e) {
+        // 检查事件源e.target是否为Li
+        if(e.target.nodeName == "LI") {
+            // 真正的处理过程在这里
+            console.log("List item ",e.target.id," was clicked!");
+        }
+    }, false);
+</script>
+
+</body>
+</html>

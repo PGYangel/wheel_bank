@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>基于Three.js的360X180度全景图预览插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" href="css/example1.css" />
+	<script src="js/three.min.js"></script>
+	<script src="js/photo-sphere-viewer.min.js"></script>
+	<script src="js/example1.js"></script>
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			<h1>基于Three.js的360X180度全景图预览插件 <span>A JavaScript library to display Photo Sphere panoramas</span></h1>
+			<div class="htmleaf-links">
+				<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+				<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/jQuery/Image-Effects/201508112394.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+			</div>
+		</header>
+		<div id="content">
+			<p>下面的例子可以让你调用预定义的全景图来测试这个全景图插件。点击下面的按钮来查看效果。</p>
+			<p>To see this panorama, just hit the link below: currently, the <code>div</code> has a height of 0 pixel but Photo Sphere Viewer will increase it to 500 pixels.</p>
+
+			<div id="container"></div>
+
+			<p style="text-align: center;">
+				<a href="#" id="go">调用预定义的全景图</a>
+			</p>
+
+			<p>Note that the panorama is here given as a relative path, but you can give to Photo Sphere Viewer an absolute one or an URL pointing to another website if this website allows CORS.</p>
+
+			<p>通过下面的按钮你可以上传自己电脑上的全景图来查看效果。代码使用FileReader API，非常简单，可以查看<code>example1.js</code>文件。 </p>
+
+			<div id="your-pano"></div>
+
+			<form method="get" action="example1.html">
+				<p style="text-align: center;">
+					<input type="file" name="pano" id="pano" />
+				</p>
+			</form>
+		</div>
+		<div class="related">
+		    <h3>如果你喜欢这个插件，那么你可能也喜欢:</h3>
+		    <a href="http://www.htmleaf.com/jQuery/Image-Effects/201507272306.html">
+			  <img src="related/1.jpg" width="300" alt="超大图片全屏动态展示js插件"/>
+			  <h3>超大图片全屏动态展示js插件</h3>
+			</a>
+			<a href="http://www.htmleaf.com/html5/html5-canvas/201507112209.html">
+			  <img src="related/2.jpg" width="300" alt="基于three.js的炫酷Canvas 3D线条动画特效"/>
+			  <h3>基于three.js的炫酷Canvas 3D线条动画特效</h3>
+			</a>
+		</div>
+	</div>
+</body>
+</html>

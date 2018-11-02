@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <!--不进行缓存 但是只能清除一次缓存-->
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="content-type" content="no-cache, must-revalidate"/>
+    <meta http-equiv="expires" content="0"/>
+    <style>
+        *{margin:0;padding:0;border:none;list-style: none;text-decoration:none;}
+        #bBox{width: 100%;height:50vw;background: #ccc;position:relative;overflow:hidden;}
+        #bBox ul{position:absolute;left:0;top:0;width: 500%;}
+        #bBox ul li{float: left;width:100vw;height:50vw;position: relative;}
+        #bBox ul li img{width:100vw;height:50vw;}
+        #bBox ul li .click{position: absolute;bottom:0;width: 100%;height: 10vw;background: red;color:#000;text-align: center}
+        #div1{background: rgba(254,94,6,0.3);width: 100vw;height: 20vw;}
+    </style>
+    <script src="http://css.res.szgla.com/jquery/jquery-1.11.1.min.js?v=1" type="text/javascript"></script>
+
+
+</head>
+<body>
+<div>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <p>asdfsdafdsfs</p>
+    <a href="http://baidu.com">sdafsdfsadf</a>
+    <p>asdfsdafdsfs</p>
+</div>
+<div id="bBox">
+    <ul>
+        <li>
+            <img src="images/computer_1.jpg">
+            <div class="click">点击</div>
+        </li>
+        <li>
+            <img src="images/computer_2.jpg">
+            <div class="click">点击</div>
+        </li>
+        <li>
+            <img src="images/computer_3.jpg">
+            <div class="click">点击</div>
+        </li>
+        <li>
+            <img src="images/computer_4.jpg">
+            <div class="click">点击</div>
+        </li>
+        <li>
+            <img src="images/computer_5.jpg">
+            <div class="click">点击</div>
+        </li>
+    </ul>
+</div>
+<div id="div1">
+
+</div>
+<div>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+<p>dasfasdf</p>
+</div>
+
+<script>
+    $(document).ready(function(){
+        fnTag();
+        var tTime;
+        var sX=0;
+        var nX=0;
+        var sY=0;
+        var nY=0;
+        var tNow=0;
+        var winW=$(window).width();
+        var tNum=$("#bBox ul li").length;
+        $("#bBox").on("touchstart",function(){
+            fnStart(event);
+        });
+        $("#bBox").on("touchmove",function(){
+            fnMove(event);
+        });
+        $("#bBox").on("touchend",function(){
+            fnEnd(event);
+        });
+        $(".click").on("click",function(){
+           alert("adf");
+        });
+
+        function fnStart(e){
+            clearInterval(tTime);
+            var touch= e.touches[0];
+            sX=touch.pageX;
+            sY=touch.pageY;
+        }
+
+        function fnMove(e){
+            var touch= e.touches[0];
+            nX=touch.pageX;
+            nY=touch.pageY;
+            var w=sX-nX;//x轴的滑动值
+            var h=sY-nY;//y轴的滑动值*/
+            var ww=w<0?w*-1:w;
+            var hh=h<0?h*-1:h;
+            if(ww>hh){                //如果是在x轴中滑动
+                e.preventDefault();
+                var run=-((w/winW)*(100)+(tNow*100));
+                var ul=document.getElementById("bBox").getElementsByTagName("ul")[0];
+                ul.style.transition=ul.style.webkitTransition=ul.style.mozTransition=ul.style.oTransition="0s";
+                ul.style.transform="translateX("+run+"vw)";
+            }
+
+        }
+
+        function fnEnd(e){
+            var r=sX-nX;
+            var run=Math.abs((r/winW)*(100));
+            var ul=document.getElementById("bBox").getElementsByTagName("ul")[0];
+            if(run>50&&r>0){
+                tNow++;
+            }
+            if(run>50&&r<0){
+                tNow--;
+            }
+            if(tNow<=0){
+                tNow=0;
+            }
+            if(tNow>=tNum){
+                tNow=tNum-1;
+            }
+            ul.style.transition=ul.style.webkitTransition=ul.style.mozTransition=ul.style.oTransition="0.5s";
+            ul.style.transform=ul.style.webkitTransform=ul.style.mozTransform=ul.style.oTransform="translateX(-"+tNow*100+"vw)";
+            fnTag();
+        }
+
+        function fnTag(){
+            tTime=setInterval(function(){
+                tNow++;
+                tag();
+            },2000);
+            function tag(){
+                if(tNow>=tNum){
+                    tNow=0;
+                }
+                var ul=document.getElementById("bBox").getElementsByTagName("ul")[0];
+                ul.style.transition=ul.style.webkitTransition=ul.style.mozTransition=ul.style.oTransition="0.5s";
+                ul.style.transform=ul.style.webkitTransform=ul.style.mozTransform=ul.style.oTransform="translateX(-"+tNow*100+"vw)";
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

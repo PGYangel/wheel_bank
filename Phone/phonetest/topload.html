@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>顶部加载</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <!--不进行缓存 但是只能清除一次缓存-->
+    <meta http-equiv="pragma" content="no-cache"/>
+    <meta http-equiv="content-type" content="no-cache, must-revalidate"/>
+    <meta http-equiv="expires" content="0"/>
+    <!--END 不进行缓存-->
+    <style rel="stylesheet">
+        * {
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+
+        header {
+            width: 100vw;
+            height: 10vh;
+        }
+
+        header img {
+            width: 100%;
+            height: 100%;
+        }
+
+        footer {
+            width: 100vw;
+            height: 10vh;
+            background: red;
+        }
+
+        .mywrapper {
+            width: 100vw;
+            height: 80vh;
+            overflow: hidden;
+        }
+
+        /*移动端利用伪元素-webkit-scrollbar显示滚动条*/
+        ::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+        ::-webkit-scrollbar:vertical {
+            width: 12px;
+        }
+        ::-webkit-scrollbar:horizontal {
+            height: 12px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, .5);
+            border-radius: 10px;
+            border: 2px solid #ffffff;
+        }
+        ::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+    </style>
+
+</head>
+<body>
+<header>
+    <img src="images/computer_1.jpg">
+</header>
+<div id="wrapper" class="mywrapper">
+    <div id="main">
+        <div id="pullDown">
+            <span class="pullDownLabel"></span>
+        </div>
+        <div id="mytxt" class="myScrollbar">
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>asdfasdfas</p>
+            <p>最后</p>
+        </div>
+    </div>
+</div>
+<footer>
+
+</footer>
+
+
+<script src="js/zepto.min.js"></script>
+<script src="js/iscroll.js"></script>
+<script>
+    //【注意事项】：
+    //只有wrapper里的第一个子元素才可以滚动
+    // iScroll必须在调用之前实例化，你可以在下面几种情况下对iScroll进行实例化：
+    //（1）使用onDOMContentLoaded事件实现滚动
+    //适用于滚动内容只包含文字、图片，并且所有的图片都有固定的尺寸
+    var myscroll,
+            pullDownEl, pullDownOffset,
+            pullUpEl, pullUpOffset,
+            generatedCount = 0;
+    function loaded() {
+        pullDownEl = document.getElementById('pullDown');
+        pullDownOffset = pullDownEl.offsetHeight;
+        /*pullUpEl = document.getElementById('pullUp');
+         pullUpOffset = pullUpEl.offsetHeight;*/
+        myscroll = new iScroll("wrapper", {
+                    scrollbarClass: 'myScrollbar',
+                    useTransition: false,
+                    topOffset: pullDownOffset,
+                    onRefresh: function () {
+                        $(pullDownEl).hide();
+                        if (pullDownEl.className.match('loading')) {
+                            pullDownEl.className = '';
+                            pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+                        }
+                        /*else if (pullUpEl.className.match('loading')) {
+                         pullUpEl.className = '';
+                         pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+                         }*/
+                    },
+                    onScrollMove: function () {
+                        if (this.y > 20 && !pullDownEl.className.match('flip')) {
+                            $(pullDownEl).show();
+                            pullDownEl.className = 'flip';
+                            pullDownEl.querySelector('.pullDownLabel').innerHTML = '松手开始更新...';
+                            this.minScrollY = 0;
+                        } else if (this.y < 20 && pullDownEl.className.match('flip')) {
+                            $(pullDownEl).hide();
+                            pullDownEl.className = '';
+                            pullDownEl.querySelector('.pullDownLabel').innerHTML = '下拉刷新...';
+                            this.minScrollY = -pullDownOffset;
+                        }
+                        /*else if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
+                         pullUpEl.className = 'flip';
+                         pullUpEl.querySelector('.pullUpLabel').innerHTML = '松手开始更新...';
+                         this.maxScrollY = this.maxScrollY;
+                         } else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
+                         pullUpEl.className = '';
+                         pullUpEl.querySelector('.pullUpLabel').innerHTML = '上拉加载更多...';
+                         this.maxScrollY = pullUpOffset;
+                         }*/
+                    },
+                    onScrollEnd: function () {
+                        if (pullDownEl.className.match('flip')) {
+                            pullDownEl.className = 'loading';
+                            pullDownEl.querySelector('.pullDownLabel').innerHTML = '加载中...';
+                            pullDownAction();   // 加载数据
+                        }
+                        /*else if (pullUpEl.className.match('flip')) {
+                         pullUpEl.className = 'loading';
+                         pullUpEl.querySelector('.pullUpLabel').innerHTML = '加载中...';
+                         pullUpAction(); // ajax call
+                         }*/
+                    }
+                }
+        );
+
+        setTimeout(function () {
+            document.getElementById('wrapper').style.left = '0';
+        }, 800);
+    }
+
+    /**
+     * 下拉刷新 （自定义实现此方法）
+     * myScroll.refresh(); 数据加载完成后，调用界面更新方法
+     */
+    function pullDownAction() {
+        setTimeout(function () {
+            var el, li, i;
+            el = document.getElementById('mytxt');
+            for (i = 0; i < 5; i++) {
+                li = document.createElement('p');
+                li.innerText = 'Generated row ' + i;
+                el.insertBefore(li, el.childNodes[0]);
+            }
+            myscroll.refresh();     //数据加载完成后，调用界面更新方法
+        }, 1000);
+    }
+
+    //初始化绑定iScroll控件
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+    }, false);
+    document.addEventListener("DOMContentLoaded", loaded, false);
+
+
+    //（2）使用onLoad事件实现滚动
+    // 因为DOMContentLoaded事件是载入DOM结构后就会被调用，所以在图片等元素未载入前可能无法确定滚动区域的长宽，此时可以使用onLoad事件来实现。
+    //这种情况下iScroll会在页面资源（包括图片）加载完毕100ms之后得到初始化，这应该是一种比较安全的调用iScroll的方式。
+    /*function loaded() {
+     setTimeout(function () {
+     myscroll = new iScroll("wrapper");
+     }, 100);
+     }
+     window.addEventListener("load", loaded, false);*/
+
+    //（3）inline初始化
+    //这种情况会在页面加载到js的时候就进行调用，此方法不推荐使用，但是很多javascript的大牛都在用这种方式，我又有什么理由不赞成呢？
+    //var myscroll=new iScroll("wrapper");
+
+
+    //iScroll里传递的参数
+    //iScroll里的第二个参数允许你自定义一些内容，比如下面的这段代码：
+    //var myscroll=new iScroll("wrapper",{hScrollbar:false, vScrollbar:false});
+    /*第二个参数通常都是一个对象，像上面的这个例子里就设定了不显示滚动条。常用的参数如下：
+     hScroll                 false 禁止横向滚动 true横向滚动 默认为true
+     vScroll                 false 精致垂直滚动 true垂直滚动 默认为true
+     hScrollbar            false隐藏水平方向上的滚动条
+     vScrollbar            false 隐藏垂直方向上的滚动条
+     fixedScrollbar      在iOS系统上，当元素拖动超出了scroller的边界时，滚动条会收缩，设置为true可以禁止滚动条超出
+     scroller的可见区域。默认在Android上为true， iOS上为false
+     fadeScrollbar  　  false 指定在无渐隐效果时隐藏滚动条
+     hideScrollbar  　  在没有用户交互时隐藏滚动条 默认为true
+     bounce            　启用或禁用边界的反弹，默认为true
+     momentum     　 启用或禁用惯性，默认为true，此参数在你想要保存资源的时候非常有用
+     lockDirection       false取消拖动方向的锁定， true拖动只能在一个方向上（up/down 或者left/right）*/
+
+
+    /*各种效果的实现
+
+     滚动刷新　　'Pull to refresh' demo
+     自从Twitter和一些Apple的本地化应用出现了这个效果之后，这个效果就变得非常流行。你可以看看这儿先一睹为快。
+     最新版中，作者把把"pull to refresh"这个部分单分出来作为iScroll的一个额外插件。你可以点击这儿看看pull to refresh是如何工作滴。
+     你只需要做的就是自定义pullDownAction()这个方法。你可能需要一个ajax来加载新的内容，
+     不过一旦DOM树发生了变化要记得调用refresh这个方法来。需要记住的是在例子中我们加了1秒的延迟来模拟网络的延迟效果。
+     当然，如果你不想使用这个延迟，那就把setTimeout方法去掉就行了。
+
+     缩放(pinch / zoom)　　'Pull to refresh' demo
+     我们不得不面对一个事实，那就是光有滚动其实没什么新意的。这就是为什么在iScroll 4这个版本里我们允许你可以放
+     大和缩小。想要这个功能，只需要设置放大的参数zoom 为true即可实现利用手势来放大和缩小。你可以看看这儿。
+     双击放大和缩小的功能在iScroll 4里也是得到支持的。要使用缩放功能，你至少需要如下配置：*/
+    //var myScroll =new iScroll("wrapper",{zoom:true});
+
+    /*如果你想对缩放功能进行深度的自定义的话可以使用下面的一些选项：
+     zoomMax   指定允许放大的最大倍数，默认为4
+
+     【注意事项】：如果想要图片缩放的效果很好的话要把他们放到硬件的合成层中。
+     通俗点说，就是在所有需要缩放的img元素上使用-webkit-transform:translate3d(0,0,0)来实现，
+     而且尤为重要的是，硬件的加速会占用大量资源，要谨慎使用，否则你的应用可能就此崩溃。
+     */
+
+    /*捕捉元素（snap and snap to element）　　'Carousel' demo
+
+     SNAP功能是判断元素是否滑动到指定位置。通过这个效果可以制作花哨的跑马灯效果。
+
+     插件会自动分析滚动区域内相同标签或相同大小的元素做为捕捉对象，也可以通过参数指定捕捉的对象
+
+     var myscroll=new iScroll("wrapper",{
+     snap:true,
+     momentum:false,
+     hScrollbar:false,
+     vScrollbar: false
+     });
+
+     可以通过设置snap参数为指定标签来设定捕捉对象。比如捕捉li标签。
+
+     var myscroll=new iScroll("wrapper",{
+     snap:"li",
+     momentum:false,
+     hScrollbar:false,
+     vScrollbar:false
+     });
+     在这个例子中scroller可以捕捉到滚动区域中最左上角的li元素
+
+     自定义滚动条（custom scrollbars）
+     在iScroll 4这个版本中，可以利用一系列的css来自定义滚动条的呈现。可以给滚动条添加一个class参数，如下：
+
+     var myscroll=new iScroll("wrapper",{
+     scrollbarClass: "myScrollbar"
+     });
+     需要提醒的是，滚动条是由两个元素组合而成的：容器和显示器。容器同wrapper的高度相同，而显示器则代表的是滚动条本身。
+     滚动条的HTML结构如下：*/
+    /*<div class="myScrollbarV">
+     <div></div>
+     </div>
+     .myscrollbarV{
+     position:absolute;z-index:100;width:8px;bottom:7px;top:2px;right:1px;
+     }
+     .myScrollbarV > div {
+     position:absolute;
+     z-index:100;
+     width:100%;
+     /!* The following is probably what you want to customize *!/
+     background:-webkit-gradient(linear, 0 0, 100% 0, from(#f00), to(#900));
+     border:1px solid #800;
+     -webkit-background-clip:padding-box;
+     -webkit-box-sizing:border-box;
+     -webkit-border-radius:4px;
+     -webkit-box-shadow:inset 1px 1px 0 rgba(255,255,255,0.5);
+     }*/
+
+    /*通用方法：
+
+     （1）refresh    在DOM树发生变化时，应该调用此方法
+
+     eg: setTimeout(function () { myScroll.refresh(); }, 0);
+
+     （2）iScroll还提供了scrollTo, scrollToElement和scrollToPage三个方法让你能够通过javascript来控制滚动效果。
+
+     scrollTo(x, y, time, relative)：在指定的time时间内让内容滚动条x/y的位置。
+     如myScroll.scrollTo(0, -100, 200) 在200毫秒内Y轴向下滚动100像素。
+     myScroll.scrollTo(0, 10, 200, true)可以实现相对当前位置在200毫秒内Y轴向上滚动10像素的效果。
+
+     scrollToElement(element, time)：在指定的时间内滚动到指定的元素。
+     如myScroll.scrollToElement('li:nth-child(10)', 100) 在100毫秒内滚动到第10个li元素的位置。
+     第1个参数可以用CSS3中的选择器来筛选元素。
+
+     snapToPage(pageX, pageY, time)：在200毫秒内从第1页滚动到第2页（0代表第1页，1代表第2页）。
+     这个使用SNAP功能的时候可以调用这个函数。
+
+     （3）detroy()           完全消除myscroll及其占用的内存空间
+     eg: myscroll.destroy();
+     myScroll = null;
+     */
+
+</script>
+
+</body>
+</html>

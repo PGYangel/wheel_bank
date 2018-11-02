@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://css.res.szgla.com/jquery/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        //js动态屏幕适配
+        var html = document.getElementsByTagName("html")[0];
+        var pageWidth = $(window).width();
+        console.log(pageWidth);
+        html.style.fontSize = 100 + 'px';
+    </script>
+    <style type="text/css">
+        *{margin:0;padding:0;border:none;list-style: none;text-decoration:none;}
+        html,body{background: #0C1019;overflow-x:hidden;}
+        .mdiv{width: 0.3rem;font-size: }
+        .mdiv img{width: 0.3rem;}
+
+    </style>
+</head>
+<body>
+<div class="mdiv">
+    <img src="http://img.res.szgla.com/ws/images/h5/pintu/s1Btn1.png" alt="游戏规则">
+</div>
+</body>
+</html>

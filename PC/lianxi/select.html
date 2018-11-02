@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style rel="stylesheet">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .myselect {
+            width: 200px;
+            height: 40px;
+            line-height: 40px;;
+            border: 1px solid #000;
+            position:relative;
+        }
+
+        .myselect p {
+            float: left;
+            overflow: hidden;
+            width: 150px;
+            height: 40px;
+            display: block;
+
+        }
+
+        .myselect div {
+            width: 0;
+            border-top: 15px solid #ccc;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            float: right;
+            margin-right: 5px;
+            margin-top: 15px;;
+        }
+        .myselect select {
+            filter: alpha(opacity=0);
+            -moz-opacity: 0;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="myselect">
+    <p>用来显示选择文字的</p>
+    <div></div>
+    <select>
+        <option>选项选项1</option>
+        <option>选项选项2</option>
+        <option>选项选项3</option>
+        <option>选项选项4</option>
+        <option>选项选项5</option>
+    </select>
+</div>
+
+<script type="text/javascript" src="http://css.res.szgla.com/jquery/jquery-1.8.3.js"></script>
+<script>
+    $('.myselect select').on("change", function () {
+        $(this).parent().find('p').html(this.options[this.options.selectedIndex].text);
+    });
+</script>
+
+</body>
+</html>
