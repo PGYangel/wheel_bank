@@ -4,10 +4,182 @@
     <meta charset="UTF-8">
     <title></title>
     <style type="text/css">
-        *{margin:0;padding:0;}
+        *{margin:0;padding:0;list-style: none;border:none;}
+        .left{width: 635px;height: 352px;border:1px solid #4F4F4F;float: left;position:relative;}
+        .pis{position:absolute;background: #222;z-index: 1;}
+        .pishover{background: #E2B962;}
+        .pis div{background:url(images/mainImgs_2.png) no-repeat;position:absolute;width: 75px;height: 69px;overflow: hidden;text-indent: -9999px;}
+        .pis p{position:absolute;bottom:0;width: 100%;height: 25px;background: #141414;color:#B59A6D;font-size: 12px;text-align: center;line-height: 25px;left:0;}
+        .pis1{top:0;left:0;width:211px;height:116px;border-right:1px solid #4F4F4F;border-bottom:1px solid #4F4F4F;}
+        .pis2{top:0;left:212px;width:211px;height:116px;border-right:1px solid #4F4F4F;border-bottom:1px solid #4F4F4F;}
+        .pis3{top:0;left:424px;width:211px;height:116px;border-bottom:1px solid #4F4F4F;}
+        .pis4{top:117px;left:423px;width:211px;height:116px;border-bottom:1px solid #4F4F4F;border-left:1px solid #4F4F4F;}
+        .pis5{top:234px;left:423px;width:211px;height:118px;}
+        .pis6{top:233px;left:212px;width:211px;height:118px;border-right:1px solid #4F4F4F;border-top:1px solid #4F4F4F;}
+        .pis7{top:233px;left:0px;width:211px;height:118px;border-right:1px solid #4F4F4F;border-top:1px solid #4F4F4F;}
+        .pis8{top:117px;left:0px;width:211px;height:116px;border-right:1px solid #4F4F4F;}
+        .pis1 div{background-position:0 -302px;top:10px;left:66px;overflow: hidden;text-indent: -9999px;}
+        .pis2 div{background-position:-75px -302px;top:10px;left:66px;}
+        .pis3 div{background-position:-150px -302px;top:10px;left:66px;}
+        .pis4 div{background-position:-225px -302px;top:10px;left:66px;}
+        .pis5 div{background-position:0 -371px;top:10px;left:66px;}
+        .pis6 div{background-position:-75px -371px;top:10px;left:66px;}
+        .pis7 div{background-position:-150px -371px;top:10px;left:66px;}
+        .pis8 div{background-position:-225px -371px;top:10px;left:66px;}
+        .cjBtn{position:absolute;top:117px;left:212px;width:211px;height:116px;background: url(images/mainImgs_2.png) no-repeat 0 -119px;overflow:hidden;text-indent: -9999px;cursor:pointer;z-index: 50;}
+        .cjBtn:hover{background: url(images/mainImgs_2.png) no-repeat -211px -119px;}
+        .cjBtnEnd{position:absolute;top:117px;left:212px;width:211px;height:116px;background: url(images/mainImgs_2.png) no-repeat 0 -119px;overflow:hidden;text-indent: -9999px;cursor:default;z-index: 80;display: none;}
     </style>
 </head>
 <body>
+<div class="left" id="cjBox">
+    <div class="pis pis1" data-value="1">
+        <div>木灵丹</div>
+        <p>木灵丹×1</p>
+    </div>
+    <div class="pis pis2" data-value="2">
+        <div>金蚕丝</div>
+        <p>金蚕丝×1</p>
+    </div>
+    <div class="pis pis3" data-value="3">
+        <div>活血导气散</div>
+        <p>活血导气散×1</p>
+    </div>
+    <div class="pis pis4" data-value="4">
+        <div>坐骑妞妞</div>
+        <p>坐骑妞妞（7天）×1</p>
+    </div>
+    <div class="pis pis5" data-value="5">
+        <div>水龙吟</div>
+        <p>水龙吟（7天）×1</p>
+    </div>
+    <div class="pis pis6" data-value="6">
+        <div>40绑定元宝</div>
+        <p>40绑定元宝×1</p>
+    </div>
+    <div class="pis pis7" data-value="7">
+        <div>iphone7</div>
+        <p>iphone7×1</p>
+    </div>
+    <div class="pis pis8" data-value="8">
+        <div>100元话费</div>
+        <p>100元话费×1</p>
+    </div>
+    <a href="javascript:;" class="cjBtn" id="cjBtn">开始抽奖</a>
+    <a href="javascript:;" class="cjBtnEnd" id="cjBtnEnd">抽奖结束按钮</a>
+</div>
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    //抽奖方法
+    var cjResult=0;//最终目标
+    var pisNum=8;//礼品总数
+    var cjMxQ=4;//最大圈数
+    var cjNQ=1;//当前圈数
+    var cjNow=0;//当前目标
+    var cjTime;//定时器
+    var cjsd=50;//速度
+    var Os=1;
+    //初始化
+    function initCj(){
+        cjNQ=1;//当前圈数
+        cjNow=0;//当前目标
+        clearInterval(cjTime);//定时器
+        $("#cjBtn").show();
+        $("#cjBtnEnd").hide();
+        Os=1;
+    }
+    //开始抽奖按钮
+    $("#cjBtn").click(function () {
+        cjResult = parseInt(8 * Math.random() + 1);
+        $("#cjBtn").hide();
+        $("#cjBtnEnd").show();
+        cjFn();
+    });
 
+    function cjFn(){
+        cjTime=setInterval(function(){
+            cjNow++;
+            if(cjNow>pisNum){
+                cjNow=1;
+                cjNQ++;
+            }
+            if(cjNQ>cjMxQ){
+                clearInterval(cjTime);
+                cjOverFn();
+                return;
+            }
+            cjClass();
+        },cjsd);
+    }
+    function cjClass(){
+        $("#cjBox div").removeClass("pishover");
+        $("#cjBox div[data-value="+cjNow+"]").addClass("pishover");
+    }
+    function cjOverFn(){
+        setTimeout(function(){
+            cjNow=1;
+            cjClass();
+        },cjsd);
+        cjTime=setInterval(function(){
+            Os++;
+            cjNow++;
+            if(cjNow>pisNum){
+                cjNow=1;
+                cjNQ++;
+            }
+            cjClass();
+            if(Os>5){
+                clearInterval(cjTime);
+                cjTime=setInterval(function(){
+                    cjNow++;
+                    if(cjNow>pisNum){
+                        cjNow=1;
+                        cjNQ++;
+                    }
+                    cjClass();
+                    if(cjNow==cjResult){
+                        clearInterval(cjTime);
+                        setTimeout(function(){
+                            cjAlert();
+                            initCj();
+                        },500);
+                    }
+                },cjsd+250);
+            }
+        },cjsd+50);
+    }
+    //抽奖提示
+    function cjAlert(){
+        switch (cjResult){
+            case 1:
+                alert("恭喜您获得，木灵丹×1");
+                break;
+            case 2:
+                alert("恭喜您获得，金蚕丝×1");
+                break;
+            case 3:
+                alert("恭喜您获得，活血导气散×1");
+                break;
+            case 4:
+                alert("恭喜您获得，坐骑妞妞（7天）×1");
+                break;
+            case 5:
+                alert("恭喜您获得，水龙吟（7天）×1");
+                break;
+            case 6:
+                alert("恭喜您获得，40绑定元宝×1");
+                break;
+            case 7:
+                alert("恭喜您获得，iphone7×1");
+                break;
+            case 8:
+                alert("恭喜您获得，100元话费×1");
+                break;
+            default:
+                alert("请进行合法操作");
+                break;
+        }
+    }
+</script>
 </body>
 </html>
