@@ -7,3 +7,5 @@
 > pull（iscroll滚动插件）
 
 > Swipe-master（Swipe滑动轮播插件）
+
+> 移动端meta标签（常用的移动端meta标签用法）
