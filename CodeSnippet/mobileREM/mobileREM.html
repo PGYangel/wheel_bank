@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>设置移动端rem尺寸</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <script type="text/javascript">
+        //js动态屏幕适配rem值
+        /*
+         * 跟目录font-size = （可见区域宽度/PSD宽度/浏览器默认fontSize*10000）%;
+         * 与PSD设计尺寸存在关系：750px约为2倍，1080约为3倍;
+         * 若PSD宽度为750px.则html font-size = 312.5%;约等于50px;
+         * 后续雪碧图与字体=PSD尺寸/100+rem
+         */
+        (function() {
+            function remSize() {
+                var psdWidth=750;//设计稿的宽度
+                var html = document.getElementsByTagName("html")[0];
+                var pageWidth = html.getBoundingClientRect().width;
+                html.style.fontSize = pageWidth / psdWidth  / 16 * 10000 + "%";
+            }
+            window.addEventListener("resize", function(){remSize();}, !1);
+            remSize();
+        })(window);
+    </script>
+    <style type="text/css">
+        *{margin:0;padding:0;list-style: none;border:none;}
+        h1{font-size:0.3rem;}/*相当于psd使用的是30px的字体*/
+        img{width:7.5rem;}/*相当于psd使用的是750px的宽度*/
+        .icon1{width: 0.61rem;height:0.56rem;background:url(images/test.png) no-repeat 0 0;background-size:1.22rem;}
+        .icon2{width: 0.61rem;height:0.56rem;background:url(images/test.png) no-repeat -0.61rem 0;background-size:1.22rem;}
+        .icon3{width: 0.61rem;height:0.56rem;background:url(images/test.png) no-repeat 0 -0.56rem;background-size:1.22rem;}
+        .icon4{width: 0.61rem;height:0.56rem;background:url(images/test.png) no-repeat -0.61rem -0.56rem;background-size:1.22rem;}
+    </style>
+</head>
+<body>
+<div>
+    <h1>设置移动端rem尺寸</h1>
+    <div class="icon1"></div>
+    <div class="icon2"></div>
+    <div class="icon3"></div>
+    <div class="icon4"></div>
+    <img src="images/s1bg.jpg" alt=""/>
+</div>
+
+</body>
+</html>
