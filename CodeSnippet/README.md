@@ -3,3 +3,5 @@
 
 > isMobile（js判断设备是否为移动设备）
 
+> 关闭页面时进行提示（onbeforeunload）
+

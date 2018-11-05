@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>关闭页面时进行提示</title>
+    <script type="text/javascript">
+        window.onbeforeunload = function(event) {
+            if (event) {
+                event.returnValue = "请确保填写内容已保存，离开页面将不会保留未保存信息！";
+            }else{
+                return "请确保填写内容已保存，离开页面将不会保留未保存信息！";
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>关闭页面时进行提示</h1>
+</body>
+</html>
