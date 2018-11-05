@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Notification浏览器提示消息</title>
+</head>
+<body>
+Notification浏览器提示消息
+<script>
+    //  default 用户没有接收或拒绝授权 不能显示通知
+    //  granted 用户接受授权 允许显示通知
+    //  denied  用户拒绝授权 不允许显示通知
+    function popNotice(){
+        if (Notification.permission == "granted") {
+            var notification = new Notification("标题", {
+                body: '内容内容内容',
+                icon: 'companyLogo.png?v=1'
+            });
+            //点击消息框跳转页面
+            notification.onclick = function() {
+                window.location.href="a1.html";
+                notification.close();
+            };
+        }
+    }
+    window.onload = function () {
+        if (window.Notification) {
+            if (Notification.permission == "granted") {
+                popNotice();
+            }else if( Notification.permission != "denied"&&Notification.permission != "granted"){
+                Notification.requestPermission(function (permission) {
+                    if(Notification.permission == "denied"){
+                        console.log("denied")
+                    }
+                    if(Notification.permission == "granted"){
+                        console.log("granted")
+                    }
+                    popNotice();
+                });
+            }
+        }
+    }
+</script>
+</body>
+</html>
