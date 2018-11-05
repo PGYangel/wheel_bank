@@ -2,9 +2,37 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>video未上传到服务器，页面即可进行预览</title>
+
 </head>
 <body>
+<h1>video未上传到服务器，页面即可进行预览</h1>
+<input type="file" id="video">
+<br>
+<video id="video0" width="500" height="300" loop autoplay controls></video>
+
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    //视频预览
+    $("#video").change(function () {
+        var objUrl = getObjectURL(this.files[0]);
+        if (objUrl) {
+            $("#video0").attr("src", objUrl);
+        }
+    });
+    //建立一个可存取到该file的url
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+</script>
 
 </body>
 </html>
