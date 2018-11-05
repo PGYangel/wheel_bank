@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>自定义栅格化系统</title>
+    <style type="text/css">
+        div {margin-bottom: 20px; height: 100px; color: #fff; font-family: "微软雅黑"; }
+        h1{text-align: center;}
+        .bg1 {background: deeppink; }
+        .bg2 {background: purple; }
+        .bg3 {background: yellowgreen; }
+        .bg4 {background: orange; }
+        .bg5 {background: greenyellow; }
+        .bg6 {background: pink; }
+
+        .row{ display: flex; }
+        .col{ flex:1; }
+        .col-20{ flex:0 0 20%; }
+        .col-30{ flex:0 0 30%; }
+        .col-33,.col-34{ flex:0 0 33%; }
+        .col-50{ flex:0 0 50%; }
+        
+    </style>
+</head>
+<body>
+    <h1>自定义栅格化系统</h1>
+    <div class="row">
+        <div class="col bg1">.col</div>
+        <div class="col bg2">.col</div>
+        <div class="col bg3">.col</div>
+    </div>
+    <div class="row">
+        <div class="col col-50 bg1">.col-50</div>
+        <div class="col col-50 bg2">.col-50</div>
+    </div>
+    <div class="row">
+        <div class="col col-33 bg1">.col-33</div>
+        <div class="col col-33 bg2">.col-33</div>
+        <div class="col col-33 bg3">.col-33</div>
+    </div>
+    <div class="row">
+        <div class="col col-25 bg1">.col-25</div>
+        <div class="col col-25 bg2">.col-25</div>
+        <div class="col col-25 bg3">.col-25</div>
+        <div class="col col-25 bg4">.col-25</div>
+    </div>
+    <div class="row">
+        <div class="col col-20 bg1">.col-20</div>
+        <div class="col col-20 bg2">.col-20</div>
+        <div class="col col-20 bg3">.col-20</div>
+        <div class="col col-20 bg4">.col-20</div>
+        <div class="col col-20 bg3">.col-20</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+﻿<!Doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>不用flash的抽奖</title>
+<script src="js/jquery.min.js"></script>
+<style>
+body,h1,h2,h3,h4,h5,h6,p,ul,ol,li,form,img,dl,dt,dd,table,th,td,blockquote,fieldset,div,strong,label,em{margin:0;padding:0;border:0;}
+ul,ol,li{list-style:none;}
+input,button{margin:0;font-size:12px;vertical-align:middle;}
+body{font-size:12px;font-family:Arial, Helvetica, sans-serif;  text-align:center; margin:0 auto;}
+table{border-collapse:collapse;border-spacing:0;}
+.box{ padding:9px 0 0 11px; width:759px; height:611px; background:#ccc; margin:20px auto; }
+.inbox{ width:751px; height:596px;position:relative;}
+#random_box li{ position:absolute; width:100px; overflow:hidden; height:100px; border:1px solid #830b15; background:#320005; padding:5px;}
+#random_box li img{ width:100px; display:block; height:100px;}
+.ok{ display:block; width:370px; height:238px; background:#c00; color:#fff; font-size:48px; position:absolute; top:128px; left:130px; cursor:pointer; text-align:center; line-height:238px;}
+#random_1{ left:0; top:0;}
+#random_2{ left:130px;top:0;}
+#random_3{ left:260px;top:0;}
+#random_4{ left:390px;top:0;}
+#random_5{ left:520px;top:0; }
+#random_6{ left:520px;top:130px;}
+#random_7{ left:520px; top:260px;}
+#random_8{ left:520px; top:390px;}
+#random_9{ left:520px; top:520px;}
+#random_10{ left:390px; top:520px;}
+#random_11{ left:260px; top:520px;}
+#random_12{ left:130px; top:520px;}
+#random_13{ left:0; top:520px;}
+#random_14{ left:0; top:390px;}
+#random_15{ left:0; top:260px;}
+#random_16{ left:0; top:130px;}
+#random_box li.random_current{ background:#f8d25d;}
+</style>
+</head>
+<body>
+<h1></h1>
+<div class="box">
+	<div class="inbox">
+		<ul id="random_box">
+			<li id="random_1"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_2"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_3"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_4"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_5"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_6"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_7"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_8"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_9"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_10"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_11"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_12"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_13"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_14"><img src="images/1.jpg" width="100" height="100"></li> 
+            <li id="random_15"><img src="images/1.jpg" width="100" height="100"></li>
+			<li id="random_16"><img src="images/1.jpg" width="100" height="100"></li> 
+		</ul>
+		<b class="ok" onclick="StartGame()">我要抽奖</b>
+	</div>
+</div>
+<script>
+var index=1,           //当前亮区位置
+prevIndex=16,          //前一位置
+Speed=300,           //初始速度
+Time,            //定义对象
+arr_length = 16; //GetSide(5,5),         //初始化数组
+EndIndex=1,           //决定在哪一格变慢
+cycle=0,           //转动圈数   
+EndCycle=3,           //计算圈数
+flag=false,           //结束转动标志
+random_num=1,      //中奖数
+quick=0;           //加速
+   
+   
+function StartGame(){
+$("#random_box li").removeClass("random_current"); //取消选中
+   //random_num = parseInt($("#txtnum").val());//
+   random_num = Math.floor(Math.random()*13+2); //产出随机中奖数2--12之间
+   index=1; //再来一次,从1开始
+   cycle=0;
+   flag=false;
+   //EndIndex=Math.floor(Math.random()*12);
+   if(random_num>5) {
+  EndIndex = random_num - 5; //前5格开始变慢
+   } else {
+  EndIndex = random_num + 14 - 5; //前5格开始变慢
+   }
+   //EndCycle=Math.floor(Math.random()*3);
+   Time = setInterval(Star,Speed);
+   
+}
+function Star(num){
+    //跑马灯变速
+    if(flag==false){
+      //走五格开始加速
+      if(quick==5){
+         clearInterval(Time);
+         Speed=50;
+         Time=setInterval(Star,Speed);
+      }
+      //跑N圈减速
+      if(cycle==EndCycle+1 && index-1==EndIndex){
+      clearInterval(Time);
+         Speed=300;
+         flag=true;         //触发结束
+         Time=setInterval(Star,Speed);
+      }
+    }
+   
+    if(index>arr_length){
+        index=1;
+        cycle++;
+    }
+   
+   //结束转动并选中号码
+   if(flag==true && index==parseInt(random_num)){ 
+      quick=0;
+      clearInterval(Time);
+	  //alert(random_num);
+	  $("h1").html(random_num);
+   }
+   
+   $("#random_"+index).addClass('random_current'); //设置当前选中样式
+   if(index>1)
+       prevIndex=index-1;
+   else{
+       prevIndex=arr_length;
+   }
+   $("#random_"+prevIndex).removeClass('random_current'); //取消上次选择样式 
+   index++;
+   quick++;
+   
+}
+</script>
+</body>
+</html>

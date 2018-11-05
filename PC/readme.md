@@ -23,3 +23,5 @@
 > save（保存文件）
 
 > vr（webVR的实验例子，包含移动端）
+
+> webkit-mask（CSS3:webkit-mask遮罩动画）

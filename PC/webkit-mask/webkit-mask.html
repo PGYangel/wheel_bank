@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webkit-mask 渐变蒙版特效</title>
+    <style>
+
+        /* blockquote,body,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,iframe,input,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0}*/
+
+
+        .pannel{width:725px;height:408px;position:relative;transition:all 1s ease .6s}
+        .pannel .back,.pannel .font{position:absolute;left:0;top:0}
+        .pannel .font{z-index:3}
+        .pannel .opacity{opacity:0;transition:all 2s ease}
+        .pannel .back img{position: absolute;}
+
+        .masky2{width:100%;height:100%;position:absolute;left:0;top:0;}
+        .masky2.show{z-index:10;display:block;width:100%;height:100%;position:absolute;left:0;top:0;-webkit-mask:url(images/webkitMask1.png) center bottom no-repeat;mask:url(images/webkitMask1.png) center bottom no-repeat;
+            will-change:transform;animation:masky 1.5s steps(39) forwards;-webkit-mask-size:4000% 100%;mask-size:4000% 100%;} /*这里图片有40帧，所以steps为（40-1）；-webkit-mask-size为40倍放大*/
+        @keyframes masky{0%{-webkit-mask-position:0 0;mask-position:0 0;} 100%{-webkit-mask-position:100% 0;mask-position:100% 0;} }
+
+        .masky3{width:100%;height:100%;position:absolute;left:0;top:0;-webkit-mask:url(images/webkitMask2.png) center bottom no-repeat;mask:url(images/webkitMask2.png) center bottom no-repeat;-webkit-mask-size:4000% 100%;mask-size:4000% 100%;will-change:transform}
+        .masky3.show{z-index:10;display:block;animation:masky3 1.5s steps(39) forwards}
+        @keyframes masky3{0%{-webkit-mask-position:100% 0;mask-position:100% 0;}  100%{-webkit-mask-position:0 0;mask-position:0 0;}  }
+
+        .box{width:200px;height:200px; background:#00a3ff;position: relative;}
+        .mask,.mask1{width:200px;height:200px;position: absolute;border: 1px solid red;float: left;}
+        .mask.fadeOut,.mask1.fadeOut1 {
+            background:#fff;
+            -webkit-mask: url(images/mask.png?V=1);
+            mask: url(images/mask.png?V=1);
+            -webkit-mask-size: 2500% 100%;
+            mask-size: 2500% 100%;
+            -webkit-animation: masky3 2s steps(24) forwards;
+            animation: masky 2s steps(24) forwards;
+        }
+
+        .mask1.fadeOut1{background-color: #f3d02f}
+
+    </style>
+</head>
+<body>
+<p>-webkit-mask 兼容性：IE不兼容，edge 18及以上才兼容；Firefox 61及以上；Chrome 49及以上；Safari 11.1及以上；UC 11.8及以上；Samsung Internet 4及以上</p>
+<div class="role" >
+    <div class="pannel pn1">
+        <span class="font  show">
+            <img src="images/tese31.jpg" alt="font">
+        </span>
+        <span class="back  opacity" >
+            <img src="images/tese32.jpg" alt="back">
+             这里是文字<br/>
+             或者其他功能<br/>
+             这里是文字<br/>
+             或者其他功能<br/>
+             这里是文字<br/>
+             或者其他功能<br/>
+             这里是文字<br/>
+             或者其他功能<br/>
+        </span>
+    </div>
+
+</div>
+<br/>
+<div class="box">
+    <div class="mask"></div>
+    <div class="box_1">
+        利用-webkit-mask我们还可以制作炫酷的logo遮罩动画效果；<br/>鼠标放上去看看效果
+        <p>放置层级不一样，锁看到的效果页截然不同</p>
+    </div>
+</div>
+<div class="mask1">放置层级不一样，锁看到的效果页截然不同</div>
+
+<script src="jquery-1.11.1.min.js?v=1"></script>
+
+<script>
+
+
+    $(".pannel").hover(function(){
+        $(this).find(".font").removeClass("masky3 show").addClass("opacity");
+        $(this).find(".back").removeClass("opacity").addClass("masky2 show");
+    },function(){
+        $(this).find(".font").addClass("masky3 show").removeClass("opacity");
+        $(this).find(".back").addClass("opacity").removeClass("masky2 show");
+    });
+
+
+    $(function(){
+        $(".mask").mouseover(function(){
+            var b=0,c=$(this),
+            d=setInterval(function(){
+                if(b>parseInt(c.width()*2)){clearInterval(d);}
+                c.css({"-webkit-mask":"-webkit-gradient(radial, 0 0,"+b+", 0 0, "+(b+15)+", from(rgba(255, 255, 255,1)), color-stop(0.5,rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255,1)))"});
+                //我们还可以改变渐变的起点和终点位置来实现不同的效果：
+                //c.css({"-webkit-mask":"-webkit-gradient(radial, 88 53,"+b+", 88 53, "+(b+15)+", from(rgba(255, 255, 255,1)), color-stop(0.5,rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255,1)))"});
+                b++;
+            },0);
+        });
+    });
+    $(window).load(function(){
+        $(".mask").addClass("fadeOut")
+        $(".mask1").addClass("fadeOut1")
+    })
+</script>
+
+
+</body>
+</html>

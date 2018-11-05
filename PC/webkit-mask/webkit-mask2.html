@@ -1,0 +1,48 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webkit-mask 渐变蒙版特效</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        .wrap{width:100%;height:894px;position:relative;transition:all 1s ease .6s}
+        .wrap .back,.wrap .font{position:absolute;left:0;top:0}
+        .wrap .font{z-index:3; background:url(images/load.jpg) no-repeat; width:100%; height:894px;}
+        .wrap .back { background:url(images/temp.jpg) no-repeat; width:100%; height:894px;}
+        .back.show{z-index:10;display:block;width:100%;height:100%;position:absolute;left:0;top:0;-webkit-mask:url(images/a.png) center bottom no-repeat;will-change:transform;animation:masky 1.2s steps(39) forwards;-webkit-mask-size:4000% 100%;mask-size:4000% 100%;}
+
+        @keyframes masky{0%{-webkit-mask-position:0 0;mask-position:0 0;} 100%{-webkit-mask-position:100% 0;mask-position:100% 0;} }
+
+
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="font show"></div>
+    <div class="back">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+<script src="jquery-1.11.1.min.js?v=1"></script>
+
+<script>
+
+    $(".back").addClass("show");
+
+
+</script>
+
+
+</body>
+</html>

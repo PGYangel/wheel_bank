@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>移动端flex终极布局</title>
+	<link type="text/css" rel="stylesheet" href="flexGrid.css">
+    <style type="text/css">
+        .row div { height: 100px; color: #fff; font-family: "微软雅黑"; }
+        .row{ margin-bottom: 20px; }
+        h1{text-align: center;}
+        .bg1 {background: deeppink; }
+        .bg2 {background: purple; }
+        .bg3 {background: yellowgreen; }
+        .bg4 {background: orange; }
+        .bg5 {background: greenyellow; }
+        .bg6 {background: pink; }
+        .w100{width: 100px;}
+        .w200{width: 200px;}
+        .w300{width: 300px;}
+        .w400{width: 400px;}
+        .w500{width: 500px;}
+        .w600{width: 600px;}
+    </style>
+</head>
+<body>
+    <h1>移动端flex终极布局</h1>
+	<h1>切记！！在添加col-xx的时候  前面一定要有col，不然低端安卓有问题</h1>
+	<div class="row">
+		<div class="col bg1">.col 自动分配</div>
+		<div class="col bg2">.col 自动分配</div>
+		<div class="col bg3">.col 自动分配</div>
+	</div>
+    <h1>水平常见栅格化</h1>
+    <div class="row">
+        <div class="col col-50 bg1">.col-50</div>
+        <div class="col col-50 bg2">.col-50</div>
+	</div>
+	<div class="row">
+		<div class="col col-33 bg1">.col-33</div>
+		<div class="col col-33 bg2">.col-33</div>
+		<div class="col col-33 bg3">.col-33</div>
+	</div>
+	<div class="row">
+		<div class="col col-25 bg1">.col-25</div>
+		<div class="col col-25 bg2">.col-25</div>
+        <div class="col col-25 bg3">.col-25</div>
+		<div class="col col-25 bg4">.col-25</div>
+	</div>
+    <div class="row">
+        <div class="col col-20 bg1">.col-20</div>
+        <div class="col col-20 bg2">.col-20</div>
+        <div class="col col-20 bg3">.col-20</div>
+        <div class="col col-20 bg4">.col-20</div>
+        <div class="col col-20 bg5">.col-20</div>
+    </div>
+    <h1>综合用法</h1>
+    <div class="row">
+        <div class="col col-25 bg1">.col-25</div>
+        <div class="col col-25 bg2">.col-25</div>
+        <div class="col col-50 bg3">.col-50</div>
+    </div>
+    <div class="row">
+        <div class="bg1 col col-10">.col-10</div>
+        <div class="bg2 col col-20">.col-20</div>
+        <div class="bg3 col ">.col 自动分配</div>
+    </div>
+    <div class="row">
+        <div class="bg1 col col-25">.col-25</div>
+    </div>
+    <h1>换行显示</h1>
+    <div class="row row-wrap">
+        <div class="bg1 col col-33">.col-33</div>
+        <div class="bg2 col col-33">.col-33</div>
+        <div class="bg3 col col-33">.col-33</div>
+        <div class="bg4 col col-33">.col-33</div>
+        <div class="bg5 col col-33">.col-33</div>
+        <div class="bg6 col col-33">.col-33</div>
+    </div>
+    <div class="row row-wrap">
+        <div class="bg1 col col-20">.col-20</div>
+        <div class="bg2 col col-30">.col-30</div>
+        <div class="bg3 col col-50">.col-50</div>
+        <div class="bg4 col col-33">.col-33</div>
+        <div class="bg5 col col-33">.col-33</div>
+        <div class="bg6 col col-33">.col-33</div>
+    </div>
+    <h1>单侧固定与自适应</h1>
+    <div class="row">
+        <div class="bg1  w200">width:200px;</div>
+        <div class="bg2  col ">.col 自动分配</div>
+    </div>
+    <div class="row">
+        <div class="bg2  col ">.col 自动分配</div>
+        <div class="bg1  w200">width:200px;</div>
+    </div>
+    <div class="row">
+        <div class="bg1  w200">width:200px;</div>
+        <div class="bg2  col ">.col 自动分配</div>
+        <div class="bg3  w300">width:300px;</div>
+    </div>
+	<!--切记！！！！！在添加col-xxx的时候  前面一定要有col，不然低端安卓有问题-->
+</body>
+</html>
