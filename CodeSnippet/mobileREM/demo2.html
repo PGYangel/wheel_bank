@@ -9,19 +9,20 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <script type="text/javascript">
-        //js动态屏幕适配rem值
-        /*
-         * 跟目录font-size = （可见区域宽度/PSD宽度/浏览器默认fontSize*10000）%;
-         * 与PSD设计尺寸存在关系：750px约为2倍，1080约为3倍;
-         * 若PSD宽度为750px.则html font-size = 312.5%;约等于50px;
-         * 后续雪碧图与字体=PSD尺寸/100+rem
-         */
+        //js动态屏幕适配rem值，当不是移动端设备PC显示的宽度
         !function() {
             function remSize() {
                 var psdWidth=750;//设计稿的宽度
+                var pcWidth=600;//PC显示的宽度
+                var ua = navigator.userAgent.toLocaleLowerCase();
+                var isMobile = /iPhone|iPod|android|Windows Phone/ig.test(ua);
                 var html = document.getElementsByTagName("html")[0];
                 var pageWidth = html.getBoundingClientRect().width;
-                html.style.fontSize = pageWidth / psdWidth  / 16 * 10000 + "%";
+                if(isMobile){
+                    html.style.fontSize = pageWidth / psdWidth  / 16 * 10000 + "%";
+                }else{
+                    html.style.fontSize = pcWidth / psdWidth  / 16 * 10000 + "%";
+                }
             }
             window.addEventListener("resize", function(){remSize();}, !1);
             remSize();
@@ -29,6 +30,7 @@
     </script>
     <style type="text/css">
         *{margin:0;padding:0;list-style: none;border:none;}
+        .wrap{margin:0 auto;width:7.5rem;}
         h1{font-size:0.3rem;}/*相当于psd使用的是30px的字体*/
         img{width:7.5rem;}/*相当于psd使用的是750px的宽度*/
         .icon1{width: 0.61rem;height:0.56rem;background:url(images/test.png) no-repeat 0 0;background-size:1.22rem;}
@@ -38,7 +40,7 @@
     </style>
 </head>
 <body>
-<div>
+<div class="wrap">
     <h1>设置移动端rem尺寸</h1>
     <div class="icon1"></div>
     <div class="icon2"></div>
