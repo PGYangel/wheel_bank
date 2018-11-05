@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>打印界面</title>
+    <meta name="Keywords" content=""/>
+    <meta name="Description" content=""/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <script type="text/javascript">
+        function preview(oper)
+        {
+            if (oper < 10){
+                bdhtml=window.document.body.innerHTML;//获取当前页的html代码
+                sprnstr="<!--startprint"+oper+"-->";//设置打印开始区域
+                eprnstr="<!--endprint"+oper+"-->";//设置打印结束区域
+                prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+18); //从开始代码向后取html
+                prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));//从结束代码向前取html
+                window.document.body.innerHTML=prnhtml;
+                window.print();
+                window.document.body.innerHTML=bdhtml;
+            } else {
+                window.print();
+            }
+        }
+    </script>
+</head>
+<body>
+<input type=button name='button_export' title='打印' onclick='preview(1)' value='打印'>
+<!--startprint1-->
+<!--打印内容开始-->
+<div id="sty" style="background-color:#fff;width:760px;height:1092px;padding:20px;" ms-controller="player">
+    <h1 style="text-align: center;font-size: 20px;line-height: 20px;">标题标题标题标题标题标题标题标题标题标题</h1>
+    <table cellpadding="0" cellspacing="0" border="1" style="width: 100%;font-size: 14px;border-color:#000;text-align: center;border-collapse: collapse;">
+        <tr>
+            <td width="120" height="50">姓名</td>
+            <td width="133">姓名姓名</td>
+            <td width="120">性别</td>
+            <td width="100">男</td>
+            <td width="120">出生年月</td>
+            <td>1990-01-01</td>
+        </tr>
+        <tr>
+            <td height="50">身份证号</td>
+            <td colspan="5">12312312312313213</td>
+        </tr>
+        <tr>
+            <td height="50">工作单位<br>（或学院）</td>
+            <td colspan="3">工作单位</td>
+            <td>单位电话</td>
+            <td>16545465151</td>
+        </tr>
+        <tr>
+            <td height="50">文化程度</td>
+            <td colspan="3">大学</td>
+            <td>联系电话</td>
+            <td>19841546</td>
+        </tr>
+        <tr>
+            <td height="50">户口所在地</td>
+            <td colspan="3">户口所在地</td>
+            <td>从事竞赛<br>项目年限</td>
+            <td>三年</td>
+        </tr>
+        <tr>
+            <td height="50">本人联系地址</td>
+            <td colspan="5">本人联系地址</td>
+        </tr>
+        <tr>
+            <td height="50">竞赛项目</td>
+            <td colspan="5">竞赛项目</td>
+        </tr>
+        <tr>
+            <td height="50">现有技术等级</td>
+            <td colspan="5">现有技术等级</td>
+        </tr>
+        <tr>
+            <td colspan="6" height="180" style="text-align: left;vertical-align: top;">
+                <p style="padding-left: 20px;">工作简历和参赛技术特点：</p>
+                <p style="text-indent: 30px;padding-left:20px;padding-right:20px;line-height: 30px;">阿萨德发生打发撒旦法撒旦法圣达菲按时放到</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" height="350" style="position:relative">
+                <div style="top:10px;left:50%;margin-left:-120px;width:240px;height:160px;border:1px solid #000;position:absolute;">
+                    <img ms-attr="{src:@idCardImg}" width="240" height="160" src="" alt="" style="position:absolute;z-index: 10;top:0;left:0;">
+                </div>
+                <div style="bottom:10px;left:50%;margin-left:-120px;width:240px;height:160px;border:1px solid #000;position:absolute;">
+                    <img ms-attr="{src:@idCardImg2}" width="240" height="160" src="" alt="" style="position:absolute;z-index: 10;top:0;left:0;">
+                </div>
+            </td>
+            <td colspan="2" style="position:relative">
+                <div style="top:35px;left:50%;margin-left:-55px;width:110px;height:155px;border:1px solid #000;position:absolute;">
+                    <img ms-attr="{src:@personImg}" width="110" height="155" src="" alt="">
+                </div>
+                <p style="top:220px;left:0;width:100%;position:absolute;text-align: center;">近期个人免冠彩色证件照</p>
+            </td>
+        </tr>
+    </table>
+</div>
+<!--打印内容结束-->
+<!--endprint1-->
+</body>
+</html>
