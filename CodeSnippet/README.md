@@ -9,6 +9,8 @@
 
 > isMobile（js判断设备是否为移动设备）
 
+> isVideo（判断浏览器是否支持video标签）
+
 > print（打印页面内容）
 
 > showImgs（预览未上传完成的图片，兼容IE浏览器）
