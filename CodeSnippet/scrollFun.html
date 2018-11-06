@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>滚轮事件</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*IE注册事件*/
+    if (document.attachEvent) {
+        document.attachEvent('onmousewheel', scrollFunc);
+    }
+    /*Firefox注册事件*/
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }
+    /*注册事件*/
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }//W3C
+    window.onmousewheel = document.onmousewheel = scrollFunc;//IE/Opera/Chrome
+    function scrollFunc(e) {
+        e = e || window.event;
+        if (e.wheelDelta) {
+            //IE/Opera/Chrome，向下滚动小于0，向上滚动大于0
+            if (e.wheelDelta < 0) {
+                console.log("down");
+            }else if (e.wheelDelta > 0) {
+                console.log("up");
+            }
+        }else if (e.detail) {
+            //Firefox,向下滚动大于0，向上滚动小于0
+            if (e.detail > 0) {
+                console.log("down");
+            }else if (e.detail < 0) {
+                console.log("up");
+            }
+        }
+    }
+</script>
+</body>
+</html>

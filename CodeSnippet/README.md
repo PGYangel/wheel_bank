@@ -13,6 +13,8 @@
 
 > print（打印页面内容）
 
+> scrollFun（滚轮事件）
+
 > showImgs（预览未上传完成的图片，兼容IE浏览器）
 
 > showVideo（video未上传到服务器，页面即可进行预览）
