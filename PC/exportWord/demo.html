@@ -2,31 +2,19 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>打印界面</title>
+    <title>导出PDF</title>
     <meta name="Keywords" content=""/>
     <meta name="Description" content=""/>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <script type="text/javascript">
-        function preview(oper)
-        {
-            if (oper < 10){
-                bdhtml=window.document.body.innerHTML;//获取当前页的html代码
-                sprnstr="<!--startprint"+oper+"-->";//设置打印开始区域
-                eprnstr="<!--endprint"+oper+"-->";//设置打印结束区域
-                prnhtml=bdhtml.substring(bdhtml.indexOf(sprnstr)+18); //从开始代码向后取html
-                prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));//从结束代码向前取html
-                window.document.body.innerHTML=prnhtml;
-                window.print();
-                window.document.body.innerHTML=bdhtml;
-            } else {
-                window.print();
-            }
-        }
-    </script>
+    <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="js/FileSaver.js" type="text/javascript"></script>
+    <script src="js/jquery.wordexport.js" type="text/javascript"></script>
 </head>
 <body>
-<input type=button name='button_export' title='打印' onclick='preview(1)' value='打印'>
+<input type="button" name='button_export' title='打印' onclick='preview(1)' value='打印'>
+
+<input type="button" name='button_word' title='导出PDF文件' onclick='exportWord()' value='导出PDF文件'>
 <!--startprint1-->
 <!--打印内容开始-->
 <div id="sty" style="background-color:#fff;width:760px;height:1092px;padding:20px;">
@@ -100,5 +88,12 @@
 </div>
 <!--打印内容结束-->
 <!--endprint1-->
+
+<script type="text/javascript">
+    function exportWord(){
+        $("#sty").wordExport("导出文件名");//fileName为导出的word文件的命名,sty为要导出的html内容容器
+    }
+</script>
+
 </body>
 </html>

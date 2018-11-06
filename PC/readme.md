@@ -4,6 +4,10 @@
 
 > drag（自定义滚动条）
 
+> exportPDF（页面内容导出为pdf文件，导出模糊跟翻页效果不好，不好用）
+
+> exportWord（页面内容导出为word文件）
+
 > html2canvas（html2canvas插件，将页面内容生成图片形式）
 
 > jsPDF-master（jsPDF-master插件，将页面内容生成PDF文件）
