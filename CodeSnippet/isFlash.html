@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>判断是否安装或启动了flash</title>
+</head>
+<body>
+<h1 id="txt"></h1>
+<script type="text/javascript">
+    function isSwf(){
+        var hasFlash = 0; //是否安装或启动了flash
+        var flashVer = 0; //flash版本
+        if (document.all) {
+            try{
+                var swf = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+                if (swf) {
+                    hasFlash = 1;
+                    VSwf = swf.GetVariable("$version");
+                    flashVer = parseInt(VSwf.split(" ")[1].split(",")[0]);
+                }
+            } catch(e){
+                if (navigator.plugins && navigator.plugins.length > 0) {
+                    var swf = navigator.plugins["Shockwave Flash"];
+                    if (swf) {
+                        hasFlash = 1;
+                        var words = swf.description.split(" ");
+                        for (var i = 0; i < words.length; ++i) {
+                            if (isNaN(parseInt(words[i]))) continue;
+                            flashVer = parseInt(words[i]);
+                        }
+                    }
+                }
+            }
+        } else {
+            if (navigator.plugins && navigator.plugins.length > 0) {
+                var swf = navigator.plugins["Shockwave Flash"];
+                if (swf) {
+                    hasFlash = 1;
+                    var words = swf.description.split(" ");
+                    for (var i = 0; i < words.length; ++i) {
+                        if (isNaN(parseInt(words[i]))) continue;
+                        flashVer = parseInt(words[i]);
+                    }
+                }
+            }
+        }
+        return { f: hasFlash, v: flashVer };
+    }
+
+    txt();
+    function txt(){
+        var obj=isSwf();
+        document.getElementById("txt").innerHTML="是否安装或启动了flash（0：没有，1：有）："+obj.f+"， flash版本："+obj.v;
+    }
+
+</script>
+
+</body>
+</html>
