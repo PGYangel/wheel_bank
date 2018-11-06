@@ -5,6 +5,8 @@
 
 > CountDown（倒计时）
 
+> getCookie（获取cookie）
+
 > isFlash（判断是否安装或启动了flash）
 
 > isMobile（js判断设备是否为移动设备）
