@@ -3,6 +3,8 @@
 
 > Notification（浏览器提示消息）
 
+> CountDown（倒计时）
+
 > isMobile（js判断设备是否为移动设备）
 
 > print（打印页面内容）

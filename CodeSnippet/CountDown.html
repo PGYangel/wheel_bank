@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+</head>
+<body>
+<span id="dd">00</span><span>天</span><span id="hh">00</span><span>时</span><span id="mm">00</span><span>分</span><span id="ss">00</span><span>秒</span>
+<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var mstartTime=new Date(2018,10,15,14,0,0);//活动开始时间2018/11/15 14:00:00
+    var mnowTime,date3,days,leave1,hours,leave2,minutes,leave3,seconds;
+    var timeV;
+    //倒计时
+    timeV=setInterval(function(){
+        mnowTime=new Date();
+        date3=mstartTime.getTime()-mnowTime.getTime(); //时间差的毫秒数
+
+        days=Math.floor(date3/(24*3600*1000));
+        $("#dd").text(days);
+        leave1=date3%(24*3600*1000);    //计算天数后剩余的毫秒数
+        hours=Math.floor(leave1/(3600*1000));
+        $("#hh").text(hours);
+        //计算相差分钟数
+        leave2=leave1%(3600*1000);        //计算小时数后剩余的毫秒数
+        minutes=Math.floor(leave2/(60*1000));
+        $("#mm").text(minutes);
+        //计算相差秒数
+        leave3=leave2%(60*1000);      //计算分钟数后剩余的毫秒数
+        seconds=Math.round(leave3/1000);
+        $("#ss").text(seconds);
+    },1000);
+</script>
+</body>
+</html>
