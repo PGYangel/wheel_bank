@@ -13,7 +13,6 @@
     function setClipboardText(event){
         event.preventDefault();//阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）。
         var node = document.createElement('div');
-        //对documentfragment不熟，不知道怎么获取里面的内容，用了一个比较笨的方式
         node.appendChild(window.getSelection().getRangeAt(0).cloneContents());
         //getRangeAt(0)返回对基于零的数字索引与传递参数匹配的选择对象中的范围的引用。对于连续选择，参数应为零。
         var htmlData = '<div>'
