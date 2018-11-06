@@ -15,6 +15,8 @@
 
 > isVideo（判断浏览器是否支持video标签）
 
+> oncopyright（复制网页内容自动添加版权信息）
+
 > print（打印页面内容）
 
 > scrollFun（滚轮事件）
