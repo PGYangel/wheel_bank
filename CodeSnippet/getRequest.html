@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>获取Request</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    var req=window.location.search;//url后面整段Request参数
+
+    function Request(name) {
+        try {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURIComponent(r[2]); return "";
+        }
+        catch (e) { return "" }
+    }
+</script>
+</body>
+</html>
