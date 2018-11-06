@@ -1,5 +1,7 @@
 > animate（css3动画库）
 
+> ckeditor（ckeditor富文本插件）
+
 > copy（复制信息到剪贴板）
 
 > drag（自定义滚动条）
@@ -23,6 +25,8 @@
 > qrcode（纯js二维码生成）
 
 > qrcodejs-master（qrcodejs-master字符串生成二维码插件）
+
+> RtmpPlayer（flash接收Rtmp直播流播放器，flash仅供纪念）
 
 > save（保存文件）
 
