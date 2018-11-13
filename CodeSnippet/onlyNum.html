@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输入框只允许输入数字，使用正则和keyup事件</title>
+</head>
+<body>
+<input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')"/>
+</body>
+</html>

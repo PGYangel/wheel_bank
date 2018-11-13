@@ -17,6 +17,8 @@
 
 > oncopyright（复制网页内容自动添加版权信息）
 
+> onlyNum（输入框只允许输入数字，使用正则和keyup事件）
+
 > print（打印页面内容）
 
 > scrollFun（滚轮事件）
