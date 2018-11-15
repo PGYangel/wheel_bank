@@ -10,6 +10,8 @@
 
 > exportWord（页面内容导出为word文件）
 
+> flv.js（flv.js插件，video标签播放flv格式视频）
+
 > html2canvas（html2canvas插件，将页面内容生成图片形式）
 
 > jsPDF-master（jsPDF-master插件，将页面内容生成PDF文件）
