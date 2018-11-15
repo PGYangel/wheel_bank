@@ -3,6 +3,8 @@
 
 > Notification（浏览器提示消息）
 
+> checkIDCard（验证身份证号）
+
 > CountDown（倒计时）
 
 > getCookie（获取cookie）
