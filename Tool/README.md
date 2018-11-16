@@ -2,6 +2,8 @@
 
 > Charset_v0.4.1.crx（谷歌编码更改插件）
 
+> CollectionWeb.html（收藏网站集合）
+
 > extension_0_3.crx（浏览器html标签检查）
 
 > TakeColor.exe（取色器）
