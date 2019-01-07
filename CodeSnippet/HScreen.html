@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>横屏处理</title>
+</head>
+<body>
+<script>
+    window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
+        if (window.orientation === 180 || window.orientation === 0) {
+            console.log("竖屏");
+        }
+        if (window.orientation === 90 || window.orientation === -90 ){
+            console.log("横屏");
+        }
+    }, false);
+</script>
+</body>
+</html>
