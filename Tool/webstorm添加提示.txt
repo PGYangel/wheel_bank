@@ -1,0 +1,38 @@
+1、vue语法提示
+设置 – Inspections – HTML – Unknown HTML tags，添加customs
+v-text
+v-html
+v-once
+v-if
+v-show
+v-else
+v-for
+v-on
+v-bind
+v-model
+v-ref
+v-el
+v-pre
+v-cloak
+v-on:click
+v-on:keyup.enter
+v-on:keyup
+@click
+@change
+number
+debounce
+transition
+:is
+
+------------------------------------------------------------------------------------黄金分割线----------------------------------------------------------------------------------
+2、node语法提示
+File -> Settings -> Languages&Frameworks -> Javascript -> Libraries，在右侧找到Download，下拉选择TypeScript community stubs，然后滚动找到node，点击Download即可。
+
+如果因为网络问题下载失败，可以打开URL手动下载至本地，然后点击右侧的Add再添加进webstorm。
+
+
+------------------------------------------------------------------------------------黄金分割线----------------------------------------------------------------------------------
+默认情况下没有JQuery补全，按照以下方法添加
+1. 打开Settings，Languages & Frameworks > JavaScript > Libraries 选择Add...(也可以选择Download，让ide自动下载完成)
+
+2 名称自己定，Framework type下拉框选jquery，然后下面手动选择本地的Jquery.js文件，在下面添加说明文档，网址为 api.jquery.com , 然后选择下载到本地以加快显示速度
