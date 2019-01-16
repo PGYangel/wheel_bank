@@ -1,4 +1,4 @@
-# 代码片段使用实例
+﻿# 代码片段使用实例
 > mobileREM（JS适配REM值）
 
 > Notification（浏览器提示消息）
@@ -6,6 +6,8 @@
 > checkIDCard（验证身份证号）
 
 > CountDown（倒计时）
+
+> formValidator.js（表单验证方法整合）
 
 > getCookie（获取cookie）
 
