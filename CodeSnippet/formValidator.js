@@ -136,3 +136,13 @@ export function VIDCard (code) {
   }
   return pass
 }
+
+// 判断字符串是否为空
+export function VIsNotEmpty (value) {
+  let txt = value.replace(/(^\s*)|(\s*$)/g, '')
+  if (txt === '' || value === undefined || value === null) {
+    return false
+  } else {
+    return true
+  }
+}
