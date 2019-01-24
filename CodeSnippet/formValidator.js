@@ -137,9 +137,9 @@ export function VIDCard (code) {
   return pass
 }
 
-// 判断字符串是否为空
+// 判断字符串是否不为空
 export function VIsNotEmpty (value) {
-  let txt = value.replace(/(^\s*)|(\s*$)/g, '')
+  let txt = value.toString().replace(/(^\s*)|(\s*$)/g, '')
   if (txt === '' || value === undefined || value === null) {
     return false
   } else {
