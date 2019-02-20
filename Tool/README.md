@@ -1,4 +1,6 @@
-﻿> caoliao.crx（浏览器二维码生成器）
+﻿> APNG Anime Maker.exe（动态png制作器）
+
+> caoliao.crx（浏览器二维码生成器）
 
 > Charset_v0.4.1.crx（谷歌编码更改插件）
 
