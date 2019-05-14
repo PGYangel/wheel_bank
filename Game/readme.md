@@ -3,3 +3,5 @@
 > LuckDraw（抽奖）
 
 > pintu（拼图游戏）
+
+> ScratchCard（刮刮乐游戏）

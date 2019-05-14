@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>刮刮乐游戏</title>
+    <style type="text/css">
+        *{padding:0;margin:0;border:none;}
+        .img{width:320px;height: 160px;position: absolute;top:50%;left:50%;margin-left:-160px;margin-top:-80px;}
+    </style>
+</head>
+<body>
+<div class="msg">
+    <a href="javascript:void(0)" onclick="window.location.reload()">再试一次</a>
+</div>
+<div class="img">
+    <canvas class="canvas"></canvas>
+</div>
+
+
+<script>
+    var mouseNum=0;
+    var rightNum=150;
+    var bodystyle = document.body.style;
+    bodystyle.mozUserSelect = 'none';
+    bodystyle.webkitUserSelect = 'none';
+    var img = new Image();
+    var canvas = document.querySelector('canvas');
+    canvas.style.backgroundColor = 'transparent';
+    canvas.style.position = 'absolute';
+    var imgs = ['p_1.jpg'];
+    img.src = imgs[0];
+    img.addEventListener('load', function(e) {
+        var ctx;
+        var w = 320,
+            h = 160;
+        //刮开验证区域
+        var checkX1=40,
+            checkX2=280,
+            checkY1=30,
+            checkY2=130;
+        var offsetX = canvas.getBoundingClientRect().left,
+            offsetY = canvas.getBoundingClientRect().top;
+        var mouseDown = false;
+
+        function layer(ctx) {
+            ctx.fillStyle = 'gray';
+            ctx.fillRect(0, 0, w, h)
+        };
+
+        function eventDown(e) {
+            e.preventDefault();
+            mouseDown = true;
+        }
+
+        function eventUp(e) {
+            e.preventDefault();
+            mouseDown = false;
+            if(mouseNum>rightNum){
+                alert("已刮开大致文字内容！")
+            }
+        }
+
+        function eventMove(e) {
+            e.preventDefault();
+            if (mouseDown) {
+                // changedTouches 最近一次触发该事件的手指信息
+                if (e.changedTouches) {
+                    e = e.changedTouches[e.changedTouches.length - 1];
+                }
+                var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0;
+                var y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;
+                if(x>checkX1 && x<checkX2){
+                    if(y>checkY1 && y<checkY2){
+                        mouseNum++;
+                    }
+                }
+                with(ctx) {
+                    beginPath();
+                    arc(x, y, 10, 0, Math.PI * 2);
+                    fill();
+                }
+            }
+        }
+        canvas.width = w;
+        canvas.height = h;
+        canvas.style.backgroundImage = 'url(' + img.src + ')';
+        ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'transparent';
+        ctx.fillRect(0, 0, w, h);
+        layer(ctx);
+        ctx.globalCompositeOperation = "destination-out";
+        canvas.addEventListener('touchstart', eventDown);
+        canvas.addEventListener('touchend', eventUp);
+        canvas.addEventListener('touchmove', eventMove);
+        canvas.addEventListener('mousedown', eventDown);
+        canvas.addEventListener('mouseup', eventUp);
+        canvas.addEventListener('mousemove', eventMove);
+    }, false)
+</script>
+
+</body>
+</html>
