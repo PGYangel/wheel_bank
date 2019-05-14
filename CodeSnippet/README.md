@@ -13,6 +13,8 @@
 
 > getRequest（获取Request）
 
+> getDivPosition（获取div位置坐标）
+
 > HScreen（横屏处理）
 
 > isFlash（判断是否安装或启动了flash）
