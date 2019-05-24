@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>并列JSON生成树数组算法</title>
+    <!-- import Vue before Element -->
+    <script src="js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="js/element-ui.css">
+    <!-- 引入组件库 -->
+    <script src="js/element-ui.js"></script>
+</head>
+<body>
+<div id="app">
+    <el-tree :data="treeList"></el-tree>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                treeList: []
+            }
+        },
+        mounted() {
+            this.JsonToTree()
+        },
+        methods: {
+            JsonToTree() {
+                /**
+                 * parentId父层ID为0的是第一级
+                 * **/
+                var list = [
+                    {id: 1, label: "第一级1", parentId: 0},
+                    {id: 2, label: "第一级2", parentId: 0},
+                    {id: 3, label: "第一级3", parentId: 0},
+                    {id: 4, label: "第二级1-1", parentId: 1},
+                    {id: 5, label: "第二级1-2", parentId: 1},
+                    {id: 6, label: "第二级1-3", parentId: 1},
+                    {id: 7, label: "第二级2-1", parentId: 2},
+                    {id: 8, label: "第三级1-1-1", parentId: 4},
+                    {id: 9, label: "第三级1-2-1", parentId: 5},
+                    {id: 10, label: "第三级1-2-2", parentId: 5},
+                    {id: 11, label: "第三级1-1-1-1", parentId: 8},
+                ]
+                var result = this.ToTree(list)
+                this.treeList = result
+            },
+            ToTree(data) {
+                // 删除 所有 children,以防止多次调用
+                data.forEach(function (item) {
+                    delete item.children;
+                });
+
+                // 将数据存储为 以 id 为 KEY 的 map 索引数据列
+                var map = {};
+                data.forEach(function (item) {
+                    map[item.id] = item;
+                });
+                // console.log(map);
+                var val = [];
+                data.forEach(function (item) {
+                    // 以当前遍历项，的parentId,去map对象中找到索引的id
+                    var parent = map[item.parentId];
+                    // 好绕啊，如果找到索引，那么说明此项不在顶级当中,那么需要把此项添加到，他对应的父级中
+                    if (parent) {
+                        (parent.children || (parent.children = [])).push(item);
+                    } else {
+                        //如果没有在map中找到对应的索引ID,那么直接把 当前的item添加到 val结果集中，作为顶级
+                        val.push(item);
+                    }
+                });
+                return val;
+            }
+        }
+    })
+</script>
+<script>
+    function ToTree(data) {
+        // 删除 所有 children,以防止多次调用
+        data.forEach(function (item) {
+            delete item.children;
+        });
+
+        // 将数据存储为 以 id 为 KEY 的 map 索引数据列
+        var map = {};
+        data.forEach(function (item) {
+            map[item.id] = item;
+        });
+        // console.log(map);
+        var val = [];
+        data.forEach(function (item) {
+            // 以当前遍历项，的parentId,去map对象中找到索引的id
+            var parent = map[item.parentId];
+            // 好绕啊，如果找到索引，那么说明此项不在顶级当中,那么需要把此项添加到，他对应的父级中
+            if (parent) {
+                (parent.children || (parent.children = [])).push(item);
+            } else {
+                //如果没有在map中找到对应的索引ID,那么直接把 当前的item添加到 val结果集中，作为顶级
+                val.push(item);
+            }
+        });
+        return val;
+    }
+
+    function convertToTreeData(data, pid) {
+        const result = []
+        let temp = []
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].parentId === pid) {
+                const obj = { 'label': data[i].name, 'id': data[i].id }
+                temp = this.convertToTreeData(data, data[i].id)
+                if (temp.length > 0) {
+                    obj.children = temp
+                }
+                result.push(obj)
+            }
+        }
+        return result
+    }
+</script>
+</body>
+</html>

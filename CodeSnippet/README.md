@@ -23,6 +23,8 @@
 
 > isVideo（判断浏览器是否支持video标签）
 
+> JsonToTree（并列JSON生成树数组算法）
+
 > oncopyright（复制网页内容自动添加版权信息）
 
 > onlyNum（输入框只允许输入数字，使用正则和keyup事件）
