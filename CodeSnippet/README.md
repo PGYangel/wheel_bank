@@ -25,6 +25,8 @@
 
 > JsonToTree（并列JSON生成树数组算法）
 
+> loopTree（遍历树类型）
+
 > oncopyright（复制网页内容自动添加版权信息）
 
 > onlyNum（输入框只允许输入数字，使用正则和keyup事件）

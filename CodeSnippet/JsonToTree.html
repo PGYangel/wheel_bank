@@ -45,6 +45,7 @@
                     {id: 11, label: "第三级1-1-1-1", parentId: 8},
                 ]
                 var result = this.ToTree(list)
+                console.log(result)
                 this.treeList = result
             },
             ToTree(data) {
@@ -77,6 +78,7 @@
     })
 </script>
 <script>
+    //将数据写成树结构
     function ToTree(data) {
         // 删除 所有 children,以防止多次调用
         data.forEach(function (item) {
@@ -104,20 +106,38 @@
         return val;
     }
 
-    function convertToTreeData(data, pid) {
-        const result = []
-        let temp = []
-        for (let i = 0; i < data.length; i++) {
-            if (data[i].parentId === pid) {
-                const obj = { 'label': data[i].name, 'id': data[i].id }
-                temp = this.convertToTreeData(data, data[i].id)
-                if (temp.length > 0) {
-                    obj.children = temp
+    //根据最后一个找到整个家族
+    function familyTree(arr, pid) {
+        var temp = [];
+        var forFn = function(arr, pid) {
+            for (var i = 0; i < arr.length; i++) {
+                var item = arr[i];
+                if (item.id == pid) {
+                    temp.push(item);
+                    forFn(arr, item.pid);
                 }
-                result.push(obj)
             }
-        }
-        return result
+        };
+        forFn(arr, pid);
+        return temp;
+    }
+
+    //找到某一父节点下的所有子节点
+    function sonsTree(arr, id) {
+        var temp = [],
+            lev = 0;
+        var forFn = function(arr, id, lev) {
+            for (var i = 0; i < arr.length; i++) {
+                var item = arr[i];
+                if (item.pid == id) {
+                    item.lev = lev;
+                    temp.push(item);
+                    forFn(arr, item.id, lev + 1);
+                }
+            }
+        };
+        forFn(arr, id, lev);
+        return temp;
     }
 </script>
 </body>
