@@ -2,6 +2,8 @@
 
 > ckeditor（ckeditor富文本插件）
 
+> colpick-jQuery-Color-Picker-master（颜色选择器插件）
+
 > copy（复制信息到剪贴板）
 
 > drag（自定义滚动条）
