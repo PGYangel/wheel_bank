@@ -12,23 +12,34 @@
     d.setTime((new Date()).getTime() + 24 * 60 * 60 * 1000);
     document.cookie="tcNum="+ tcNum + ";expires=" + d;
 
-    var cook=parseInt(GetCookie("tcNum"));
+    var cook=parseInt(getCookie("tcNum"));
     console.log(cook);
 
-    function GetCookie(name) {
-        try {
-            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-            if (arr = document.cookie.match(reg))
-            {
-                var _value=decodeURIComponent(arr[2]);
-                if (_value.indexOf('"')>=0 || _value.indexOf('%22')>=0){
-                    _value="";
-                }
-                return _value;
-            }
-            else{return "";}
-        }
-        catch (e) { return "" }
+    //写cookies
+    function setCookie(name,value,day)
+    {
+        var Days = day;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days*24*60*60*1000);
+        document.cookie = name + "="+ value + ";expires=" + exp.toGMTString();
+    }
+    //读取cookies
+    function getCookie(name)
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+    //删除cookies
+    function delCookie(name)
+    {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval=getCookie(name);
+        if(cval!=null)
+            document.cookie= name + "="+cval+";expires="+exp.toGMTString();
     }
 </script>
 
