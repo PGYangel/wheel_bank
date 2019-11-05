@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'MyFont';
+    src:url('./font/myfont.TTF') format('TTF');
+    font-weight:600;
+    font-style:normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.hello{
+    color:red;
+    background:url('./img/logo.png') no-repeat;
+    font-family: 'MyFont';
+}
