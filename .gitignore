@@ -3,3 +3,4 @@
 
 # User-specific stuff
 .idea/
+.node_modules/
