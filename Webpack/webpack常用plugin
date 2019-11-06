@@ -1,2 +1,3 @@
 html-webpack-plugin     简化了HTML文件的创建，以便为你的webpack包提供服务
 clean-webpack-plugin    清理文件
+webpack.HashedModuleIdsPlugin   模块生成哈希值插件
