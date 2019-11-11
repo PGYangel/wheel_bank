@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-decoration: none;
+}
+
+.wrap {
+    max-width: 1920px;
+    min-width: 1200px;
+    margin: 0 auto;
+    background: url("../images/bg.jpg?v=1") no-repeat center top;
+    overflow: hidden;
+    position: relative;
+}
+
+.main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.c1 {
+    position: relative;
+    width: 100%;
+    height: 1476px;
+    background: url("../images/c1.jpg?v=1") no-repeat;
+}
+
+.c1 .img1 {
+    position: absolute;
+    top: 945px;
+    left: 210px;
+}
+
+.c1 .img2 {
+    position: absolute;
+    top: 945px;
+    left: 385px;
+    width: 48px;
+    height: 48px;
+    background: url("../images/icons/pis1_1.png") no-repeat;
+}
+.c1 .img3 {
+    position: absolute;
+    top: 945px;
+    left: 562px;
+    width: 48px;
+    height: 48px;
+    background: url("../images/icons/pis1_2.png") no-repeat;
+}
+.c1 .img4 {
+    position: absolute;
+    top: 945px;
+    left: 736px;
+    width: 48px;
+    height: 48px;
+    background: url("../images/icons/pis1_3.png") no-repeat;
+}
+
+.c2 {
+    position: relative;
+    width: 100%;
+    height: 947px;
+    background: url("../images/c2.jpg?v=1") no-repeat;
+}
+
+.c3 {
+    position: relative;
+    width: 100%;
+    height: 530px;
+    background: url("../images/c3.jpg?v=1") no-repeat;
+}
+
+.c3 h6 {
+    color: #ffe53a;
+    font-size: 44px;
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+.c3 p {
+    padding-left: 60px;
+    position: relative;
+    font-size: 18px;
+    color: #fff;
+    line-height: 30px;
+    padding-bottom: 20px;
+}
+
+.c3 p span {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    position: absolute;
+    left: 10px;
+    top: -5px;
+    background: url(https://img.ssl.q1.com/ywz/images/huodong/shuang11/ruleBg.png?v=1) no-repeat;
+    text-align: center;
+}
+
+.c3 p em {
+    font-style: normal;
+    color: #ffe53a;
+}

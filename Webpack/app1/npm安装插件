@@ -1,0 +1,10 @@
+webpack-dev-server          dev运行环境server
+webpack-merge               webpack参数对象整合
+clean-webpack-plugin        清理dist
+html-webpack-plugin         生成html页面
+uglifyjs-webpack-plugin     压缩js
+style-loader                样式加载
+css-loader                  样式解析
+file-loader                 图片加载
+url-loader                  url-loader 功能类似于 file-loader，但是在文件大小（单位 byte）低于指定的限制时，可以返回一个 DataURL。
+html-withimg-loader         html引用图片打包
