@@ -1,0 +1,15 @@
+h1{
+    color:red;
+}
+
+.img2{
+    width: 204px;
+    height:230px;
+    background:url("../assets/imgs/home/pis2.jpg") no-repeat;
+}
+
+.img4{
+    width: 204px;
+    height:230px;
+    background:url("../imgs/home/pis4.jpg") no-repeat;
+}
