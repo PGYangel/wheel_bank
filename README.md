@@ -10,17 +10,19 @@
 #### 根目录介绍
 > 1、CodeSnippet（代码片段使用实例）
 
-> 2、Flex（flex布局） 
+> 2、D3JS（d3.js数据可视化库练习）
 
-> 3、Game（小游戏）
+> 3、Flex（flex布局）
 
-> 4、PC（PC端相关内容）
+> 4、Game（小游戏）
 
-> 5、Phone（移动端相关内容）
+> 5、PC（PC端相关内容）
 
-> 6、Tool（小工具）
+> 6、Phone（移动端相关内容）
 
-> 7、Webpack（webpack练习）
+> 7、Tool（小工具）
+
+> 8、Webpack（webpack练习）
 
 #### 注意
 
