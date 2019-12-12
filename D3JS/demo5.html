@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>比例尺的使用</title>
+    <script src="js/d3.js" type="text/javascript"></script>
+</head>
+<body>
+<svg width="960" height="600"></svg>
+<script type="text/javascript">
+/*
+* 我们可以这样理解d3.js中的比例尺——一种映射关系，从domain映射到range域
+* 因为我们在建立比例尺是常常会用到domain()和range()两个函数，当然不是绝对的
+* */
+/***********************************************************************************************************/
+    //线性比例尺
+    //domain域和range域都可以连续变化
+    var dataset = [1.2, 2.3, 0.9, 1.5, 3.3];
+    var min = d3.min(dataset);//得到最小值
+    var max = d3.max(dataset);//得到最大值
+    var scaleLinear=d3.scaleLinear()
+        .domain([min,max])
+        .range([0,300]);//也就是[0.9,3.3]映射[0,300]
+    document.write("scaleLinear(1)输出："+scaleLinear(1));
+    d3.select("body").append("br");//换行
+    document.write("scaleLinear(2)输出："+scaleLinear(2));
+    d3.select("body").append("br");
+    document.write("scaleLinear(3.3)输出："+scaleLinear(3.3));
+    d3.select("body").append("br");
+/***********************************************************************************************************/
+    //序数比例尺
+    //domain域和range域是离散的，也就是数组
+    var index =[0,1,2,3,4];
+    var color =['red','blue','yellow','black','green'];
+    var scaleOrdinal=d3.scaleOrdinal()
+        .domain(index)
+        .range(color);
+    document.write("scaleOrdinal(1)输出："+scaleOrdinal(1));
+    d3.select("body").append("br");
+    document.write("scaleOrdinal(2)输出："+scaleOrdinal(2));
+    d3.select("body").append("br");
+    document.write("scaleOrdinal(4)输出："+scaleOrdinal(4));
+    d3.select("body").append("br");
+    document.write("scaleOrdinal(5)输出："+scaleOrdinal(5));
+    d3.select("body").append("br");
+    document.write("scaleOrdinal(6)输出："+scaleOrdinal(6));
+/***********************************************************************************************************/
+    //使用比例尺画柱状图
+    var dataset2 = [ 250 , 90 , 170 , 130 , 210 ];  //数据（表示矩形的宽度）
+    //定义一个线性比例尺
+    var scaleLinear2 =d3.scaleLinear()
+        .domain([0,d3.max(dataset2)])
+        .range([0,400]);
+
+    var svg=d3.select('svg');
+    var g=svg.append('g');
+    var rectHeight=30;
+
+    g.selectAll('rect')
+        .data(dataset2)
+        .enter()
+        .append('rect')
+        .attr('x',0)
+        .attr('y',function(d,i){
+            return i*(rectHeight+10);
+        })
+        .attr('width',function(d){
+            return scaleLinear2(d)
+        })
+        .attr('height',rectHeight-5)
+        .attr('fill','blue');
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单图标制作</title>
+    <script src="js/d3.js" type="text/javascript"></script>
+</head>
+<body>
+<svg width="960" height="600"></svg>
+
+<script type="text/javascript">
+    var marge = {top:60,bottom:60,left:60,right:60};//设置边距
+    var dataset = [ 250 , 210 , 170 , 130 , 90 ];  //数据（表示矩形的宽度）
+    var svg=d3.select('svg');
+    var g=svg.append('g')//定义一个用来装整个图表的一个分组，并设置他的位置
+        .attr('transform','translate('+marge.top+','+marge.left+')');//其中.attr(xxxx)是用来设置属性的，而这里的“transform”是用来设置位置，
+
+    var rectHeight = 30;//设置每一个矩形的高度
+    g.selectAll("rect")
+        .data(dataset)
+        .enter()
+        .append('rect')//rect元素是在svg中绘制矩形的元素
+        .attr('x',0)//设置左上点的x
+        .attr('y',function(d,i){//设置左上点的y
+            return i*(rectHeight+10);
+        })
+        .attr('width',function(d){//设置宽
+            return d;
+        })
+        .attr('height',rectHeight-5)//设置长
+        .attr('fill','blue');//填充颜色
+
+</script>
+</body>
+</html>

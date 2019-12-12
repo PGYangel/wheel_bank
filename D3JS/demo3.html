@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>理解Update、Enter、Exit</title>
+    <script src="js/d3.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="d1">
+    <p>dog</p>
+    <p>cat</p>
+    <p>pig</p>
+</div>
+
+<div id="d2">
+    <p>dog</p>
+    <p>cat</p>
+    <p>pig</p>
+    <p>rat</p>
+</div>
+
+<script type="text/javascript">
+/*在使用data()时，例如现在我们有一个数组[3,6,9,12,15],我们可以将数组每一项与一个<p>绑定，
+但是，现在就有一个问题——数据集个数和选择集个数不匹配怎么办？这样就需要理解Update、Enter、Exit
+* */
+
+/*
+* update和enter：数组[1,2,3,4,5]绑定到三个<p>上。可以想象到，
+* 数组的最后两个元素没有可以绑定的元素，
+* 这时D3会建立两个空的元素与数组最后的两个数据相对于，
+* 那么这部分就称为Enter。
+* 而有元素与数据对应的部分就称为Update
+* */
+
+/*
+* exit：如果数组[3]绑定到三个<p>上，可以想象，
+* 最后两个<p>没有可绑定的数据，那么没有数据绑定的部分就称为Exit
+* */
+
+/*******************************************************************************************************/
+//1、Update与Enter的使用
+var dataset = [1,2,3,4,5];
+var d1=d3.select('#d1').selectAll('p');
+var update=d1.data(dataset);//绑定数据,并得到update部分
+var enter=update.enter();//得到enter部分
+//对于update的处理
+update.text(function(d,i){
+    return "update: "+d+",index: "+i;
+});
+//对于enter的处理
+//注意，这里需要先添加足够多的<p>，然后在添加文本
+var pEnter = enter.append("p")//添加足够多的<p>
+pEnter.text(function(d,i){
+    return "enter: "+d+",index: "+i;
+});
+/*******************************************************************************************************/
+//2、Update与Exit的使用
+var dataset2=[1,2];
+var d2=d3.select('#d2').selectAll('p');
+var update2=d2.data(dataset2);//绑定数据,并得到update部分
+var exit=update2.exit();
+//对于update的处理
+update2.text(function(d,i){
+    return "update: "+d+",index: "+i;
+});
+
+//对于exit部分的处理通常是删除exit.remove()，但在这里并没有这么做
+exit.text(function(d,i){
+    return "exit";
+});
+
+</script>
+</body>
+</html>

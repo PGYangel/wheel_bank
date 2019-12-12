@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>坐标轴</title>
+    <script src="js/d3.js" type="text/javascript"></script>
+</head>
+<body>
+<svg width="960" height="600"></svg>
+<script type="text/javascript">
+    /*
+    *D3中没有现成的坐标轴图形，需要我们自己用其他组件拼凑而成。D3中提供了坐标轴组件。
+    * */
+    /***********************************************************************************************************/
+    //call()函数
+    //定义一个坐标轴:
+
+    //先根据比例尺画柱状图
+    var dataset = [250, 90, 170, 130, 210];  //数据（表示矩形的宽度）
+    var scaleLinear = d3.scaleLinear()
+        .domain([0, d3.max(dataset)])
+        .range([0, 400]);
+
+    var svg = d3.select('svg');
+    var g = svg.append('g')
+        .attr("transform","translate(20,20)");
+    var rectHeight = 30;
+
+    g.selectAll('rect')
+        .data(dataset)
+        .enter()
+        .append('rect')
+        .attr('x', 0)
+        .attr('y', function (d, i) {
+            return i * (rectHeight + 10);
+        })
+        .attr('width', function (d) {
+            return scaleLinear(d)
+        })
+        .attr('height', rectHeight - 5)
+        .attr('fill', 'blue');
+
+    //为坐标轴定义一个线性比例尺
+    var xScale =d3.scaleLinear()
+        .domain([0,d3.max(dataset)])
+        .range([0,400]);
+    //定义一个坐标轴
+    var xAxis =d3.axisBottom(xScale)//定义一个axis，Bottom是朝下的
+        .ticks(7);//设置刻度数目
+    //生成坐标
+    g.append('g')
+        .attr("transform","translate(0,"+(dataset.length*(rectHeight+10))+")")
+        .call(xAxis);
+
+</script>
+</body>
+</html>

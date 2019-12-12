@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>入门程序hello world</title>
+    <script src="js/d3.js" type="text/javascript"></script>
+</head>
+<body>
+<p></p>
+<p><span>aaa</span>bbb</p>
+<script type="text/javascript">
+    //select和selectAll是选择器
+    var p=d3.select('body').selectAll('p');
+    //text修改文字，无论p标签里面有无内容都会修改相应内容，里面纯文本修改内容，不会生成标签
+    p.text('<b>hello world</b>');
+</script>
+</body>
+</html>

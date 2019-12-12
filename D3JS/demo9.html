@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>交互操作</title>
+    <script src="js/d3.js" type="text/javascript"></script>
+
+</head>
+<body>
+<svg width="960" height="600"></svg>
+<script type="text/javascript">
+    /*
+    * 需要掌握的知识点
+    * on("eventName",function)；该函数是添加一个监听事件，它的第一个参数是事件类型，第二个参数是响应事件的内容
+    * d3.select(this),选择当前元素
+    * dblclick：鼠标双击时触发
+    * */
+
+    var marge = {top: 60, bottom: 60, left: 60, right: 60}
+    var svg = d3.select("svg");//得到SVG画布
+    var width = svg.attr("width");//得到画布的宽
+    var height = svg.attr("height");//得到画布的长
+    var g = svg.append("g")
+        .attr("transform", "translate(" + marge.top + "," + marge.left + ")");
+
+    var dataset = [10, 20, 30, 23, 13, 40, 27, 35, 20];
+
+    var xScale = d3.scaleBand()
+        .domain(d3.range(dataset.length))
+        .rangeRound([0, width - marge.left - marge.right]);
+    var xAxis = d3.axisBottom(xScale);
+
+    var yScale = d3.scaleLinear()
+        .domain([0, d3.max(dataset)])
+        .range([height - marge.top - marge.bottom, 0]);
+    var yAxis = d3.axisLeft(yScale);
+
+    g.append("g")
+        .attr("transform", "translate(" + 0 + "," + (height - marge.top - marge.bottom) + ")")
+        .call(xAxis);
+    g.append("g")
+        .attr("transform", "translate(0,0)")
+        .call(yAxis);
+
+    //绘制矩形和文字
+    var gs = g.selectAll(".rect")
+        .data(dataset)
+        .enter()
+        .append("g");
+
+    //绘制矩形
+    var rectPadding = 20;//矩形之间的间隙
+    gs.append("rect")
+        .attr("x", function (d, i) {
+            return xScale(i) + rectPadding / 2;
+        })
+        .attr("y", function (d) {
+            return yScale(d);
+        })
+        .attr("width", function () {
+            return xScale.step() - rectPadding;
+        })
+        .attr("height", function (d) {
+            return height - marge.top - marge.bottom - yScale(d);
+        })
+        .attr("fill", "blue")
+        .on("mouseover", function () {
+            var rect = d3.select(this)
+                .transition()
+                .duration(1000)
+                .attr("fill", "yellow");
+        })
+        .on("mouseout", function () {
+            var rect = d3.select(this)
+                .transition()
+                .delay(500)
+                .duration(1000)
+                .attr("fill", "blue");
+        })
+    //绘制文字
+    gs.append("text")
+        .attr("x", function (d, i) {
+            return xScale(i) + rectPadding / 2;
+        })
+        .attr("y", function (d) {
+            return yScale(d);
+        })
+        .attr("dx", function () {
+            (xScale.step() - rectPadding) / 2;
+        })
+        .attr("dy", 20)
+        .attr('fill','#fff')
+        .text(function (d) {
+            return d;
+        })
+</script>
+</body>
+</html>

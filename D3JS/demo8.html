@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图表添加动画</title>
+    <script src="js/d3.js" type="text/javascript"></script>
+</head>
+<body>
+<svg width="960" height="600"></svg>
+<script type="text/javascript">
+    /*为了让图表动起来，我们还是需要以下新的知识点
+.attr(xxx) .transition() .attr(xxx)，transition()表示添加过渡，也就是从前一个属性过渡到后一个属性
+.duration(2000)，表示过渡时间持续2秒
+.delay(500)，表示延迟0.4秒后再进行过渡
+.ease(d3.easeElasticInOut)表示过渡方式，注意这里和v3版本的区别
+    * */
+    //得到svg画布
+    var marge ={top:60,bottom:60,left:60,right:60};
+    var svg=d3.select('svg');
+    var sWidth=svg.attr('width');//获得画布宽度
+    var sHeight=svg.attr('height');//获得画布高度
+    var g=svg.append('g')
+        .attr('transform','translate('+marge.top+','+marge.left+')');
+
+    //数据集
+    var dataset=[10,20,30,12,43,50,78,20,55,65,5,80];
+
+    //分别在x方向和y方向绘制坐标
+    var xScale=d3.scaleBand()
+        .domain(d3.range(dataset.length))
+        .rangeRound([0,sWidth-marge.left-marge.right]);
+    var xAxis=d3.axisBottom(xScale);
+
+    var yScale=d3.scaleLinear()
+        .domain([0,d3.max(dataset)])
+        .range([sHeight-marge.top-marge.bottom,0]);
+    var yAxis=d3.axisLeft(yScale);
+
+    g.append('g')
+        .attr("transform","translate(0,"+(sHeight-120)+")")
+        .call(xAxis);
+    g.append('g')
+        .attr("transform","translate(0,0)")
+        .call(yAxis);
+    /*
+    *  -这里出现了d3.scaleBand()，这是一个坐标轴
+    *  -d3.range(dataset.length)，前面说过，这里返回的是一个等差数列，
+    *  dataset.length=9，所以返回的是0到8的等差数列，
+    *  其实d3.range()这个函数中可以有三个参数！
+    */
+
+    //为每个矩形和对应的文字创建一个分组
+    var gs=g.selectAll('.rect')
+        .data(dataset)
+        .enter()
+        .append('g');
+
+    //绘制矩形
+    var rectPadding=20;//矩形之间的距离
+    gs.append('rect')
+        .attr('x',function(d,i){
+            return xScale(i)+rectPadding/2;
+        })
+        .attr('y',function(d){
+            var min = yScale.domain()[0];
+            return yScale(min);//可以得知，这里返回的是最大值
+        })
+        .attr('width',function(){
+            return xScale.step()-rectPadding;
+        })
+        .attr('height',function(d){
+            return 0
+        })
+        .attr('fill','blue')
+        .transition()//添加过渡
+        .duration(1000)//持续时间
+        .delay(function(d,i){//延迟
+            return i*400
+        })
+        // .ease(d3.easeElasticInOut)//这里注释去掉，会有不同效果
+        .attr('y',function(d){//回到最终状态
+            return yScale(d)
+        })
+        .attr('height',function(d){//回到最终状态
+            return sHeight-marge.top-marge.bottom-yScale(d)
+        });
+
+    //绘制文字
+    gs.append('text')
+        .attr('x',function(d,i){
+            return xScale(i)+rectPadding/2-10;
+        })
+        .attr('y',function(d){
+            var min = yScale.domain()[0];
+            return yScale(min);
+        })
+        .attr('dx',function(){
+            return (xScale.step()-rectPadding)/2;
+        })
+        .attr('dy',20)
+        .attr('fill','#fff')
+        .text(function(d){
+            return d;
+        })
+        .transition()
+        .duration(1000)
+        .delay(function(d,i){
+            return i*400;
+        })
+        //.ease(d3.easeElasticInOut)
+        .attr("y",function(d){
+            return yScale(d);
+        });
+
+</script>
+</body>
+</html>

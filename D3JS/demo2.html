@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择元素和绑定数据</title>
+    <script src="js/d3.js" type="text/javascript"></script>
+</head>
+<body>
+<p id="myP" class="myP"></p>
+<p class="myP"></p>
+
+<div id="datum">
+    <p>dog</p>
+    <p>cat</p>
+    <p>pig</p>
+</div>
+
+<div id="data">
+    <p>dog</p>
+    <p>cat</p>
+    <p>pig</p>
+</div>
+
+<script type="text/javascript">
+    // 1、选择元素
+    // d3.select()
+    // d3.selectAll()
+    // 传参可以跟jq一样使用id和类传参搜索
+    // 常见用法:
+    var body = d3.select("body");//选择文档中的body元素
+    var svg = body.select("svg");//选择body中的svg元素
+    var p = body.selectAll("p");//选择body中所有的p元素
+    var p1 = body.select("p");//选择body中第一个p元素
+    var myP = body.select("#myP");//选择id为myP的第一个元素
+    var myP2 = body.selectAll(".myP");//选择class为myP的元素
+    myP.text('abc');
+    myP2.text('123');
+/****************************************************************************************************************/
+    // 2、绑定数据
+    // D3.js中绑定数据的两个函数:
+    // data()：将一个数组绑定到选择集上，数组各项和选择集各元素绑定，也就是一一对应的关系
+    // datum()：将一个数据绑定到所有选择集上
+
+    //datum()的使用：
+    var str='is an animal';
+    var dp1=d3.select('#datum').selectAll('p');
+    dp1.datum(str).text(function(d,i){
+        return '第'+i+'个元素'+d;
+    });
+    /*
+    * 本段代码的作用是将str这个字符串绑定代三个<p>选择集上，
+    * 然后通过一个无名函数function(d,i)，访问到绑定的元素。
+    * （function(d,i)，这样的函数后面会经常出现，其中d代表数据，
+    * 也就是与某元素绑定的数据，i代表索引，代表数据的索引，从0开始）
+    * */
+
+    //data()的使用：
+    var dataset=["data1","data2","data3"];
+    var dp2=d3.select('#data').selectAll('p');
+    dp2.data(dataset).text(function(d,i){
+        return '第'+i+'个元素'+d;
+    });
+    //其实和datum()大体一样，只不过现在是数组元素和选择集有着对应关系
+
+
+</script>
+</body>
+</html>
