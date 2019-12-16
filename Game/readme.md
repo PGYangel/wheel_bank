@@ -1,3 +1,5 @@
+> hitHamster（打地鼠游戏）
+
 > huanzhuang（换装游戏）
 
 > LuckDraw（抽奖）
