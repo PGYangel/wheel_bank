@@ -10,78 +10,117 @@
         .hammer1{cursor:url(images/hammer1.png?v=1),pointer;}
         .hammer2{cursor:url(images/hammer2.png?v=1),pointer;}
         .hammer3{cursor:url(images/hammer3.png?v=1),pointer;}
-        .gameBox .unit{position:absolute;width:110px;height:106px;}
-        .gameBox .unit .mouse{display:none;background-repeat:no-repeat;width: 100%;height:100%;position:absolute;top:0;left:0;z-index: 1;}
-        .gameBox .unit .yes{display:none;background:url(images/yes.png?v=1) no-repeat;width: 100%;height:100%;position:absolute;top:0;left:0;z-index: 5;}
-        .gameBox .unit .no{display:none;background:url(images/no.png?v=1) no-repeat;width: 100%;height:100%;position:absolute;top:0;left:0;z-index: 5;}
+        .gameBox .beginBg{display:none;z-index: 10;position:absolute;width: 100%;height:100%;line-height:600px;top:0;left:0;background:rgba(0,0,0,0.7);color:#fff;font-size:200px;text-align: center;}
+        .gameBox .tipsBg{display:none;z-index: 10;position:absolute;width: 100%;height:100%;line-height:600px;top:0;left:0;background:rgba(0,0,0,0.7);color:#fff;font-size:30px;text-align: center;}
+        .gameBox .endBg{display:none;z-index: 10;position:absolute;width: 100%;height:100%;line-height:600px;top:0;left:0;background:rgba(0,0,0,0.7);color:#fff;font-size:30px;text-align: center;}
+        .gameBox .turnsTime{display:none;font-size:18px;color:red;font-weight:bold;height:30px;line-height:30px;text-align: center;padding-top:10px;}
+        .gameBox .unit{position:absolute;width:110px;height:140px;overflow:hidden;z-index: 2;}
+        .gameBox .unit .mouse{display:none;background-repeat:no-repeat;width:110px;height:106px;position:absolute;bottom:0;left:0;z-index: 1;}
+        .gameBox .unit .yes{display:none;background:url(images/yes.png?v=1) no-repeat;width:110px;height:106px;position:absolute;bottom:0;left:0;z-index: 5;}
+        .gameBox .unit .no{display:none;background:url(images/no.png?v=1) no-repeat;width:110px;height:106px;position:absolute;bottom:0;left:0;z-index: 5;}
         .gameBox .unit .mouse1{background-image: url(images/mouse1.png?v=1);display:block;}
         .gameBox .unit .mouse2{background-image: url(images/mouse2.png?v=1);display:block;}
         .gameBox .unit .mouse3{background-image: url(images/mouse3.png?v=1);display:block;}
-        .gameBox .m1{top:45px;left:120px;}
-        .gameBox .m2{top:45px;left:255px;}
-        .gameBox .m3{top:45px;left:396px;}
-        .gameBox .m4{top:170px;left:120px;}
-        .gameBox .m5{top:170px;left:255px;}
-        .gameBox .m6{top:170px;left:396px;}
-        .gameBox .m7{top:305px;left:120px;}
-        .gameBox .m8{top:305px;left:255px;}
-        .gameBox .m9{top:305px;left:396px;}
+        .gameBox .m1{top:20px;left:120px;}
+        .gameBox .m2{top:20px;left:255px;}
+        .gameBox .m3{top:20px;left:396px;}
+        .gameBox .m4{top:150px;left:120px;}
+        .gameBox .m5{top:150px;left:255px;}
+        .gameBox .m6{top:150px;left:396px;}
+        .gameBox .m7{top:280px;left:120px;}
+        .gameBox .m8{top:280px;left:255px;}
+        .gameBox .m9{top:280px;left:396px;}
 
         .btns{text-align: center;padding-top:20px;}
         .btns input{width: 175px;height:35px;}
         .txts{text-align: center;padding-top:20px;line-height:30px;font-size:14px;}
+
+        .showAn1{animation: showAn1 .2s;-moz-animation: showAn1 .2s;-webkit-animation: showAn1 .2s;-o-animation: showAn1 .2s;}
+        @keyframes showAn1
+        {
+            0%   {transform: translateY(106px);-ms-transform: translateY(106px);-webkit-transform: translateY(106px);-o-transform: translateY(106px);-moz-transform: translateY(106px);}
+            100% {transform: translateY(0);-ms-transform: translateY(0);-webkit-transform: translateY(0);-o-transform: translateY(0);-moz-transform: translateY(0);}
+        }
+        @-moz-keyframes showAn1 /* Firefox */
+        {
+            0%   {transform: translateY(106px);-ms-transform: translateY(106px);-webkit-transform: translateY(106px);-o-transform: translateY(106px);-moz-transform: translateY(106px);}
+            100% {transform: translateY(0);-ms-transform: translateY(0);-webkit-transform: translateY(0);-o-transform: translateY(0);-moz-transform: translateY(0);}
+        }
+        @-webkit-keyframes showAn1 /* Safari 和 Chrome */
+        {
+            0%   {transform: translateY(106px);-ms-transform: translateY(106px);-webkit-transform: translateY(106px);-o-transform: translateY(106px);-moz-transform: translateY(106px);}
+            100% {transform: translateY(0);-ms-transform: translateY(0);-webkit-transform: translateY(0);-o-transform: translateY(0);-moz-transform: translateY(0);}
+        }
+        @-o-keyframes showAn1 /* Opera */
+        {
+            0%   {transform: translateY(106px);-ms-transform: translateY(106px);-webkit-transform: translateY(106px);-o-transform: translateY(106px);-moz-transform: translateY(106px);}
+            100% {transform: translateY(0);-ms-transform: translateY(0);-webkit-transform: translateY(0);-o-transform: translateY(0);-moz-transform: translateY(0);}
+        }
+
+        .fixd{position:absolute;top:0;width: 250px;left:50%;margin-left:310px;border:1px solid #000;text-align: center;font-size:14px;line-height:30px;}
     </style>
 </head>
 <body>
 <div id="gameBox" class="gameBox hammer1">
+    <div class="beginBg" id="downTime">3</div>
+    <div class="tipsBg" id="tips">准备第<span class="nowTurns">0</span>轮</div>
+    <div class="endBg">游戏结束</div>
+    <div class="turnsTime">答题倒计时：<span>0</span></div>
     <div class="unit m1" data-value="0">
-        <div class="mouse"></div>
+        <div class="mouse showAn1"></div>
         <div class="yes"></div>
         <div class="no"></div>
     </div>
     <div class="unit m2" data-value="1">
-        <div class="mouse"></div>
+        <div class="mouse showAn1"></div>
         <div class="yes"></div>
         <div class="no"></div>
     </div>
     <div class="unit m3" data-value="2">
-        <div class="mouse"></div>
+        <div class="mouse showAn1"></div>
         <div class="yes"></div>
         <div class="no"></div>
     </div>
     <div class="unit m4" data-value="3">
-        <div class="mouse"></div>
+        <div class="mouse showAn1"></div>
         <div class="yes"></div>
         <div class="no"></div>
     </div>
     <div class="unit m5" data-value="4">
-        <div class="mouse"></div>
+        <div class="mouse showAn1"></div>
         <div class="yes"></div>
         <div class="no"></div>
     </div>
     <div class="unit m6" data-value="5">
-        <div class="mouse"></div>
+        <div class="mouse showAn1"></div>
         <div class="yes"></div>
         <div class="no"></div>
     </div>
     <div class="unit m7" data-value="6">
-        <div class="mouse"></div>
+        <div class="mouse showAn1"></div>
         <div class="yes"></div>
         <div class="no"></div>
     </div>
     <div class="unit m8" data-value="7">
-        <div class="mouse"></div>
+        <div class="mouse showAn1"></div>
         <div class="yes"></div>
         <div class="no"></div>
     </div>
     <div class="unit m9" data-value="8">
-        <div class="mouse"></div>
+        <div class="mouse showAn1"></div>
         <div class="yes"></div>
         <div class="no"></div>
     </div>
 </div>
 <div class="btns">
-    <input type="button" value="开始游戏" id="beginBtn"/>
+    <input type="button" value="普通模式" id="beginBtn1"/>
+    <input type="button" value="疯狂模式" id="beginBtn2"/>
+    <input type="button" value="记忆模式" id="beginBtn3"/>
+</div>
+<div class="fixd">
+    <p>记忆模式数据：</p>
+    <p>当前轮次：<span class="nowTurns">0</span></p>
+    <p>过关轮次：<span id="overTurns">0</span></p>
 </div>
 <div class="txts">
     <p>开始计时：<div class="timeBox"><span id="ss">0</span>秒<span id="ms">0</span>毫秒</div></p>
@@ -97,13 +136,78 @@
 <script type="text/javascript">
     var hit=new HitHamster(cb);
 
-    $('#beginBtn').click(function(){
+    $('#beginBtn1').click(function(){
+        hit.type=2;
+        hit.beginGame();
+    });
+    $('#beginBtn2').click(function(){
+        hit.type=1;
+        hit.beginGame();
+    });
+    $('#beginBtn3').click(function(){
+        hit.type=3;
         hit.beginGame();
     });
     //完成后的回调函数
     function cb(){
-        alert('游戏结束！');
+        console.log(hit.process);
+        console.log(hit.str);
+        setTimeout(function(){
+            alert('游戏结束！');
+            $('.btns').show();
+        },500);
     }
+
+
+    //后端需要做的事情
+    var turns=0;//当前轮次
+    var rotNum=3;//第一轮初始值
+    //每轮调用接口API方法
+    function apiFn(judge){
+        if(judge){
+            //执行请求时先执行ready
+            hit.ready();
+            //请求到随机对象后执行go方法
+            var obj=rdMouseArr();
+            turns++;
+            //setTimeout只是模拟请求时间
+            setTimeout(function(){
+                hit.go(obj);
+            },1000);
+        }else {
+            alert('游戏结束');
+        }
+    }
+    //生成老鼠随机顺序
+    function rdMouseArr(){
+        var result={
+            turns:turns,
+            rotNum:rotNum,
+            mouseArr:[]
+        };
+        for(var i=0;i<rotNum;i++){
+            var rdnum =Math.floor(Math.random()*9);
+            var rdColor =Math.floor(Math.random()*3)+1;
+            result.mouseArr.push({num:rdnum,color:rdColor});
+        }
+        rotNum++;
+        return result;
+    }
+    //游戏失败
+    function loseFn(){
+        turns=0;
+        rotNum=3
+    }
+
+    function zuobi(){
+        console.log(hit.nowTurn.mouseArr);
+        for(var i=0;i<hit.nowTurn.mouseArr.length;i++){
+            hit.nowTurn.mouseArr.splice(0,1);
+        }
+        console.log(hit.nowTurn.mouseArr);
+        console.log(hit.nowTurn.mouseArr[0]);
+    }
+
 </script>
 </body>
 </html>
