@@ -46,6 +46,7 @@ function HitHamster(cb){
         $('.gameBox .yes').hide();
         $('.gameBox .no').hide();
         $('.gameBox .endBg').hide();
+        $('#overTurns').text(0);
         changeHammer();
     };
     hitObj.init();
@@ -93,7 +94,6 @@ function HitHamster(cb){
     hitObj.go=function(obj){
         hitObj.nowTurn=JSON.parse(JSON.stringify(obj));
         hitObj.downTime=3;
-
         $('.gameBox .turnsTime').show();
         $('.gameBox .turnsTime span').text(hitObj.nowTurn.rotNum+5);
         $('#gameBox #tips').hide();
@@ -188,6 +188,8 @@ function HitHamster(cb){
         $('.gameBox .yes').hide();
         $('.gameBox .no').hide();
         var num=$(that).attr('data-value');
+        var now=new Date();
+        hitObj.process.push({time:now});
         hitObj.allowHit=false;
         (function(num){
             setTimeout(function(){
@@ -213,7 +215,7 @@ function HitHamster(cb){
                     $('.gameBox .endBg').show();
                     $('.gameBox .m'+(mouse_Arr[0].num+1)+' .mouse').show().removeClass('mouse1 mouse2 mouse3').addClass('mouse'+mouse_Arr[0].color);
                     num=null;
-                    loseFn();
+                    hitObj.callFn();
                 }
             },100);
         })(num)
@@ -302,6 +304,7 @@ function HitHamster(cb){
             $('#num').text(hitObj.nowNum);
             if(hitObj.nowNum>=hitObj.sumNum){
                 clearInterval(hitObj.setTime);
+                $('.gameBox .endBg').show();
                 hitObj.isGame=false;
                 hitObj.callFn();
             }
@@ -313,6 +316,7 @@ function HitHamster(cb){
             $('#num').text(hitObj.nowNum);
             if(hitObj.nowNum>=hitObj.sumNum){
                 clearInterval(hitObj.setTime);
+                $('.gameBox .endBg').show();
                 hitObj.isGame=false;
                 hitObj.callFn();
             }
