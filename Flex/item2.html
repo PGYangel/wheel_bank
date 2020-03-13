@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex-grow</title>
+    <style>
+        /*
+        flex-grow: <number>;
+        flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
+        如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。
+        如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
+        */
+        .box{
+            display: flex;
+            width: 500px;
+            border:1px solid #000;
+        }
+        .unit{
+            width: 80px;
+            height:50px;
+            background:orange;
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="unit">1</div>
+    <div class="unit" style="flex-grow:2">2</div>
+    <div class="unit" style="flex-grow:1">3</div>
+</div>
+</body>
+</html>

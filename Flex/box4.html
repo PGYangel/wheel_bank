@@ -13,9 +13,83 @@
         space-between：两端对齐，项目之间的间隔都相等。
         space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
         */
+        .unit{
+            width: 80px;
+            height:50px;
+            background:orange;
+            margin:10px;
+        }
+        .box{
+            display:flex;
+            justify-content:flex-end;
+            width: 500px;
+            border:1px solid #000;
+            margin:5px;
+        }
+        .box2{
+            display:flex;
+            justify-content:center;
+            width: 500px;
+            border:1px solid #000;
+            margin:5px;
+        }
+        .box3{
+            display:flex;
+            justify-content:space-between;
+            width: 500px;
+            border:1px solid #000;
+            margin:5px;
+        }
+        .box4{
+             display:flex;
+             justify-content:space-around;
+             width: 500px;
+             border:1px solid #000;
+             margin:5px;
+         }
+        .box5{
+            display:flex;
+            flex-wrap:wrap-reverse;
+            justify-content:space-between;
+            width: 500px;
+            height:200px;
+            border:1px solid #000;
+            margin:5px;
+        }
     </style>
 </head>
 <body>
+<div class="box">
+    <div class="unit">1</div>
+    <div class="unit">2</div>
+    <div class="unit">3</div>
+</div>
+<div class="box2">
+    <div class="unit">1</div>
+    <div class="unit">2</div>
+    <div class="unit">3</div>
+</div>
+<div class="box3">
+    <div class="unit">1</div>
+    <div class="unit">2</div>
+    <div class="unit">3</div>
+</div>
+<div class="box4">
+    <div class="unit">1</div>
+    <div class="unit">2</div>
+    <div class="unit">3</div>
+</div>
 
+<div class="box5">
+    <div class="unit">1</div>
+    <div class="unit">2</div>
+    <div class="unit">3</div>
+    <div class="unit">4</div>
+    <div class="unit">5</div>
+    <div class="unit">6</div>
+    <div class="unit">7</div>
+    <div class="unit">8</div>
+    <div class="unit">9</div>
+</div>
 </body>
 </html>

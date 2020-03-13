@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>align-content</title>
+    <style>
+        /*
+        align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+        align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
+        flex-start：与交叉轴的起点对齐。
+        flex-end：与交叉轴的终点对齐。
+        center：与交叉轴的中点对齐。
+        space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。
+        space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+        stretch（默认值）：轴线占满整个交叉轴。
+        */
+        .unit{
+            width: 80px;
+            height:50px;
+            background:orange;
+            margin:10px;
+        }
+        .box{
+            display:flex;
+            flex-wrap:wrap;
+            align-content:center;
+            width: 500px;
+            height:300px;
+            border:1px solid #000;
+            margin:5px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="unit" style="height:80px;font-size:30px;">1</div>
+    <div class="unit">2</div>
+    <div class="unit" style="height:120px;">3</div>
+    <div class="unit">4</div>
+    <div class="unit" style="height:80px;">5</div>
+    <div class="unit">6</div>
+    <div class="unit" style="height:80px;">7</div>
+    <div class="unit">8</div>
+</div>
+</body>
+</html>

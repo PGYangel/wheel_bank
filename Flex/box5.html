@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>align-items</title>
+    <style type="text/css">
+        /*
+        align-items: flex-start | flex-end | center | baseline | stretch;
+        align-items属性定义项目在交叉轴上如何对齐。
+        flex-start：交叉轴的起点对齐。
+        flex-end：交叉轴的终点对齐。
+        center：交叉轴的中点对齐。
+        baseline: 项目的第一行文字的基线对齐。
+        stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+        */
+        .unit{
+            width: 80px;
+            height:50px;
+            background:orange;
+            margin:10px;
+        }
+        .box{
+            display:flex;
+            flex-wrap:wrap;
+            align-items:baseline;
+            width: 500px;
+            height:300px;
+            border:1px solid #000;
+            margin:5px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="unit" style="height:80px;font-size:30px;">1</div>
+    <div class="unit">2</div>
+    <div class="unit" style="height:120px;">3</div>
+    <div class="unit">4</div>
+    <div class="unit" style="height:80px;">5</div>
+    <div class="unit">6</div>
+    <div class="unit" style="height:80px;">7</div>
+    <div class="unit">8</div>
+</div>
+</body>
+</html>

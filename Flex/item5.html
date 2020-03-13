@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex</title>
+    <style>
+        /*
+        flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+        flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
+        该属性有两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。
+        建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。
+        */
+        .unit{
+            width: 80px;
+            height:50px;
+            background:orange;
+            margin:10px;
+        }
+        .box{
+            display: flex;
+            flex-flow:row wrap;
+            border:1px solid #000;
+            margin:10px;
+            width: 500px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="unit" style="flex:auto;">1</div>
+    <div class="unit" style="flex:auto;">2</div>
+    <div class="unit">3</div>
+</div>
+</body>
+</html>
