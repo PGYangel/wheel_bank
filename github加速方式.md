@@ -1,4 +1,4 @@
-1、打开网站：https://github.com.ipaddress.com/
+1、打开网站：github.com.ipaddress.com
 
 2、复制IP：如140.82.112.4
 
