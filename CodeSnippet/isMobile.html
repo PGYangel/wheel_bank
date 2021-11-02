@@ -5,7 +5,7 @@
     <title>js判断设备是否为移动设备</title>
     <script type="text/javascript">
         var ua = navigator.userAgent.toLocaleLowerCase();
-        var isMobile = /iPhone|iPod|android|Windows Phone/ig.test(ua);
+        var isMobile = /iPhone|iPod|android|Windows Phone|mobile|iPad/ig.test(ua);
         //如果机器不是移动设备则跳转页面至XXX
         //!isMobile&&(window.location.href = "");
     </script>
