@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Components</title>
+</head>
+
+<body>
+    <div id="app">
+        <user-card name="User Name">
+            <p slot="slot2">abcsasf</p>
+            <p slot="slot1">123123123</p>
+        </user-card>
+
+        <button onclick="btClick()">点击</button>
+    </div>
+    <!-- <template id="userCardTemplate">
+        <style>
+            /* :host设置模板根节点样式 */
+            :host {
+                background: #ccc;
+                display: block;
+                width: 450px;
+                min-height: 180px;
+            }
+
+            .image {
+                float: left;
+            }
+
+            .right {
+                float: left;
+                margin-left: 10px;
+            }
+
+            .button {
+                margin-top: 5px;
+                padding: 5px 10px;
+                border: 1px solid #000;
+                border-radius: 3px;
+            }
+        </style>
+        <img src="img/img.jpg" alt="" class="image">
+        <div class="right">
+            <p class="name"></p>
+            <slot name="slot1"></slot>
+            <button class="button" id="button">点击按钮</button>
+            <slot name="slot2"></slot>
+        </div>
+    </template> -->
+    <script src="js/usercard.js"></script>
+</body>
+
+</html>
