@@ -24,6 +24,10 @@
 
 > 8、Webpack（webpack练习）
 
+> 9、WebComponent（WebComponent运用示例）
+
+> 10、DesignMode（设计模式）
+
 #### 注意
 
 **库中的图片是网络下载的，仅供库中内容学习，请勿使用到商业用途**
