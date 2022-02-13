@@ -1,15 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>工厂模式</title>
-</head>
+  </head>
 
-<body>
+  <body>
+    <p>工厂模式：将new操作单独封装，遇到new时，就要考虑是否该使用工厂模式</p>
+    <p>现实示例：去汉堡店买汉堡，只通过前台进行购买，不自己组合原材料。</p>
+    <p>
+      <img src="uml1.png" alt="" />
+    </p>
+    <p>
+      <img src="uml2.png" alt="" />
+    </p>
+    <p>
+      工厂模式应用场景：<br />
+      JQuery ：$('div')<br />
+      React.createElement <br />
+      vue 异步组件
+    </p>
 
-</body>
+    <script type="text/javascript">
+      class Product {
+        constructor(name) {
+          this.name = name;
+        }
+        init() {
+          console.log("init");
+        }
+        fn1() {
+          console.log("fn1");
+        }
+        fn2() {
+          console.log("fn2");
+        }
+      }
 
+      // Creator是个工厂
+      class Creator {
+        create(name) {
+          return new Product(name);
+        }
+      }
+
+      let creator = new Creator();
+      let p = creator.create("p1");
+      p.init();
+      p.fn1();
+    </script>
+  </body>
 </html>

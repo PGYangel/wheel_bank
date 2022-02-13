@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>单例模式</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <p>单例模式：系统中唯一使用，一个类只有一个实例</p>
+    <p>现实示例：登录框、购物车</p>
+    <p>
+      <img src="uml1.png" alt="" />
+    </p>
+    <p>
+      使用场景：<br />
+      JQuery中只有一个$<br />
+      vuex和redux中的store
+    </p>
+
+    <script>
+      class SingleObject {
+        login() {
+          console.log("login");
+        }
+      }
+
+      SingleObject.getInstance = (function () {
+        let instance;
+        return function () {
+          if (!instance) {
+            instance = new SingleObject();
+          }
+          return instance;
+        };
+      })();
+      // 单例模式使用只能用静态函数调用实例，不能用new SingleObject。
+      // js由于没有私有private关键字进行约束，所以只能靠文档进行规范不能使用new。
+      let obj1 = SingleObject.getInstance();
+      obj1.login();
+      let obj2 = SingleObject.getInstance();
+      obj2.login();
+      // 单例模式只有一个实例，所以obj1一定等于obj2
+      console.log("obj1===obj2", obj1 === obj2); // true
+
+      let obj3 = new SingleObject();
+      console.log("obj1===obj3", obj1 === obj3); // false
+    </script>
+  </body>
 </html>
