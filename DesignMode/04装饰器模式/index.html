@@ -1,12 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>装饰器模式</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <p>为对象添加新功能，不改变其原有的结构和功能</p>
+    <p>
+      <img src="uml1.png" alt="" />
+    </p>
+    <p>
+      <img src="uml2.png" alt="" />
+    </p>
+    <p>
+      使用场景：<br />
+      ES7 装饰器<br />
+      core-decorators<br />
+      mixins
+    </p>
+    <script>
+      class Circle {
+        draw() {
+          console.log("画一个圆");
+        }
+      }
+      class Decorator {
+        constructor(circle) {
+          this.circle = circle;
+        }
+        draw() {
+          this.circle.draw();
+          this.setRenderBorder();
+        }
+        setRenderBorder() {
+          console.log("画一个边框");
+        }
+      }
+
+      let c = new Circle();
+      c.draw();
+
+      let d = new Decorator(c);
+      d.draw();
+    </script>
+    <script>
+      // ES7的装饰器使用，需要用bable进行解释。
+      //   @testDec
+      //   class Demo {}
+      //   function testDec(target) {
+      //     target.isDec = true;
+      //   }
+      //   console.log(Demo.isDec);
+
+      // 装饰器带参数
+      //   @testDec(true)
+      //   class Demo {}
+      //   function testDec(parma) {
+      //     return function (target) {
+      //       target.isDec = parma;
+      //     };
+      //   }
+      //   console.log(Demo.isDec);
+    </script>
+  </body>
 </html>
