@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>代理模式</title>
-</head>
-<body>
+  </head>
+  <body>
     <p>使用者无权访问目标对象，中间加代理，通过代理做授权和控制</p>
+    <p>
+      <img src="uml1.png" alt="" />
+    </p>
+    <p>
+      <img src="uml2.png" alt="" />
+    </p>
+    <p>
+      使用场景：<br />
+      网页事件代理<br />
+      JQuery $.proxy<br />
+      ES6 Proxy
+    </p>
     <script>
+      class ReadImg {
+        constructor(fileName) {
+          this.fileName = fileName;
+          this.loadFromDisk(); // 模拟加载
+        }
+        display() {
+          console.log("display " + this.fileName);
+        }
+        loadFromDisk() {
+          console.log("loading " + this.fileName);
+        }
+      }
+      class ProxyImg {
+        constructor(fileName) {
+          this.readImg = new ReadImg(fileName);
+        }
+        display() {
+          this.readImg.display();
+        }
+      }
 
+      let proxyImg1 = new ProxyImg("1.png");
+      proxyImg1.display();
     </script>
-</body>
+  </body>
 </html>
