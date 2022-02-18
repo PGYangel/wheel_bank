@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>外观模式</title>
-  </head>
-  <body>
-    <p>为子系统中的一组接口提供了一个高层接口， 使用者使用这个高层接口</p>
-    <p>不复合单一职责原则和开放封闭原则，因此谨慎使用，不可滥用</p>
-    <p>
-      <img src="img.png" alt="" />
-    </p>
-    <p>
-      <img src="uml1.png" alt="" />
-    </p>
-    <script>
-      function bindEvent(elem, type, selector, fn) {
-        if (fn == null) {
-          fn = selector;
-          selector = null;
-        }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>外观模式</title>
+</head>
+
+<body>
+  <p>为子系统中的一组接口提供了一个高层接口， 使用者使用这个高层接口</p>
+  <p>不复合单一职责原则和开放封闭原则，因此谨慎使用，不可滥用</p>
+  <p>
+    <img src="img.png" alt="" />
+  </p>
+  <p>
+    <img src="uml1.png" alt="" />
+  </p>
+  <p>
+    通常在以下情况下可以考虑使用外观模式。<br>
+    对分层结构系统构建时，使用外观模式定义子系统中每层的入口点可以简化子系统之间的依赖关系。<br>
+    当一个复杂系统的子系统很多时，外观模式可以为系统设计一个简单的接口供外界访问。<br>
+    当客户端与多个子系统之间存在很大的联系时，引入外观模式可将它们分离，从而提高子系统的独立性和可移植性。
+  </p>
+  <script>
+    function bindEvent(elem, type, selector, fn) {
+      if (fn == null) {
+        fn = selector;
+        selector = null;
       }
-      // 调用可传三个参数也可传四个参数
-      bindEvent(elem, "click", "#div1", fn);
-      bindEvent(elem, "click", fn);
-    </script>
-  </body>
+    }
+    // 调用可传三个参数也可传四个参数
+    bindEvent(elem, "click", "#div1", fn);
+    bindEvent(elem, "click", fn);
+  </script>
+</body>
+
 </html>
