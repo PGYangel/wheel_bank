@@ -14,8 +14,59 @@
         每次状态变化都会触发一个逻辑<br>
         不能总是用if...else来控制
     </p>
+    <p>
+        使用场景：
+        有限状态机<br>
+        写一个简单的Promise
+    </p>
     <script>
+        // 状态
+        class State {
+            constructor(color) {
+                this.color = color
+            }
+            handle(context) {
+                console.log(`更改信号的颜色 ${this.color}`)
+                context.setState(this)
+            }
+        }
+        // 主体
+        class Context {
+            constructor() {
+                this.state = null
+            }
+            getState() {
+                return this.state
+            }
+            setState(state) {
+                this.state = state
+            }
+        }
 
+        let context = new Context()
+
+        let green = new State('green')
+        let red = new State('red')
+        let yellow = new State('yellow')
+
+        green.handle(context)
+        console.log(context.getState())
+        red.handle(context)
+        console.log(context.getState())
+        yellow.handle(context)
+        console.log(context.getState())
+    </script>
+    <script>
+        // 写一个简单的Promise，只关注Promise的状态变化，其他功能暂时先忽略
+        // Promise就是有限状态机，有三种状态：pending、fullfilled、rejected
+        /* 
+        要实现的内容：
+        1、Promise是个Class
+        2、Promise初始化的时候要传入一个函数
+        3、传入的函数需要两个参数，resolve和reject
+        4、实现.then的方法,.then方法有两个参数，触发resolve执行第一个参数方法，触发reject执行第二个参数方法
+        5、状态不可逆向变化
+        */
     </script>
 </body>
 
