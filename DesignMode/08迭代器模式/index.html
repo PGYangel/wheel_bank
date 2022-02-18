@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器模式</title>
+</head>
+
+<body>
+    <p>
+        顺序访问一个集合，<br>
+        使用者无需知道集合的内部结构（封装），也就是可以通过迭代器遍历任何类型的集合：数组，类数组等
+    </p>
+    <p>
+        使用场景：<br>
+        Jquery each<br>
+        ES6 Iterator
+    </p>
+    <p>
+        ES6 Iterator为何存在？<br>
+        ES6语法中，有序集合的数据类型已经有很多，如下：<br>
+        Array\Map\Set\String\TypedArray\arguments\NodeList<br>
+        需要有一个统一的遍历接口来遍历所有数据类型<br>
+        （注意：object不是有序集合，可以用Map代替）
+    </p>
+    <p>
+        ES6 Iterator是什么？<br>
+        以上数据类型，都有[Symbol.iterator]属性<br>
+        属性值是函数，执行函数返回一个迭代器<br>
+        这个迭代器就有next方法可顺序迭代子元素<br>
+        可运行Array.prototype[Symbol.iterator]来测试
+    </p>
+    <script>
+        class Iterator {
+            constructor(container) {
+                this.list = container.list
+                this.index = 0
+            }
+            next() {
+                if (this.hasNext()) {
+                    return this.list[this.index++]
+                }
+                return null
+            }
+            hasNext() {
+                if (this.index >= this.list.length) {
+                    return false
+                }
+                return true
+            }
+        }
+
+        class Container {
+            constructor(list) {
+                this.list = list
+            }
+            // 生成迭代器
+            getIterator() {
+                return new Iterator(this)
+            }
+        }
+
+        let arr = [1, 2, 3, 4, 5, 6]
+        let con = new Container(arr)
+        let it = con.getIterator()
+
+        while (it.hasNext()) {
+            console.log(it.next())
+        }
+    </script>
+    <script>
+        // ES6 Iterator示例
+        let nodeList = document.getElementsByTagName('p')
+        function each(data) {
+            // 生成迭代器
+            let iterator = data[Symbol.iterator]()
+
+            let item = {
+                done: false
+            }
+            while (!item.done) {
+                item = iterator.next()
+                if (!item.done) {
+                    console.log(item.value)
+                }
+            }
+        }
+        each(nodeList)
+
+        // Symbol.iterator并不是人人都知道
+        // 也不是每个人都需要封装一个each方法
+        // 因此有了 for...of语法
+    </script>
+</body>
+
+</html>

@@ -1,82 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>观察者模式</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <p>观察者模式是前端用的最多的一种设计模式。</p>
     <p>
-      示例：<br />
-      发布&订阅<br />
-      一对N
+        示例：<br />
+        发布&订阅<br />
+        一对N
     </p>
     <p>
-      应用场景：<br />
-      网页事件绑定<br />
-      Promise<br />
-      Jquery callbacks<br />
-      nodejs 自定义事件
+        应用场景：<br />
+        网页事件绑定<br />
+        Promise<br />
+        Jquery callbacks<br />
+        nodejs 自定义事件
     </p>
     <p>
-      其他场景：<br />
-      nodejs中：处理http请求；多进程通讯<br />
-      vue和react组件生命周期触发<br />
-      vue watch
+        其他场景：<br />
+        nodejs中：处理http请求；多进程通讯<br />
+        vue和react组件生命周期触发<br />
+        vue watch
     </p>
     <script>
-      // 主题，保存状态、保存所有观察者，读取状态、修改状态、添加观察者、修改state时触发所有观察者update方法
-      class Subject {
-        constructor() {
-          // 定义状态
-          this.state = 0;
-          // 所有观察者以数组形式保存
-          this.observers = [];
+        // 主题，保存状态、保存所有观察者，读取状态、修改状态、添加观察者、修改state时触发所有观察者update方法
+        class Subject {
+            constructor() {
+                // 定义状态
+                this.state = 0;
+                // 所有观察者以数组形式保存
+                this.observers = [];
+            }
+            getState() {
+                return this.state;
+            }
+            setState(state) {
+                this.state = state;
+                // 修改了状态通知所有观察者
+                this.notifyAllObservers();
+            }
+            // 通知所有观察者
+            notifyAllObservers() {
+                // 遍历观察者数组，执行观察者的update方法
+                this.observers.forEach((observer) => {
+                    observer.update();
+                });
+            }
+            // 添加观察者
+            attach(observer) {
+                this.observers.push(observer);
+            }
         }
-        getState() {
-          return this.state;
-        }
-        setState(state) {
-          this.state = state;
-          // 修改了状态通知所有观察者
-          this.notifyAllObservers();
-        }
-        // 通知所有观察者
-        notifyAllObservers() {
-          // 遍历观察者数组，执行观察者的update方法
-          this.observers.forEach((observer) => {
-            observer.update();
-          });
-        }
-        // 添加观察者
-        attach(observer) {
-          this.observers.push(observer);
-        }
-      }
 
-      // 观察者类：观察者名，接收主题，使用主题方法将观察者自身加入到主题中，定义update方法显示state的更改
-      class Observer {
-        constructor(name, subject) {
-          this.name = name;
-          this.subject = subject;
-          this.subject.attach(this);
+        // 观察者类：观察者名，接收主题，使用主题方法将观察者自身加入到主题中，定义update方法显示state的更改
+        class Observer {
+            constructor(name, subject) {
+                this.name = name;
+                this.subject = subject;
+                this.subject.attach(this);
+            }
+            update() {
+                console.log(
+                    `${this.name}的update方法输出state为：${this.subject.getState()}`
+                );
+            }
         }
-        update() {
-          console.log(
-            `${this.name}的update方法输出state为：${this.subject.getState()}`
-          );
-        }
-      }
 
-      let s = new Subject();
+        let s = new Subject();
 
-      let o1 = new Observer("o1", s);
-      let o2 = new Observer("o2", s);
-      let o3 = new Observer("o3", s);
-      s.setState(1);
+        let o1 = new Observer("o1", s);
+        let o2 = new Observer("o2", s);
+        let o3 = new Observer("o3", s);
+        s.setState(1);
     </script>
-  </body>
+</body>
+
 </html>
