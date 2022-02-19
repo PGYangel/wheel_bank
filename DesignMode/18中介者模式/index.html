@@ -1,75 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>中介者模式</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <p>
-        各业务代码直接不直接关联，通过中介者进行沟通。如买房和卖房客之间通过中介进行买卖
+      各业务代码直接不直接关联，通过中介者进行沟通。如买房和卖房客之间通过中介进行买卖
     </p>
-    <p>定义一个中介对象来封装一系列对象之间的交互，使原有对象之间的耦合松散，且可以独立地改变它们之间的交互。中介者模式又叫调停模式，它是迪米特法则的典型应用。</p>
     <p>
-        中介者模式是一种对象行为型模式，其主要优点如下。
-        类之间各司其职，符合迪米特法则。
-        降低了对象之间的耦合性，使得对象易于独立地被复用。
-        将对象间的一对多关联转变为一对一的关联，提高系统的灵活性，使得系统易于维护和扩展。
-
-        其主要缺点是：中介者模式将原本多个对象直接的相互依赖变成了中介者和多个同事类的依赖关系。当同事类越多时，中介者就会越臃肿，变得复杂且难以维护。
+      定义一个中介对象来封装一系列对象之间的交互，使原有对象之间的耦合松散，且可以独立地改变它们之间的交互。中介者模式又叫调停模式，它是迪米特法则的典型应用。
+    </p>
+    <p>
+      中介者模式是一种对象行为型模式，其主要优点如下。<br />
+      类之间各司其职，符合迪米特法则。<br />
+      降低了对象之间的耦合性，使得对象易于独立地被复用。<br />
+      将对象间的一对多关联转变为一对一的关联，提高系统的灵活性，使得系统易于维护和扩展。<br />
+      其主要缺点是：中介者模式将原本多个对象直接的相互依赖变成了中介者和多个同事类的依赖关系。<br />
+      当同事类越多时，中介者就会越臃肿，变得复杂且难以维护。
+    </p>
+    <p>
+      <img src="概念图.png" alt="" />
     </p>
     <script>
-        // 买房客
-        class A {
-            constructor() {
-                this.number = 0
-            }
-            setNumber(num, m) {
-                this.number = num
-                if (m) {
-                    m.setB()
-                }
-            }
+      // 买房客
+      class A {
+        constructor() {
+          this.number = 0;
         }
-        // 卖房客
-        class B {
-            constructor() {
-                this.number = 0
-            }
-            setNumber(num, m) {
-                this.number = num
-                if (m) {
-                    m.setA()
-                }
-            }
+        setNumber(num, m) {
+          this.number = num;
+          if (m) {
+            m.setB();
+          }
         }
-        class Mediator {
-            constructor(a, b) {
-                this.a = a
-                this.b = b
-            }
-            setA() {
-                let number = this.b.number
-                this.a.setNumber(number * 100)
-            }
-            setB() {
-                let number = this.a.number
-                this.b.setNumber(number + 100)
-            }
+      }
+      // 卖房客
+      class B {
+        constructor() {
+          this.number = 0;
         }
+        setNumber(num, m) {
+          this.number = num;
+          if (m) {
+            m.setA();
+          }
+        }
+      }
+      class Mediator {
+        constructor(a, b) {
+          this.a = a;
+          this.b = b;
+        }
+        setA() {
+          let number = this.b.number;
+          this.a.setNumber(number + 10);
+        }
+        setB() {
+          let number = this.a.number;
+          this.b.setNumber(number - 10);
+        }
+      }
 
-        let a = new A()
-        let b = new B()
-        let m = new Mediator(a,b)
+      let a = new A();
+      let b = new B();
+      let m = new Mediator(a, b);
 
-        m.setA()
-        m.setB()
-        console.log(a.number)
-
+      // 买房通过中介出价100，中介给卖方就是90，中间赚取10的差价
+      a.setNumber(100, m);
+      console.log(a.number, b.number);
+      // 卖房通过中介出价100，中介给买方的报价就是110，中间赚取10的差价
+      b.setNumber(100, m);
+      console.log(a.number, b.number);
     </script>
-</body>
-
+  </body>
 </html>
