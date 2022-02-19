@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>职责链模式</title>
+  </head>
+  <body>
+    <p>一步操作可能分为多个职责角色来完成</p>
+    <p>把这些角色都分开，然后用一个链串起来</p>
+    <p>将发起者和各个处理者进行隔离</p>
+    <p>JS的链式操作就很像这个模式</p>
+    <script>
+      /* 
+        模拟一个审批流
+    */
+      class Action {
+        constructor(name) {
+          this.name = name;
+          this.nextAction = null;
+        }
+        handle() {
+          // 当前人进行审批
+          console.log(this.name + "审批");
+          // 判断有无下一个审批人，有则进行下一个审批人的方法
+          if (this.nextAction) {
+            this.nextAction.handle();
+          }
+        }
+        setNextAction(action) {
+          this.nextAction = action;
+        }
+      }
+
+      let a1 = new Action("我");
+      let a2 = new Action("经理");
+      let a3 = new Action("总监");
+      // 定义审批流
+      a1.setNextAction(a2);
+      a2.setNextAction(a3);
+      // 我开始执行审批
+      a1.handle();
+    </script>
+  </body>
+</html>

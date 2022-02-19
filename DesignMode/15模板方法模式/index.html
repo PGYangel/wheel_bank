@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>模板方法模式</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <p>方法整合</p>
+    <script>
+      class Action {
+        handle() {
+          this.handle1();
+          this.handle2();
+          this.handle3();
+        }
+        handle1() {
+          console.log(1);
+        }
+        handle2() {
+          console.log(2);
+        }
+        handle3() {
+          console.log(3);
+        }
+      }
+    </script>
+  </body>
 </html>

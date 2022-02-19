@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>原型模式</title>
-</head>
-<body>
+  </head>
+  <body>
+    <p>clone自己，生成一个新对象</p>
+    <p>Object.create用到了原型模式的思想</p>
     <script>
-        
+      // 一个原型 “对象”
+      const protoObj = {
+        getName: function () {
+          return this.first + " " + this.last;
+        },
+        say: function () {
+          console.log("hello");
+        },
+      };
+
+      // 基于原型创建 x
+      let x = Object.create(protoObj);
+      x.first = "A";
+      x.last = "B";
+      console.log(x.getName());
+      x.say();
     </script>
-</body>
+  </body>
 </html>

@@ -1,12 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>组合模式</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <p>生成树形结构，表示“整体-部分”关系，让整体和部分都具有一致得操作方式</p>
+    <p>虚拟DOM中得vnode是这种形式，但数据类型简单</p>
+    <p>整体和单个节点的操作是一致的，整体和单个节点的数据结构也保持一致</p>
+    <script>
+      let vnode = {
+        tag: "div",
+        attr: {
+          className: "mydiv",
+        },
+        children: [
+          {
+            tag: "p",
+            attr: {},
+            children: ["123"],
+          },
+          {
+            tag: "p",
+            attr: {},
+            children: ["456"],
+          },
+        ],
+      };
+    </script>
+  </body>
 </html>

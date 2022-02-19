@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>桥接模式</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <p>用于把抽象化与实现化解耦，使得两者可以独立变化</p>
+    <script>
+      /* 
+        实现一个画图类
+        可以画四种图，黄色红色圆形，黄色红色三角
+        将图形和颜色分开，进行自由组合，而不是将每种颜色图形分别写一个方法
+        */
+      class Color {
+        constructor(color) {
+          this.color = color;
+        }
+        // 填充颜色
+        fillColor() {
+          return this.color;
+        }
+      }
+
+      class Draw {
+        constructor(name, color) {
+          this.name = name;
+          this.color = color;
+        }
+        draw() {
+          console.log(`${this.name}形状，颜色是${this.color.fillColor()}`);
+        }
+      }
+
+      let red = new Color("red");
+      let yellow = new Color("yellow");
+
+      let circle = new Draw("circle", red);
+      let triangle = new Draw("triangle", yellow);
+      circle.draw();
+      triangle.draw();
+    </script>
+  </body>
 </html>
