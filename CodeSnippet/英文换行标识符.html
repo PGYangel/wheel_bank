@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英文换行自动加标识符-</title>
+    <style>
+        .txt {
+            width: 395px;
+        }
+
+        p {
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            -ms-hyphens: auto;
+            hyphens: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="txt">
+        <p>The hyphens property controls hyphenation of text in block level elements. You can prevent hyphenation from
+            happening at all, allow it, or only allow it when certain characters are present.</p>
+        <p>Note that hyphens is language-sensitive. Its ability to find break opportunities depends on the language,
+            defined in the lang attribute of a parent element. Not all languages are supported yet, and support depends
+            on the specific browser.</p>
+    </div>
+    <p>单词占位不足一行时，换行的时候末尾加上-符号，表示单词未结束进行换行。</p>
+</body>
+
+</html>
